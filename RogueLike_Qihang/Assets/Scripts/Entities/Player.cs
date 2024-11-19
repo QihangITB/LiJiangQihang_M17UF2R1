@@ -13,7 +13,7 @@ public class Player : AEntity, InputControl.IPlayerActions
     private Vector2 _inputMovement;
     private Rigidbody2D _rb;
     private Animator _animator;
-    private Vector2 _lastInput;
+    private Vector2 _mousePosition;
 
     private void Awake()
     {
@@ -25,40 +25,47 @@ public class Player : AEntity, InputControl.IPlayerActions
     private void Update()
     {
         _rb.MovePosition(_rb.position + speed * Time.deltaTime * _inputMovement.normalized);
+        _mousePosition = GetMousePosition() - (Vector2) transform.position; //Posicion del raton respecto al jugador.
         AnimationByDirection();
     }
 
     private void OnEnable()
     {
-        _inputControl.Player.Enable();
+        _inputControl.Enable();
     }
 
     private void OnDisable()
     {
-        _inputControl.Player.Disable();
+        _inputControl.Disable();
     }
 
     public void OnMovement(InputAction.CallbackContext context)
     {
-        //Leemos la configuracion de las teclas de movimiento. EX: 'w' = (0,1)
-        _inputMovement = context.ReadValue<Vector2>();
-        Debug.Log(_inputMovement);
+        if (context.performed)
+        {
+            //Leemos la configuracion de las teclas de movimiento. EX: 'w' = (0,1)
+            _inputMovement = context.ReadValue<Vector2>();
+            Debug.Log(_inputMovement);
 
-        _animator.SetBool(ParamIsMoving, _inputMovement != Vector2.zero);
-        if(_inputMovement != Vector2.zero)
-            SaveLastInput();
+            _animator.SetBool(ParamIsMoving, true);
+        }
+        else if (context.canceled)
+        {
+            _inputMovement = Vector2.zero;
+            _animator.SetBool(ParamIsMoving, false);
+        }
+    }
+
+    //Obtenemos la posicion del raton.
+    private Vector2 GetMousePosition()
+    {
+        return Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
     }
 
     //La animacion de movimiento dependera del input del teclado
     private void AnimationByDirection()
     {
-        _animator.SetFloat(AxisX, _lastInput.x);
-        _animator.SetFloat(AxisY, _lastInput.y);
+        _animator.SetFloat(AxisX, _mousePosition.x);
+        _animator.SetFloat(AxisY, _mousePosition.y);
     }
-
-    private void SaveLastInput()
-    {
-        _lastInput = _inputMovement;
-    }
-
 }
