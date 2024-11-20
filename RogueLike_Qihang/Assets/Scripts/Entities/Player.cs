@@ -1,71 +1,52 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.InputSystem;
+//using system.collections;
+//using system.collections.generic;
+//using unityengine;
+//using unityengine.inputsystem;
 
-public class Player : AEntity, InputControl.IPlayerActions
-{
-    const string AxisX = "X", AxisY = "Y", ParamIsMoving = "isMoving";
+//public class player : aentity, inputcontrol.iplayeractions
+//{
+//    const string axisx = "x", axisy = "y", paramismoving = "ismoving";
 
-    [SerializeField] private float speed;
+//    private animator _animator;
+//    private vector2 _mouseposition;
 
-    private InputControl _inputControl;
-    private Vector2 _inputMovement;
-    private Rigidbody2D _rb;
-    private Animator _animator;
-    private Vector2 _mousePosition;
+//    private void awake()
+//    {
+//        _animator = getcomponent<animator>();
+//    }
+//    private void update()
+//    {
+//        _mouseposition = getmouseposition() - (vector2) transform.position; //posicion del raton respecto al jugador.
+//        animationbydirection();
+//    }
 
-    private void Awake()
-    {
-        _inputControl = new InputControl();
-        _inputControl.Player.SetCallbacks(this);
-        _rb = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
-    }
-    private void Update()
-    {
-        _rb.MovePosition(_rb.position + speed * Time.deltaTime * _inputMovement.normalized);
-        _mousePosition = GetMousePosition() - (Vector2) transform.position; //Posicion del raton respecto al jugador.
-        AnimationByDirection();
-    }
+//    public void onmovement(inputaction.callbackcontext context)
+//    {
+//        if (context.performed)
+//        {
+//            //leemos la configuracion de las teclas de movimiento. ex: 'w' = (0,1)
+//            _inputmovement = context.readvalue<vector2>();
+//            debug.log(_inputmovement);
 
-    private void OnEnable()
-    {
-        _inputControl.Enable();
-    }
+//            _animator.setbool(paramismoving, true);
+//        }
+//        else if (context.canceled)
+//        {
+//            _inputmovement = vector2.zero;
+//            _animator.setbool(paramismoving, false);
+//        }
+//    }
 
-    private void OnDisable()
-    {
-        _inputControl.Disable();
-    }
+//    //obtenemos la posicion del raton.
+//    private vector2 getmouseposition()
+//    {
+//        return camera.main.screentoworldpoint(mouse.current.position.readvalue());
+//    }
 
-    public void OnMovement(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            //Leemos la configuracion de las teclas de movimiento. EX: 'w' = (0,1)
-            _inputMovement = context.ReadValue<Vector2>();
-            Debug.Log(_inputMovement);
-
-            _animator.SetBool(ParamIsMoving, true);
-        }
-        else if (context.canceled)
-        {
-            _inputMovement = Vector2.zero;
-            _animator.SetBool(ParamIsMoving, false);
-        }
-    }
-
-    //Obtenemos la posicion del raton.
-    private Vector2 GetMousePosition()
-    {
-        return Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-    }
-
-    //La animacion de movimiento dependera del input del teclado
-    private void AnimationByDirection()
-    {
-        _animator.SetFloat(AxisX, _mousePosition.x);
-        _animator.SetFloat(AxisY, _mousePosition.y);
-    }
-}
+//    //la animacion de movimiento dependera del input del teclado
+//    private void animationbydirection()
+//    {
+//        _animator.setfloat(axisx, _mouseposition.x);
+//        _animator.setfloat(axisy, _mouseposition.y);
+//    }
+//}
