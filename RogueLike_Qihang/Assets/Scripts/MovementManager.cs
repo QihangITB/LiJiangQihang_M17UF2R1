@@ -8,7 +8,7 @@ public class MovementManager : MonoBehaviour, InputControl.IPlayerActions
     const string PlayerTag = "Player";
     const string ParamSpeed = "Speed";
 
-    const float stopSpeed = 0f;
+    const float StopSpeed = 0f;
 
     [SerializeField] private float speed;
     private InputControl _inputControl;
@@ -24,13 +24,13 @@ public class MovementManager : MonoBehaviour, InputControl.IPlayerActions
 
     void Update()
     {
-        if(_inputControl != null)
-        _rb.MovePosition(_rb.position + PlayerPrefs.GetFloat(ParamSpeed) * Time.deltaTime * _inputMovement.normalized);
+        if (_inputControl != null)
+            _rb.MovePosition(_rb.position + PlayerPrefs.GetFloat(ParamSpeed) * Time.deltaTime * _inputMovement.normalized);
     }
 
     void OnEnable()
     {
-        if(_inputControl != null)
+        if (_inputControl != null)
             _inputControl.Enable();
     }
 
@@ -49,7 +49,7 @@ public class MovementManager : MonoBehaviour, InputControl.IPlayerActions
         else if (context.canceled)
         {
             _inputMovement = Vector2.zero;
-            PlayerPrefs.SetFloat(ParamSpeed, stopSpeed);
+            PlayerPrefs.SetFloat(ParamSpeed, StopSpeed);
         }
     }
 }

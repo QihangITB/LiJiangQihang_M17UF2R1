@@ -8,34 +8,47 @@ public class AnimationManager : MonoBehaviour
     const string AxisX = "X", AxisY = "Y";
     const string ParamIsMoving = "isMoving", ParamSpeed = "Speed";
 
-    const float StopSpeed = 0f;
+    const float StopSpeed = 0f, PositionCooldown = 1f;
 
     private Animator _animator;
-    private Vector2 _mousePosition;
+    private Vector2 _savePosition;
 
     void Awake()
     {
         _animator = GetComponent<Animator>();
     }
 
-    void Update()
+    void Start()
     {
-        _mousePosition = GetMousePosition() - (Vector2)transform.position; //Posicion del raton respecto al jugador.
-        AnimationByDirection();
-        MovingAnimation();
+        StartCoroutine(SavePositionByTime());
     }
 
-    //Obtenemos la posicion del raton.
-    private Vector2 GetMousePosition()
+    void Update()
     {
-        return Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        AnimationByDirection();
+        MovingAnimation();
     }
 
     //La animacion de movimiento dependera del input del teclado
     private void AnimationByDirection()
     {
-        _animator.SetFloat(AxisX, _mousePosition.x);
-        _animator.SetFloat(AxisY, _mousePosition.y);
+        _animator.SetFloat(AxisX, GetDirection().x);
+        _animator.SetFloat(AxisY, GetDirection().y);
+    }
+
+    private Vector2 GetDirection()
+    {
+        return ((Vector2) transform.position - _savePosition).normalized;
+    }
+
+    IEnumerator SavePositionByTime()
+    {
+        while(true)
+        {
+            if(PlayerPrefs.GetFloat(ParamSpeed) > StopSpeed)
+                _savePosition = transform.position;
+            yield return new WaitForSeconds(PositionCooldown);
+        }
     }
 
     private void MovingAnimation()
