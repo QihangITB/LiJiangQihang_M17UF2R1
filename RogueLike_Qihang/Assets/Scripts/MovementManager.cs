@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -17,8 +15,11 @@ public class MovementManager : MonoBehaviour, InputControl.IPlayerActions
 
     void Awake()
     {
-        _inputControl = gameObject.CompareTag(PlayerTag) ? new InputControl() : null;
-        _inputControl.Player.SetCallbacks(this);
+        if (gameObject.CompareTag(PlayerTag))
+        {
+            _inputControl = new InputControl();
+            _inputControl.Player.SetCallbacks(this);
+        }
         _rb = GetComponent<Rigidbody2D>();
     }
 
@@ -51,5 +52,23 @@ public class MovementManager : MonoBehaviour, InputControl.IPlayerActions
             _inputMovement = Vector2.zero;
             PlayerPrefs.SetFloat(ParamSpeed, StopSpeed);
         }
+    }
+
+    public void OnAttack(InputAction.CallbackContext context)
+    {
+
+    }
+
+    public void OnInventory(InputAction.CallbackContext context)
+    {
+
+    }
+
+    public void OnConsumable(InputAction.CallbackContext context)
+    {
+    }
+
+    public void OnEquipment(InputAction.CallbackContext context)
+    {
     }
 }
