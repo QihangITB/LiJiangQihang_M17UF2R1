@@ -18,7 +18,7 @@ public class AnimationManager : MonoBehaviour
 
     void Start()
     {
-        StartCoroutine(SavePositionByTime());
+        //StartCoroutine(SavePositionByTime());
     }
 
     void Update()
@@ -40,8 +40,8 @@ public class AnimationManager : MonoBehaviour
     //La animacion de movimiento dependera del input del teclado
     private void AnimationByDirection()
     {
-        _animator.SetFloat(AxisX, GetMovementDirection().x);
-        _animator.SetFloat(AxisY, GetMovementDirection().y);
+        _animator.SetFloat(AxisX, MovementManager.PlayerDirection.x);
+        _animator.SetFloat(AxisY, MovementManager.PlayerDirection.y);
     }
 
     private Vector2 GetMovementDirection()

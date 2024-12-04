@@ -1,44 +1,42 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class MovementManager : MonoBehaviour, InputControl.IPlayerActions
 {
-    const string PlayerTag = "Player";
     const string ParamSpeed = "Speed";
 
-    const float StopSpeed = 0f;
+    const float StopSpeed = 0f, PositionCooldown = 1.5f;
+
+    public static Vector2 PlayerDirection { get; private set; }
 
     [SerializeField] private float speed;
     private InputControl _inputControl;
     private Vector2 _inputMovement;
     private Rigidbody2D _rb;
+    private Vector2 _savePosition;
+
 
     void Awake()
     {
-        if (gameObject.CompareTag(PlayerTag))
-        {
-            _inputControl = new InputControl();
-            _inputControl.Player.SetCallbacks(this);
-        }
+        _inputControl = new InputControl();
+        _inputControl.Player.SetCallbacks(this);
         _rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        if (_inputControl != null)
-            _rb.MovePosition(_rb.position + PlayerPrefs.GetFloat(ParamSpeed) * Time.deltaTime * _inputMovement.normalized);
+        _rb.MovePosition(_rb.position + PlayerPrefs.GetFloat(ParamSpeed) * Time.deltaTime * _inputMovement.normalized);
     }
 
     void OnEnable()
     {
-        if (_inputControl != null)
-            _inputControl.Enable();
+        _inputControl.Enable();
     }
 
     void OnDisable()
     {
-        if (_inputControl != null)
-            _inputControl.Disable();
+        _inputControl.Disable();
     }
     public void OnMovement(InputAction.CallbackContext context)
     {
@@ -46,11 +44,13 @@ public class MovementManager : MonoBehaviour, InputControl.IPlayerActions
         {
             _inputMovement = context.ReadValue<Vector2>();
             PlayerPrefs.SetFloat(ParamSpeed, speed);
+            PlayerDirection = _savePosition - (Vector2)transform.position;
         }
         else if (context.canceled)
         {
             _inputMovement = Vector2.zero;
             PlayerPrefs.SetFloat(ParamSpeed, StopSpeed);
+            _savePosition = transform.position;
         }
     }
 
@@ -66,9 +66,11 @@ public class MovementManager : MonoBehaviour, InputControl.IPlayerActions
 
     public void OnConsumable(InputAction.CallbackContext context)
     {
+
     }
 
     public void OnEquipment(InputAction.CallbackContext context)
     {
+
     }
 }
