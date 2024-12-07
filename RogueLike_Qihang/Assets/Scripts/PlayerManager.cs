@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
 {
     const string AxisX = "X", AxisY = "Y";
-    const string ParamSpeed = "Speed", ParamIsMoving = "isMoving";
+    const string ParamIsMoving = "isMoving";
 
     const float StopSpeed = 0f;
 
@@ -25,7 +25,6 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
     void Update()
     {
         AnimationByDirection();
-        MovingAnimation();
     }
 
     void OnEnable()
@@ -46,22 +45,17 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
 
     private void AnimationByDirection()
     {
-        _animator.SetFloat(AxisX, PlayerManager.PlayerDirection.x);
-        _animator.SetFloat(AxisY, PlayerManager.PlayerDirection.y);
+        _animator.SetFloat(AxisX, PlayerDirection.x);
+        _animator.SetFloat(AxisY, PlayerDirection.y);
     }
 
-    private void MovingAnimation()
-    {
-        bool isMoving = PlayerPrefs.GetFloat(ParamSpeed) > StopSpeed;
-        _animator.SetBool(ParamIsMoving, isMoving);
-    }
     public void OnMovement(InputAction.CallbackContext context)
     { 
         _inputMovement = context.ReadValue<Vector2>();
         PlayerDirection = _inputMovement.normalized;
 
         bool isMoving = _inputMovement.magnitude > StopSpeed;
-        PlayerPrefs.SetFloat(ParamSpeed, isMoving ? 2f : StopSpeed);
+        _animator.SetBool(ParamIsMoving, isMoving);
     }
 
     public void OnAttack(InputAction.CallbackContext context)
