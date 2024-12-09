@@ -12,7 +12,7 @@ public class Movement : MonoBehaviour
         _rb = GetComponent<Rigidbody2D>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
         _rb.MovePosition(_rb.position + (speed * Time.deltaTime * PlayerManager.PlayerDirection));
     }
