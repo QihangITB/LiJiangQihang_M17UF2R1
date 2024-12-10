@@ -26,7 +26,7 @@ public class WeaponManager : MonoBehaviour
     {
         _player = GameObject.FindGameObjectWithTag(PlayerTag);
         _sr = GetComponent<SpriteRenderer>();
-        _sr.sprite = CurrentWeapon.WeaponSrpite;
+        _sr.sprite = CurrentWeapon.WeaponSprite;
     }
 
     private void FollowTheMouse()
@@ -43,5 +43,10 @@ public class WeaponManager : MonoBehaviour
         float radius = 1f;
         transform.position = (Vector2)_player.transform.position + dir * radius;
         transform.right = dir;
+    }
+
+    public void Attack()
+    {
+        CurrentWeapon.UseWeapon();
     }
 }

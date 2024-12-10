@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
 {
     const string AxisX = "X", AxisY = "Y";
-    const string ParamIsMoving = "isMoving";
+    const string ParamIsMoving = "IsMoving";
 
     const float StopSpeed = 0f;
 
@@ -15,7 +15,6 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
     private InputControl _inputControl;
     private Vector2 _inputMovement;
     private Animator _animator;
-
 
     void Awake()
     {
@@ -61,7 +60,10 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.performed)
-            Debug.Log("Attack! " + context.control.name);
+        {
+            GameObject weapon = GameObject.Find("WeaponManager");
+            weapon.GetComponent<WeaponManager>().Attack();
+        }
     }
 
     public void OnInventory(InputAction.CallbackContext context)
