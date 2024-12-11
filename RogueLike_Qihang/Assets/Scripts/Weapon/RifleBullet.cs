@@ -9,7 +9,7 @@ public class RifleBullet : MonoBehaviour
 
     void Start()
     {
-        Speed = GameObject.FindObjectOfType<Rifle>().Speed;
+        Speed = 2f;
     }
 
     void Update()
@@ -17,15 +17,14 @@ public class RifleBullet : MonoBehaviour
         transform.Translate(Vector2.right * Speed * Time.deltaTime);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D (Collision2D collision)
     {
         _animator.SetTrigger("Hit");
     }
 
     // Funcion que se llama al final de la animación de impacto a traves de un evento
-    private void GoToPool()
+    private void DestroyBullet()
     {
-        Debug.Log("Bala enviado al pool");
-        GameObject.FindObjectOfType<Rifle>().PushBullet(gameObject);
+        Destroy(this.gameObject);
     }
 }

@@ -10,7 +10,6 @@ public class WeaponManager : MonoBehaviour
     public WeaponSO CurrentWeapon;
 
     private GameObject _player;
-    private SpriteRenderer _sr;
 
     void Start()
     {
@@ -25,8 +24,13 @@ public class WeaponManager : MonoBehaviour
     private void InitializeComponents()
     {
         _player = GameObject.FindGameObjectWithTag(PlayerTag);
-        _sr = GetComponent<SpriteRenderer>();
-        _sr.sprite = CurrentWeapon.WeaponSprite;
+        EquipCurrentWeapon();
+    }
+
+    private void EquipCurrentWeapon()
+    {
+        GameObject weapon = Instantiate(CurrentWeapon.Weapon, _player.transform);
+        weapon.transform.SetParent(this.transform);
     }
 
     private void FollowTheMouse()
