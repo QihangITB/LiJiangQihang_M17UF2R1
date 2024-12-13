@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bfe674caa567a48a34c9943dcb72a4, type: 3}
   m_Name: Rifle
   m_EditorClassIdentifier: 
-  weapon: {fileID: 5728273389050602939, guid: 2dc36ae5309744845b9ded38e5316d79, type: 3}
   damage: 2
   cost: 5
   description: Ranged weapon that fires a bullet
   speed: 3
-  bulletPrefab: {fileID: 6071376251323557296, guid: 464cd023c9be2884ba3697cac7daa428, type: 3}
+  Weapon: {fileID: 0}
+  munition:
+    bulletPrefab: {fileID: 6071376251323557296, guid: 464cd023c9be2884ba3697cac7daa428, type: 3}

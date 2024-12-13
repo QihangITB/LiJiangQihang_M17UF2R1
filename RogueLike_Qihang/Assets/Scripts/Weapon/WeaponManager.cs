@@ -31,6 +31,8 @@ public class WeaponManager : MonoBehaviour
     {
         GameObject weapon = Instantiate(CurrentWeapon.Weapon, _player.transform);
         weapon.transform.SetParent(this.transform);
+        CurrentWeapon.Weapon = weapon; // Transformamos el arma en un objeto dinamico
+        RifleMunition.InitializeMunitionStack();
     }
 
     private void FollowTheMouse()

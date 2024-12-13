@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
 {
     const string AxisX = "X", AxisY = "Y";
     const string ParamIsMoving = "IsMoving";
+    const string WeaponManager = "WeaponManager";
 
     const float StopSpeed = 0f;
 
@@ -61,7 +62,7 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
     {
         if (context.performed)
         {
-            GameObject weapon = GameObject.Find("WeaponManager");
+            GameObject weapon = GameObject.Find(WeaponManager);
             weapon.GetComponent<WeaponManager>().Attack();
         }
     }
@@ -75,7 +76,9 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
     public void OnConsumable(InputAction.CallbackContext context)
     {
         if (context.performed)
+        {
             Debug.Log("Use Consumable! " + context.control.name);
+        }
     }
 
     public void OnEquipment(InputAction.CallbackContext context)

@@ -5,16 +5,16 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Rifle", menuName = "Weapon/Rifle")]
 public class Rifle : WeaponSO
 {
-    public GameObject bulletPrefab;
+    public RifleMunition munition;
 
     public override void UseWeapon()
     {
         Shoot();
     }
 
-    private void Shoot(Vector2 position)
+    private void Shoot()
     {
-        GameObject bullet = Instantiate(bulletPrefab);
-        bullet.transform.position = position;
+        Transform spawner = Weapon.transform.GetChild(0);
+        munition.popBullet(spawner); 
     }
 }
