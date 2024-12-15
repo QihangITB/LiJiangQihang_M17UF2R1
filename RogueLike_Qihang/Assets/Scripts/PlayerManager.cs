@@ -9,13 +9,14 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
     const string ParamIsMoving = "IsMoving";
     const string WeaponManager = "WeaponManager";
 
-    const float StopSpeed = 0f;
+    const float DefaultSpeed= 1f, StopSpeed = 0f;
 
-    public static Vector2 PlayerDirection { get; private set; }
+    public Vector2 playerDirection { get; private set; }
 
     private InputControl _inputControl;
     private Vector2 _inputMovement;
     private Animator _animator;
+    private Movement _movement;
 
     void Awake()
     {
@@ -25,6 +26,8 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
     void Update()
     {
         AnimationByDirection();
+        _movement.SetDirection(playerDirection); // Actualizamos la direccion constantemente
+
     }
 
     void OnEnable()
@@ -41,18 +44,20 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
         _animator = GetComponent<Animator>();
         _inputControl = new InputControl();
         _inputControl.Player.SetCallbacks(this);
+        _movement = GetComponent<Movement>();
+        _movement.SetSpeed(DefaultSpeed);
     }
 
     private void AnimationByDirection()
     {
-        _animator.SetFloat(AxisX, PlayerDirection.x);
-        _animator.SetFloat(AxisY, PlayerDirection.y);
+        _animator.SetFloat(AxisX, playerDirection.x);
+        _animator.SetFloat(AxisY, playerDirection.y);
     }
 
     public void OnMovement(InputAction.CallbackContext context)
     { 
         _inputMovement = context.ReadValue<Vector2>();
-        PlayerDirection = _inputMovement.normalized;
+        playerDirection = _inputMovement.normalized;
 
         bool isMoving = _inputMovement.magnitude > StopSpeed;
         _animator.SetBool(ParamIsMoving, isMoving);

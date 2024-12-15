@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-    public float speed;
+    private float _speed;
+    private Vector2 _direction;
     private Rigidbody2D _rb;
 
     void Start()
@@ -14,7 +15,16 @@ public class Movement : MonoBehaviour
 
     void FixedUpdate()
     {
-        _rb.MovePosition(_rb.position + (speed * Time.deltaTime * PlayerManager.PlayerDirection));
+        _rb.MovePosition(_rb.position + (_speed * _direction * Time.deltaTime));
     }
 
+    public void SetDirection(Vector2 value)
+    {
+        _direction = value;
+    }
+
+    public void SetSpeed(float value)
+    {
+        _speed = value;
+    }
 }
