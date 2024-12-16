@@ -5,21 +5,41 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class RifleBullet : MonoBehaviour
 {
+    private const string ParamImpact = "Impact";
+    private const string WeaponManager = "WeaponManager";
+
     private Animator _animator;
     private Movement _movement;
 
-    void Start()
+    void Awake()
     {
-        _animator = GetComponent<Animator>();
-        SetMovementConfiguration();
-        transform.rotation = Quaternion.Euler(0, 0, Mathf.Atan2(GetMouseDirection().y, GetMouseDirection().x) * Mathf.Rad2Deg);
+        InitializeComponents();
+
     }
 
-    public void SetMovementConfiguration()
+    void OnEnable()
     {
+        // Al reutilizar la bala, lo tenemos que configurar cada vez que se activa 
+        ConfigureMovement();
+        RotateTowardsMouse();
+    }
+
+    private void InitializeComponents()
+    {
+        _animator = GetComponent<Animator>();
         _movement = GetComponent<Movement>();
-        _movement.SetSpeed(GetCurrentWeaponSpeed()); // Damos per hecho que tiene equipado el rifle.
+    }
+
+    private void ConfigureMovement()
+    {
+        _movement.SetSpeed(GetCurrentWeaponSpeed());
         _movement.SetDirection(GetMouseDirection());
+    }
+
+    private void RotateTowardsMouse()
+    {
+        float angle = Mathf.Atan2(GetMouseDirection().y, GetMouseDirection().x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
     }
 
     private Vector2 GetMouseDirection()
@@ -30,19 +50,19 @@ public class RifleBullet : MonoBehaviour
 
     private float GetCurrentWeaponSpeed()
     {
-        GameObject weapon = GameObject.Find("WeaponManager");
+        GameObject weapon = GameObject.Find(WeaponManager);
         WeaponManager weaponManager = weapon.GetComponent<WeaponManager>();
-        return weaponManager.CurrentWeapon.Speed;
+        return weaponManager.CurrentWeapon.Speed; // Asumimos que tiene equipado el rifle, y por ello, su velocidad.
     }
 
-    private void OnCollisionEnter2D (Collision2D collision)
-    {
-        _animator.SetTrigger("Hit");
-    }
-
-    // Funcion que se llama al final de la animación de impacto a traves de un evento
+    // Esta funcion se llama al final de la animacion de impacto, a traves de un evento en el animation
     private void DestroyBullet()
     {
         RifleMunition.pushBullet(this.gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        _animator.SetTrigger(ParamImpact);
     }
 }

@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Sword", menuName = "Weapon/Sword")]
 public class Sword : WeaponSO
 {
+    const string ParamBrandish = "Brandish";
     public override void UseWeapon()
     {
         Brandish();
@@ -12,6 +13,7 @@ public class Sword : WeaponSO
 
     private void Brandish()
     {
-
+        Animator animator = WeaponPrefab.GetComponent<Animator>();
+        animator.SetTrigger(ParamBrandish);
     }
 }

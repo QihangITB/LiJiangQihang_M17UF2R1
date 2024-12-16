@@ -8,7 +8,8 @@ public abstract class WeaponSO : ScriptableObject
     [SerializeField] private float cost;
     [SerializeField] private string description;
     [SerializeField] private float speed;
-    [SerializeField] public GameObject Weapon;
+
+    [SerializeField] public GameObject WeaponPrefab;
 
     public float Damage { get => damage; }
     public float Cost { get => cost; }

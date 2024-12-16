@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 230d592287292bd40a0aa1785a572fc4, type: 3}
   m_Name: Sword
   m_EditorClassIdentifier: 
-  damage: 0
-  cost: 0
-  description: 
-  speed: 0
-  Weapon: {fileID: 0}
+  damage: 1
+  cost: 1
+  description: Sword Descrption
+  speed: 2
+  WeaponPrefab: {fileID: 8470261558880659159, guid: 84801078f37082f47a3e5e6cccc1e12d, type: 3}

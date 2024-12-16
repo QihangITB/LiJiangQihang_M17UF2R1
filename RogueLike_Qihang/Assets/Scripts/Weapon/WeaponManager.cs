@@ -8,6 +8,7 @@ public class WeaponManager : MonoBehaviour
     private const string PlayerTag = "Player";
 
     public WeaponSO CurrentWeapon;
+    private GameObject AuxWeaponPrefab;
 
     private GameObject _player;
 
@@ -29,10 +30,13 @@ public class WeaponManager : MonoBehaviour
 
     private void EquipCurrentWeapon()
     {
-        GameObject weapon = Instantiate(CurrentWeapon.Weapon, _player.transform);
+        GameObject weapon = Instantiate(CurrentWeapon.WeaponPrefab, _player.transform);
         weapon.transform.SetParent(this.transform);
-        CurrentWeapon.Weapon = weapon; // Transformamos el arma en un objeto dinamico
-        RifleMunition.InitializeMunitionStack();
+        AuxWeaponPrefab = CurrentWeapon.WeaponPrefab; // Guardamos el arma actual en el auxiliar para recuperarlo
+        CurrentWeapon.WeaponPrefab = weapon; // Transformamos el arma en un objeto dinamico
+        
+        //RIFLE:
+        //RifleMunition.InitializeMunitionStack();
     }
 
     private void FollowTheMouse()
@@ -54,5 +58,16 @@ public class WeaponManager : MonoBehaviour
     public void Attack()
     {
         CurrentWeapon.UseWeapon();
+    }
+
+
+
+
+
+
+    // PARA FASE DE DESARROLLO
+    private void OnApplicationQuit()
+    {
+        CurrentWeapon.WeaponPrefab = AuxWeaponPrefab;
     }
 }
