@@ -63,6 +63,7 @@ public class RifleBullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Debug.Log("Hit: " + collision.gameObject.name);
         _animator.SetTrigger(ParamImpact);
     }
 }

@@ -9,7 +9,6 @@ public class WeaponManager : MonoBehaviour
 
     public WeaponSO CurrentWeapon;
     private GameObject AuxWeaponPrefab;
-
     private GameObject _player;
 
     void Start()
@@ -19,7 +18,7 @@ public class WeaponManager : MonoBehaviour
 
     void Update()
     {
-        FollowTheMouse();
+       FollowTheMouse();
     }
 
     private void InitializeComponents()
@@ -36,7 +35,7 @@ public class WeaponManager : MonoBehaviour
         CurrentWeapon.WeaponPrefab = weapon; // Transformamos el arma en un objeto dinamico
         
         //RIFLE:
-        //RifleMunition.InitializeMunitionStack();
+        RifleMunition.InitializeMunitionStack();
     }
 
     private void FollowTheMouse()
