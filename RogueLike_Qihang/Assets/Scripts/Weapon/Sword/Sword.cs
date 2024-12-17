@@ -9,11 +9,6 @@ public class Sword : WeaponSO
     const string ParamBrandish = "Brandish";
     public override void UseWeapon()
     {
-        Brandish();
-    }
-
-    private void Brandish()
-    {
         GetSwordEdge().ActiveEdge(); // Activamos el collider del filo
         Animator animator = WeaponPrefab.GetComponent<Animator>();
         animator.SetTrigger(ParamBrandish);

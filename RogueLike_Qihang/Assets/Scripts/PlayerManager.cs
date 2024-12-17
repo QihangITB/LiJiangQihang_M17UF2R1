@@ -27,7 +27,6 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
     {
         AnimationByDirection();
         _movement.SetDirection(playerDirection); // Actualizamos la direccion constantemente
-
     }
 
     void OnEnable()

@@ -9,7 +9,8 @@ public class SwordEdge : MonoBehaviour
     private void Awake()
     {
         _edgeCollider = GetComponent<BoxCollider2D>();
-        _edgeCollider.enabled = false; // Desactivamos el collider al inicio
+        // El colider del filo siempre permanecera desactivada.
+        _edgeCollider.enabled = false;
     }
 
     public void ActiveEdge()
