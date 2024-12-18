@@ -16,4 +16,4 @@ MonoBehaviour:
   cost: 8
   description: Flamethrower
   speed: 2
-  WeaponPrefab: {fileID: 0}
+  WeaponPrefab: {fileID: 2398003391424675981, guid: 8e98d83bf91e62242af51940385aa00c, type: 3}

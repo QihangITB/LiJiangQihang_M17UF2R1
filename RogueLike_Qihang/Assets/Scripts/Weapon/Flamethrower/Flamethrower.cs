@@ -6,9 +6,22 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Flamethrower", menuName = "Weapon/Flamethrower")]
 public class Flamethrower : WeaponSO
 {
-    const string ParamShoot = "Shoot";
     public override void UseWeapon()
     {
+        ParticleSystem particleSystem = GetParticleSystem();
 
+        if (particleSystem.isPlaying)
+        {
+            particleSystem.Stop();
+        }
+        else
+        {
+            particleSystem.Play();
+        }
+    }
+    private ParticleSystem GetParticleSystem()
+    {
+        GameObject particleSystem = WeaponPrefab.transform.GetChild(0).gameObject;
+        return particleSystem.GetComponent<ParticleSystem>();
     }
 }
