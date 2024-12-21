@@ -922,7 +922,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8112166423e6b5c4eb0823d74226551f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentWeapon: {fileID: 11400000, guid: 1278a8e50be721243ab5a8c452ca9456, type: 2}
+  CurrentWeapon: {fileID: 11400000, guid: 9aa282919e11aee4b9119e02176bf833, type: 2}
 --- !u!212 &1311671427
 SpriteRenderer:
   m_ObjectHideFlags: 0

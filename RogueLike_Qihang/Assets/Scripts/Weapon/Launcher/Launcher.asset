@@ -17,4 +17,4 @@ MonoBehaviour:
   description: Launcher Desc
   speed: 1
   WeaponPrefab: {fileID: 2104213341741206545, guid: 67c4910bd34371d45973ec65997d27cb, type: 3}
-  _grenadePrefab: {fileID: 0}
+  _grenadePrefab: {fileID: 4768482713114409044, guid: 6f82c0ea20aa1384385e86f41cd74f0c, type: 3}

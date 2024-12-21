@@ -7,7 +7,7 @@ public class Rifle : WeaponSO
 {
     const string ParamShoot = "Shoot";
 
-    public RifleMunition munition;
+    public BulletMunition munition;
 
     public override void UseWeapon()
     {

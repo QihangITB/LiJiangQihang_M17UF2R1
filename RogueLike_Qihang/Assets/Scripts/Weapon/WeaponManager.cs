@@ -33,18 +33,24 @@ public class WeaponManager : MonoBehaviour
         weapon.transform.SetParent(this.transform);
         AuxWeaponPrefab = CurrentWeapon.WeaponPrefab; // Guardamos el arma actual en el auxiliar para recuperarlo
         CurrentWeapon.WeaponPrefab = weapon; // Transformamos el arma en un objeto dinamico
-        
+
         //RIFLE:
-        //RifleMunition.InitializeMunitionStack();
+        //BulletMunition.InitializeMunitionStack();
     }
 
     private void FollowTheMouse()
     {
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 mouseDirection = (mousePosition - (Vector2)_player.transform.position).normalized;
+        Vector2 mouseDirection = WeaponManager.GetMouseDirection(_player.transform);
         Debug.DrawRay(_player.transform.position, mouseDirection, Color.red);
 
         RotateAroundPlayer(mouseDirection);
+    }
+
+    // Es estatica porque lo podemos utilizar en las clases de los proyectiles y aprovehcar codigo
+    public static Vector2 GetMouseDirection(Transform entity)
+    {
+        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        return (mousePosition - (Vector2)entity.position).normalized;
     }
 
     private void RotateAroundPlayer(Vector2 dir)
@@ -58,6 +64,9 @@ public class WeaponManager : MonoBehaviour
     {
         CurrentWeapon.UseWeapon();
     }
+
+
+
 
 
 
