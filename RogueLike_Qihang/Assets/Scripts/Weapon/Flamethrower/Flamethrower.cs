@@ -19,6 +19,7 @@ public class Flamethrower : WeaponSO
             particleSystem.Play();
         }
     }
+
     private ParticleSystem GetParticleSystem()
     {
         GameObject particleSystem = WeaponPrefab.transform.GetChild(0).gameObject;
