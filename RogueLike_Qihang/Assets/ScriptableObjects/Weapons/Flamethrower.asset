@@ -9,11 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 230d592287292bd40a0aa1785a572fc4, type: 3}
-  m_Name: Sword
+  m_Script: {fileID: 11500000, guid: 8d146f625036dc24094c6f840821eed1, type: 3}
+  m_Name: Flamethrower
   m_EditorClassIdentifier: 
-  damage: 1
-  cost: 1
-  description: Sword Descrption
+  id: FT001
+  damage: 0.5
+  cost: 8
+  description: Flamethrower
   speed: 2
-  WeaponPrefab: {fileID: 8470261558880659159, guid: 84801078f37082f47a3e5e6cccc1e12d, type: 3}
+  WeaponPrefab: {fileID: 2398003391424675981, guid: 8e98d83bf91e62242af51940385aa00c, type: 3}

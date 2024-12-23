@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61bfe674caa567a48a34c9943dcb72a4, type: 3}
   m_Name: Rifle
   m_EditorClassIdentifier: Assembly-CSharp::Rifle
+  id: RI001
   damage: 2
   cost: 3
   description: daww

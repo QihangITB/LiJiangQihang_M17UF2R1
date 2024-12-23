@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class WeaponSO : ScriptableObject
 {
+    [SerializeField] private string id;
     [SerializeField] private float damage;
     [SerializeField] private float cost;
     [SerializeField] private string description;
@@ -11,6 +12,7 @@ public abstract class WeaponSO : ScriptableObject
 
     [SerializeField] public GameObject WeaponPrefab;
 
+    public string Id { get => id; }
     public float Damage { get => damage; }
     public float Cost { get => cost; }
     public string Description { get => description; }

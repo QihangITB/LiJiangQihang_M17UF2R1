@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48444194a17b411448a8ae03a30a6d95, type: 3}
   m_Name: Launcher
   m_EditorClassIdentifier: 
+  id: GL001
   damage: 10
   cost: 10
   description: Launcher Desc

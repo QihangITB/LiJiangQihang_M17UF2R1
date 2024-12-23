@@ -729,7 +729,7 @@ Transform:
   m_GameObject: {fileID: 1187159992}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 8.14, y: -0.6227, z: 0}
+  m_LocalPosition: {x: 4.53, y: 0.11, z: 0}
   m_LocalScale: {x: 1, y: 2.4873, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -985,8 +985,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1311692964}
   - component: {fileID: 1311692963}
-  - component: {fileID: 1311692971}
   - component: {fileID: 1311692970}
+  - component: {fileID: 1311692971}
+  - component: {fileID: 1311692972}
   - component: {fileID: 1311692962}
   - component: {fileID: 1311692966}
   - component: {fileID: 1311692967}
@@ -1174,6 +1175,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8017ad17877563241b6420d057253024, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1311692972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311692961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f49fa88a54e3b764a9fde7a0d75ef18e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equippedWeapons: []
+  inventoryWeapons: []
 --- !u!1 &1412873308
 GameObject:
   m_ObjectHideFlags: 0
