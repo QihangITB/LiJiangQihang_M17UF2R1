@@ -17,7 +17,7 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
     private Vector2 _inputMovement;
     private Animator _animator;
     private Movement _movement;
-    private Inventory _inventory;
+    private InventoryManager _inventory;
 
     void Awake()
     {
@@ -49,7 +49,7 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
         _movement = GetComponent<Movement>();
         _movement.SetSpeed(DefaultSpeed);
 
-        _inventory = GetComponent<Inventory>();
+        _inventory = GetComponent<InventoryManager>();
     }
 
     private void AnimationByDirection()
