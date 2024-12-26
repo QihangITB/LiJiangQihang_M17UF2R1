@@ -21,6 +21,12 @@ public class Grenade : MonoBehaviour
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
 
+    // Esta funcion se llama al final de la animacion de explosion, a traves de un evento en el animation
+    private void DestroyGrenade()
+    {
+        Destroy(this.gameObject);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //TODO

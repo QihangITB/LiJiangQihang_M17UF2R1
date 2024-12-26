@@ -1,18 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class InventoryManager : MonoBehaviour
 {
-    private const int EquippedWeaponSlot = 2;
+    private const string WeaponTag = "Weapon", ConsumableTag = "Consumable";
+    private const int InventoryMaxSize = 6, WeaponSlotMaxSize = 2, ConsumableSlotMaxSize = 3;
+
     public static InventoryManager Instance;
 
-    private WeaponSO[] _equippedWeapons = new WeaponSO[EquippedWeaponSlot];
-    private List<WeaponSO> _inventoryWeapons = new List<WeaponSO>();
+    private List<ItemSO> _inventoryItems = new List<ItemSO>();
+    private WeaponSO[] _equippedWeapons = new WeaponSO[WeaponSlotMaxSize];
+    private ConsumableSO[] _equippedConsumables = new ConsumableSO[ConsumableSlotMaxSize];
 
-    //TODO: Si da tiempo
-    //public List<ConsumableSO> equippedConsumables;
-    //public List<ConsumableSO> inventoryConsumables;
+    public List<ItemSO> Items{ get => _inventoryItems; }
 
     private void Awake()
     {
@@ -26,18 +28,61 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    public void EquipWeapon(WeaponSO weapon, int slot)
+    public void AddItem(ItemSO item)
     {
-        _equippedWeapons[slot] = weapon;
+        if (_inventoryItems.Count < InventoryMaxSize)
+        {
+            _inventoryItems.Add(item);
+            Debug.Log(item.name + " añadido con id: " + item.Id);
+        }
+        else
+        {
+            Debug.Log("Inventario esta lleno");
+        }
     }
 
-    public void AddWeapon(WeaponSO weapon)
+    public void RemoveItem(ItemSO item)
     {
-        _inventoryWeapons.Add(weapon);
+        _inventoryItems.Remove(item);
     }
 
-    public void RemoveWeapon(WeaponSO weapon)
+    public void Equip(GameObject slot, WeaponSO weapon)
     {
-        _inventoryWeapons.Remove(weapon);
+        int slotNumber = slot.transform.GetSiblingIndex();
+        WeaponSO slotWeapon = _equippedWeapons[slotNumber];
+
+        // Solo se equipa el arma que es distinto al que esta equipado
+        _equippedWeapons[slotNumber] = slotWeapon.Id != weapon.Id ? weapon : slotWeapon;
+    }
+
+    public void Equip(GameObject slot, ConsumableSO consumable)
+    {
+        int slotNumber = slot.transform.GetSiblingIndex();
+        ConsumableSO slotConsumable = _equippedConsumables[slotNumber];
+
+        // Solo se equipa el consumible que es distinto al que esta equipado
+        _equippedConsumables[slotNumber] = slotConsumable.Id != consumable.Id ? consumable : slotConsumable;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        int initialInventorySize = _inventoryItems.Count;
+
+        if (collision.CompareTag(WeaponTag))
+        {
+            Weapon weapon = collision.GetComponent<Weapon>();
+            AddItem(weapon.WeaponData);
+        }
+        else if (collision.CompareTag(ConsumableTag))
+        {
+            Consumable consumable = collision.GetComponent<Consumable>();
+            AddItem(consumable.ConsumableData);
+        }
+
+        // Si ha variado el tamaño del inventario, destruimos el objeto porque se ha añadido
+        if (initialInventorySize != _inventoryItems.Count)
+        {
+            Destroy(collision.gameObject);
+        }
     }
 }

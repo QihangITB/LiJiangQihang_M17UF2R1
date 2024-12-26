@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdb888fb625c403428d0bbf666236ac3, type: 3}
+  m_Name: FuryFlame1
+  m_EditorClassIdentifier: 
+  id: DMG001
+  cost: 1
+  description: Increases weapon damage by 1 during 5 seconds
+  icon: {fileID: 21300000, guid: 5e90beb2f444579429fa4c0077bff0e3, type: 3}
+  effectTime: 5

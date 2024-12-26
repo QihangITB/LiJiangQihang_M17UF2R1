@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: Sword
   m_EditorClassIdentifier: 
   id: SW001
-  damage: 1
   cost: 1
   description: Sword Descrption
+  icon: {fileID: 1283891445, guid: ded92b3665707454789cefd354f4359b, type: 3}
+  damage: 1
   speed: 2
   WeaponPrefab: {fileID: 8470261558880659159, guid: 84801078f37082f47a3e5e6cccc1e12d, type: 3}

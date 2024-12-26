@@ -62,7 +62,7 @@ public class WeaponManager : MonoBehaviour
 
     public void Attack()
     {
-        CurrentWeapon.UseWeapon();
+        CurrentWeapon.Use();
     }
 
 

@@ -6,7 +6,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Flamethrower", menuName = "Weapon/Flamethrower")]
 public class Flamethrower : WeaponSO
 {
-    public override void UseWeapon()
+    public override void Use()
     {
         ParticleSystem particleSystem = GetParticleSystem();
 
