@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public abstract class ItemSO : ScriptableObject
 {
@@ -15,4 +16,9 @@ public abstract class ItemSO : ScriptableObject
     public Sprite Icon { get => icon; }
 
     public abstract void Use();
+
+    public T ConvertToSpecificItem<T>() where T : ItemSO
+    {
+        return this as T;
+    }
 }

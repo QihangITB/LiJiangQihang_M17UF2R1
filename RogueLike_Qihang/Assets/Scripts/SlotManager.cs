@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -9,6 +11,7 @@ public class SlotManager : MonoBehaviour
 {
     private readonly Color LightGreen = new Color(0f, 1f, 0f, 0.4f);
     private readonly Color DefaultColor = new Color(1f, 1f, 1f, 1f);
+    private readonly Color LightRed = new Color(1f, 0f, 0f, 0.4f);
 
     public GameObject Item;                 // Incluye todo los objetos (armas y consumibles)
     public GameObject EquippedWeapon;       // Incluye solo las armas equipadas
@@ -20,19 +23,20 @@ public class SlotManager : MonoBehaviour
     private InventoryManager _inventoryManager;
 
     [NonSerialized] public ItemSO selectedItem;
-    private bool _isInventoryActive = false;
-
-    private void Start()
-    {
-        _isInventoryActive = true;
-    }
 
     private void OnEnable()
     {
         _inventoryManager = InventoryManager.Instance;
+        if (_inventoryManager == null) return;
+
         InitializeAllSlots();
-        if(_isInventoryActive)
-            UpdateSlotUI();
+        UpdateSlotUI();
+    }
+
+    private void OnDisable()
+    {
+        if (_inventoryManager == null) return;
+        ResetData();
     }
 
     private void InitializeAllSlots()
@@ -123,22 +127,67 @@ public class SlotManager : MonoBehaviour
         if (selectedItem != null)
         {
             int slotNumber = GetSlotIndexByParent();
+            GameObject slot = GetSlotForItem(selectedItem, slotNumber);
 
-            if (selectedItem is WeaponSO weapon)
+            if (slot != null)
             {
-                _inventoryManager.Equip(_weaponSlots[slotNumber], weapon);
-            }
-            else if (selectedItem is ConsumableSO consumable)
-            {
-                _inventoryManager.Equip(_consumableSlots[slotNumber], consumable);
-            }
+                if (!IsItemEquipped(selectedItem))
+                    EquipSelectedItem(selectedItem, slot);
+                else
+                    ModifySlotUI(slot, LightRed);
 
-            UpdateSlotUI();
+                UpdateSlotUI();
+            }
         }
-    }   
+    }
+
+    private void EquipSelectedItem(ItemSO item, GameObject slot)
+    {
+        Action<ItemSO, GameObject> equipAction = GetEquipActionForItem(item);
+        equipAction?.Invoke(item, slot);
+    }
+
+    private Action<ItemSO, GameObject> GetEquipActionForItem(ItemSO item)
+    {
+        if (item is WeaponSO)
+            return (i, s) => _inventoryManager.Equip(s, i as WeaponSO);
+
+        if (item is ConsumableSO)
+            return (i, s) => _inventoryManager.Equip(s, i as ConsumableSO);
+
+        return null;
+    }
+
+    private GameObject GetSlotForItem(ItemSO item, int slotNumber)
+    {
+        switch (item)
+        {
+            case WeaponSO:
+                return _weaponSlots[slotNumber];
+            case ConsumableSO:
+                return _consumableSlots[slotNumber];
+            default:
+                return null;
+        }
+    }
+
+    private bool IsItemEquipped(ItemSO item)
+    {
+        switch (item)
+        {
+            case WeaponSO weapon:
+                return _inventoryManager.Weapons.Contains(weapon);
+            case ConsumableSO consumable:
+                return _inventoryManager.Consumables.Contains(consumable);
+            default:
+                return false;
+        }
+    }
 
     public void SelectItem()
     {
+        ResetData();
+
         int slotNumber = GetSlotIndexByParent();
 
         selectedItem = slotNumber < _inventoryManager.Items.Count ? _inventoryManager.Items[slotNumber] : null;
@@ -156,18 +205,23 @@ public class SlotManager : MonoBehaviour
     {
         // Cambia el color de los slots de armas a verde durante 3 segundos
         ModifySlotUI(slots, LightGreen);
-        yield return new WaitForSeconds(2.5f);
+        yield return new WaitForSeconds(5f);
 
-        // Vuelve a cambiar el color de los slots de armas a blanco
-        ModifySlotUI(slots, DefaultColor);
+        // Volvemos a reiniciar los datos seleccionados
+        ResetData();
+    }
+
+    private void ModifySlotUI(GameObject slot, Color indicationColor)
+    {
+        Image slotImage = slot.GetComponent<Image>();
+        slotImage.color = indicationColor;
     }
 
     private void ModifySlotUI(List<GameObject> slots, Color indicationColor)
     {
         foreach (GameObject slot in slots)
         {
-            Image slotImage = slot.GetComponent<Image>();
-            slotImage.color = indicationColor;
+            ModifySlotUI(slot, indicationColor);
         }
     }
 
@@ -177,7 +231,12 @@ public class SlotManager : MonoBehaviour
         ModifySlotUI(secondSlots, indicationColor);
     }
 
-
+    private void ResetData()
+    {
+        StopAllCoroutines();
+        ModifySlotUI(_weaponSlots, _consumableSlots, DefaultColor);
+        selectedItem = null;
+    }
 
 
 

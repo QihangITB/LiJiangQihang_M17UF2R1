@@ -50,39 +50,15 @@ public class InventoryManager : MonoBehaviour
         _inventoryItems.Remove(item);
     }
 
-    public void Equip(GameObject slot, WeaponSO weapon)
-    {
-        int slotNumber = slot.transform.GetSiblingIndex();
-
-        WeaponSO slotWeapon = _equippedWeapons[slotNumber];
-
-        if (slotWeapon == null || slotWeapon.Id != weapon.Id)
-        {
-            _equippedWeapons[slotNumber] = weapon;
-        }
-    }
-
-    public void Equip(GameObject slot, ConsumableSO consumable)
-    {
-        int slotNumber = slot.transform.GetSiblingIndex();
-        ConsumableSO slotConsumable = _equippedConsumables[slotNumber];
-
-        if (slotConsumable == null || slotConsumable.Id != consumable.Id)
-        {
-            _equippedConsumables[slotNumber] = consumable;
-        }
-    }
-
     public void Equip<T>(GameObject slot, T item) where T : ItemSO
     {
         int slotNumber = slot.transform.GetSiblingIndex();
-
-        // Obtenemos la lista correspondiente según el tipo de item
-        var slotItem = GetEquipment<T>(slotNumber);
+        ItemSO slotItem = GetEquipment<T>(slotNumber);
 
         // Comprobamos si el slot está vacío o si el item es diferente al actual
         if (slotItem == null || slotItem.Id != item.Id)
         {
+            Debug.Log("Equipando");
             SetEquipment(slotNumber, item);
         }
     }
