@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class ItemSO : ScriptableObject
 {
-    [SerializeField] private string id;
+    [SerializeField] private string id; // Nos servira para identificar el item
     [SerializeField] private float cost;
     [SerializeField] private string description;
     [SerializeField] private Sprite icon;

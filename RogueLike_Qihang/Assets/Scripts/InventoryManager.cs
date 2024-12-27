@@ -1,20 +1,24 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using static UnityEditor.Progress;
 
 public class InventoryManager : MonoBehaviour
 {
     private const string WeaponTag = "Weapon", ConsumableTag = "Consumable";
-    private const int InventoryMaxSize = 6, WeaponSlotMaxSize = 2, ConsumableSlotMaxSize = 3;
+    private const int InventoryMaxSize = 6;
 
     public static InventoryManager Instance;
 
     private List<ItemSO> _inventoryItems = new List<ItemSO>();
-    private WeaponSO[] _equippedWeapons = new WeaponSO[WeaponSlotMaxSize];
-    private ConsumableSO[] _equippedConsumables = new ConsumableSO[ConsumableSlotMaxSize];
+    private List<WeaponSO> _equippedWeapons = new List<WeaponSO> { null, null }; // Tamaño de 2 predefinido
+    private List<ConsumableSO> _equippedConsumables = new List<ConsumableSO> { null, null, null }; // Tamaño de 3 predefinido
 
     public List<ItemSO> Items{ get => _inventoryItems; }
+    public List<WeaponSO> Weapons { get => _equippedWeapons; }
+    public List<ConsumableSO> Consumables { get => _equippedConsumables; }
 
     private void Awake()
     {
@@ -49,10 +53,13 @@ public class InventoryManager : MonoBehaviour
     public void Equip(GameObject slot, WeaponSO weapon)
     {
         int slotNumber = slot.transform.GetSiblingIndex();
+
         WeaponSO slotWeapon = _equippedWeapons[slotNumber];
 
-        // Solo se equipa el arma que es distinto al que esta equipado
-        _equippedWeapons[slotNumber] = slotWeapon.Id != weapon.Id ? weapon : slotWeapon;
+        if (slotWeapon == null || slotWeapon.Id != weapon.Id)
+        {
+            _equippedWeapons[slotNumber] = weapon;
+        }
     }
 
     public void Equip(GameObject slot, ConsumableSO consumable)
@@ -60,8 +67,56 @@ public class InventoryManager : MonoBehaviour
         int slotNumber = slot.transform.GetSiblingIndex();
         ConsumableSO slotConsumable = _equippedConsumables[slotNumber];
 
-        // Solo se equipa el consumible que es distinto al que esta equipado
-        _equippedConsumables[slotNumber] = slotConsumable.Id != consumable.Id ? consumable : slotConsumable;
+        if (slotConsumable == null || slotConsumable.Id != consumable.Id)
+        {
+            _equippedConsumables[slotNumber] = consumable;
+        }
+    }
+
+    public void Equip<T>(GameObject slot, T item) where T : ItemSO
+    {
+        int slotNumber = slot.transform.GetSiblingIndex();
+
+        // Obtenemos la lista correspondiente según el tipo de item
+        var slotItem = GetEquipment<T>(slotNumber);
+
+        // Comprobamos si el slot está vacío o si el item es diferente al actual
+        if (slotItem == null || slotItem.Id != item.Id)
+        {
+            SetEquipment(slotNumber, item);
+        }
+    }
+
+    private T GetEquipment<T>(int slotNumber) where T : ItemSO
+    {
+        if (typeof(T) == typeof(WeaponSO))
+        {
+            return (T)(object)_equippedWeapons[slotNumber];
+        }
+        else if (typeof(T) == typeof(ConsumableSO))
+        {
+            return (T)(object)_equippedConsumables[slotNumber];
+        }
+        else
+        {
+            throw new InvalidOperationException("Tipo no soportado");
+        }
+    }
+
+    private void SetEquipment<T>(int slotNumber, T item) where T : ItemSO
+    {
+        if (typeof(T) == typeof(WeaponSO))
+        {
+            _equippedWeapons[slotNumber] = (WeaponSO)(object)item;
+        }
+        else if (typeof(T) == typeof(ConsumableSO))
+        {
+            _equippedConsumables[slotNumber] = (ConsumableSO)(object)item;
+        }
+        else
+        {
+            throw new InvalidOperationException("Tipo no soportado");
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
