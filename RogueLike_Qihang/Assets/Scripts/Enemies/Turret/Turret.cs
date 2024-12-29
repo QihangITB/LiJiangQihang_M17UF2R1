@@ -6,4 +6,9 @@ public class Turret : EnemySO
 {
     [SerializeField] private float attackSpeed;
     public float AttackSpeed { get => attackSpeed; }
+
+    public override void Attack()
+    {
+        Debug.Log("Turret Attack");
+    }
 }

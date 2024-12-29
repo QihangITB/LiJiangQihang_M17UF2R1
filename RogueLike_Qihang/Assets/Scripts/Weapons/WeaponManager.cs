@@ -35,7 +35,7 @@ public class WeaponManager : MonoBehaviour
         CurrentWeapon.WeaponPrefab = weapon; // Transformamos el arma en un objeto dinamico
 
         //RIFLE:
-        //BulletMunition.InitializeMunitionStack();
+        BulletMunition.InitializeMunitionStack();
     }
 
     private void FollowTheMouse()
