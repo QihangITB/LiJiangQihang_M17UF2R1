@@ -6,8 +6,8 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class Bullet : MonoBehaviour
 {
     private const string ParamImpact = "Impact";
-    private const string WeaponManagerObject = "WeaponManager";
 
+    [SerializeField] private Rifle _rifle;
     private Animator _animator;
     private Movement _movement;
 
@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
     {
         Vector2 mouseDirection = WeaponManager.GetMouseDirection(this.transform);
         // Al reutilizar la bala, lo tenemos que configurar cada vez que se activa 
-        ConfigureMovement(GetCurrentWeapon(),mouseDirection);
+        ConfigureMovement(_rifle, mouseDirection);
         RotateTowardsMouse(mouseDirection);
     }
 
@@ -30,7 +30,7 @@ public class Bullet : MonoBehaviour
         _movement = GetComponent<Movement>();
     }
 
-    private void ConfigureMovement(WeaponSO weapon, Vector2 direction)
+    private void ConfigureMovement(Rifle weapon, Vector2 direction)
     {
         _movement.SetSpeed(weapon.Speed);
         _movement.SetDirection(direction);
@@ -40,13 +40,6 @@ public class Bullet : MonoBehaviour
     {
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
-    }
-
-    private WeaponSO GetCurrentWeapon()
-    {
-        GameObject weapon = GameObject.Find(WeaponManagerObject);
-        WeaponManager weaponManager = weapon.GetComponent<WeaponManager>();
-        return weaponManager.CurrentWeapon; // Asumimos que tiene equipado el rifle, y por ello, su velocidad.
     }
 
     // Esta funcion se llama al final de la animacion de impacto, a traves de un evento en el animation

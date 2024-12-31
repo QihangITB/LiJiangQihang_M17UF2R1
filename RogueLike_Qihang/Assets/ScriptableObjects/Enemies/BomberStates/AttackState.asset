@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2666bfef1ff065a4c884bc09627f2c7d, type: 3}
-  m_Name: Turret
+  m_Script: {fileID: 11500000, guid: d59808a115c745a4a97d87d4b043f51e, type: 3}
+  m_Name: AttackState
   m_EditorClassIdentifier: 
-  health: 3
-  speed: 50
-  visionRange: 5
-  attackSpeed: 2
-  rechargeCooldown: 0.5
-  bulletPrefab: {fileID: 5926523386831475831, guid: b80e5a8ec9b2a3644b9529d8f747607e, type: 3}
+  StatesToGo:
+  - {fileID: 11400000, guid: 6dc4d8c80600949458b4fc76f160749c, type: 2}

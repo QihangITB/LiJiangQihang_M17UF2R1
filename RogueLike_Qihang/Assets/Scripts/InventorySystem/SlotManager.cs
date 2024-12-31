@@ -238,9 +238,6 @@ public class SlotManager : MonoBehaviour
         selectedItem = null;
     }
 
-
-
-
     public static int GetSlotIndexByParent()
     {
         // Obtiene el GameObject que ha sido clickeado
