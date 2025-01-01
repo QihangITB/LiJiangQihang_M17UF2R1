@@ -1,0 +1,774 @@
+fileFormatVersion: 2
+guid: 2c827f04211c0484f8d045311d9de183
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1300
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d3f7ae4d484907448f117bd90306e09
+      internalID: 1950792299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_1
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 1300
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e290e67e60408ad40959c5e63441425a
+      internalID: -777320509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_2
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 1300
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01291392dfe93bb49a1ba445f1db7fd1
+      internalID: 1971202559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_3
+      rect:
+        serializedVersion: 2
+        x: 1203
+        y: 1300
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d09a3f9464705e04aa074e1ad8b27f57
+      internalID: -112019976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_4
+      rect:
+        serializedVersion: 2
+        x: 1604
+        y: 1300
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 850e1e7b28affe341bb68adbda2f7028
+      internalID: -1963024374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_5
+      rect:
+        serializedVersion: 2
+        x: 2005
+        y: 1300
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10c684b1eceeb594a96924db13729e8d
+      internalID: 1077006056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 975
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85927c6a458d9694b8934642349e5eaa
+      internalID: 507448968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_7
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 975
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06ef06a7b55eafa4a847474d4a9b87cb
+      internalID: -1707488043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_8
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 975
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b39df3464e3ddb4496dd995a48a6b43
+      internalID: 681308669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_9
+      rect:
+        serializedVersion: 2
+        x: 1203
+        y: 975
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7007a581fcc0e83488d50ea5475d50fb
+      internalID: -477229976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_10
+      rect:
+        serializedVersion: 2
+        x: 1604
+        y: 975
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21c02d8298677a148b3068a824d6e4ea
+      internalID: -315494415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_11
+      rect:
+        serializedVersion: 2
+        x: 2005
+        y: 975
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 522abac28face884ba1995e01afe38d5
+      internalID: 487110583
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 650
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72d15b438668b944b936e82bd5f80415
+      internalID: 2051430305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_13
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 650
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74c4e8030c6efaa4fae737ca89fd9318
+      internalID: 475420904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_14
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 650
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c22535b223173f40ac9e80ed1149502
+      internalID: -783254257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_15
+      rect:
+        serializedVersion: 2
+        x: 1203
+        y: 650
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57c119eb80be616458b937d003c7fa45
+      internalID: -302111856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_16
+      rect:
+        serializedVersion: 2
+        x: 1604
+        y: 650
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c42ff93b8a3fe94dac70e685d6ed98d
+      internalID: -25865297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_17
+      rect:
+        serializedVersion: 2
+        x: 2005
+        y: 650
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 400824ef202fac34db88f7f3387045ca
+      internalID: 1546203172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 325
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76af6e246448fdd4e978123190bdbe10
+      internalID: -9952878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_19
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 325
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c685a2d472ae3c4397081557635f1d3
+      internalID: -934773223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_20
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 325
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13fc0e57851702743b36894150bf0cf5
+      internalID: -1718655185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_21
+      rect:
+        serializedVersion: 2
+        x: 1203
+        y: 325
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 056faf518cb14674c91b8e947519a474
+      internalID: -845345725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_22
+      rect:
+        serializedVersion: 2
+        x: 1604
+        y: 325
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d882eacfd0da2e41bb5d29605c5db0a
+      internalID: 1113188882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_23
+      rect:
+        serializedVersion: 2
+        x: 2005
+        y: 325
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c768b130d41df344b7c406aa2efb17d
+      internalID: 583538623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 665f895d68f8e4a43b950c2db4638de4
+      internalID: -1631608268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_25
+      rect:
+        serializedVersion: 2
+        x: 401
+        y: 0
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fda0c0e4a31e594dbe4ab26a9928c15
+      internalID: -1939771542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_26
+      rect:
+        serializedVersion: 2
+        x: 802
+        y: 0
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbc197ca0d6a34b479104563384b283f
+      internalID: 1905893884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_27
+      rect:
+        serializedVersion: 2
+        x: 1203
+        y: 0
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f7ae5624949901458576720838a07bc
+      internalID: -1124526356
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_28
+      rect:
+        serializedVersion: 2
+        x: 1604
+        y: 0
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72750ebcc80795e43a1d80f4e381c392
+      internalID: 153951158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Effect_Kabooms_1_401x325_29
+      rect:
+        serializedVersion: 2
+        x: 2005
+        y: 0
+        width: 401
+        height: 325
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 840843a6fa1044642a0d9325f55841fb
+      internalID: -984715526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Effect_Kabooms_1_401x325_0: 1950792299
+      Effect_Kabooms_1_401x325_1: -777320509
+      Effect_Kabooms_1_401x325_10: -315494415
+      Effect_Kabooms_1_401x325_11: 487110583
+      Effect_Kabooms_1_401x325_12: 2051430305
+      Effect_Kabooms_1_401x325_13: 475420904
+      Effect_Kabooms_1_401x325_14: -783254257
+      Effect_Kabooms_1_401x325_15: -302111856
+      Effect_Kabooms_1_401x325_16: -25865297
+      Effect_Kabooms_1_401x325_17: 1546203172
+      Effect_Kabooms_1_401x325_18: -9952878
+      Effect_Kabooms_1_401x325_19: -934773223
+      Effect_Kabooms_1_401x325_2: 1971202559
+      Effect_Kabooms_1_401x325_20: -1718655185
+      Effect_Kabooms_1_401x325_21: -845345725
+      Effect_Kabooms_1_401x325_22: 1113188882
+      Effect_Kabooms_1_401x325_23: 583538623
+      Effect_Kabooms_1_401x325_24: -1631608268
+      Effect_Kabooms_1_401x325_25: -1939771542
+      Effect_Kabooms_1_401x325_26: 1905893884
+      Effect_Kabooms_1_401x325_27: -1124526356
+      Effect_Kabooms_1_401x325_28: 153951158
+      Effect_Kabooms_1_401x325_29: -984715526
+      Effect_Kabooms_1_401x325_3: -112019976
+      Effect_Kabooms_1_401x325_4: -1963024374
+      Effect_Kabooms_1_401x325_5: 1077006056
+      Effect_Kabooms_1_401x325_6: 507448968
+      Effect_Kabooms_1_401x325_7: -1707488043
+      Effect_Kabooms_1_401x325_8: 681308669
+      Effect_Kabooms_1_401x325_9: -477229976
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

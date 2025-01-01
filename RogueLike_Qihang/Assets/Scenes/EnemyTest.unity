@@ -292,6 +292,11 @@ MonoBehaviour:
   m_Area: 1
   m_IgnoreFromBuild: 0
   m_AffectedAgents: ffffffff
+--- !u!1 &806005979 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5847931045220846943, guid: 5aec554cf414ce54e81e123dbd429f20, type: 3}
+  m_PrefabInstance: {fileID: 1984653250378584123}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1221269906
 GameObject:
   m_ObjectHideFlags: 0
@@ -349,7 +354,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: c4d170d2575681c4da4e63ecb6c08f4a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -467,6 +472,7 @@ GameObject:
   - component: {fileID: 1444112418}
   - component: {fileID: 1444112417}
   - component: {fileID: 1444112420}
+  - component: {fileID: 1444112424}
   - component: {fileID: 1444112416}
   - component: {fileID: 1444112423}
   - component: {fileID: 1444112422}
@@ -560,7 +566,7 @@ Transform:
   m_GameObject: {fileID: 1444112415}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.74, y: 1.68, z: 0}
+  m_LocalPosition: {x: -6.03, y: 1.28, z: 0}
   m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -580,7 +586,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bomberData: {fileID: 11400000, guid: d5845943a59b20649af8a0f426e9c4fb, type: 2}
-  Target: {fileID: 5847931045220846943, guid: 5aec554cf414ce54e81e123dbd429f20, type: 3}
+  Animator: {fileID: 1444112416}
+  Target: {fileID: 806005979}
   States:
   - {fileID: 11400000, guid: 56bc9de38704ed7448cdeca6bd88a1c8, type: 2}
   - {fileID: 11400000, guid: d70e7b41823f3fa4e84edff96b39b604, type: 2}
@@ -619,7 +626,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0.19146502, y: -0.0892053}
-  m_Size: {x: 0.42560536, y: 0.5256889}
+  m_Size: {x: 0.5, y: 0.5}
   m_Direction: 0
 --- !u!58 &1444112422
 CircleCollider2D:
@@ -678,6 +685,19 @@ NavMeshAgent:
   m_BaseOffset: 0.55
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!114 &1444112424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444112415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d657c9b3d33148e43a57b0fb92272ccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PatrolRange: 5
 --- !u!1 &1683990525
 GameObject:
   m_ObjectHideFlags: 0
