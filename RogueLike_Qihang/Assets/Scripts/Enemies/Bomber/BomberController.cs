@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
+using UnityEngine.AI;
 
 public class BomberController : MonoBehaviour
 {
@@ -11,19 +11,30 @@ public class BomberController : MonoBehaviour
 
     private StateSO _currentState;
     private CircleCollider2D _visionCollider;
-    private CapsuleCollider2D _bombCollider;
+    private NavMeshAgent _navMeshAgent;
+
+    public NavMeshAgent Agent { get => _navMeshAgent; }
 
     private void Start()
     {
         _currentState = States[0];
-        _currentState.OnStateEnter();
+        _currentState.OnStateEnter(this);
 
         _visionCollider = GetComponent<CircleCollider2D>();
         _visionCollider.radius = _bomberData.VisionRange;
 
-        _bombCollider = transform.GetChild(0).GetComponent<CapsuleCollider2D>();
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+        _navMeshAgent.speed = _bomberData.Speed;
+        _navMeshAgent.updateRotation = false;
+        _navMeshAgent.updateUpAxis = false;
     }
 
+    private void Update()
+    {
+        _currentState.OnStateUpdate(this);
+    }
+
+    // Detecta si el objetivop esta dentro del rango de vision
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag(Target.tag))
@@ -32,13 +43,14 @@ public class BomberController : MonoBehaviour
         }
     }
 
+    // Detecta la colision con la bomba
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Debug.Log("Collision with target");
 
         if (collision.gameObject.CompareTag(Target.tag))
         {
-            GoToState<AttackState>();
+            //GoToState<AttackState>();
         }
     }
 
@@ -46,9 +58,9 @@ public class BomberController : MonoBehaviour
     {
         if(_currentState.StatesToGo.Find(state => state is T))
         {
-            _currentState.OnStateExit();
+            _currentState.OnStateExit(this);
             _currentState = _currentState.StatesToGo.Find(obj => obj is T);
-            _currentState.OnStateEnter();
+            _currentState.OnStateEnter(this);
         }
     }
 

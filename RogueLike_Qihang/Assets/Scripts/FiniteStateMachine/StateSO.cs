@@ -5,8 +5,8 @@ using UnityEngine;
 public abstract class StateSO : ScriptableObject
 {
     public List<StateSO> StatesToGo;
-    public abstract void OnStateEnter();
-    public abstract void OnStateUpdate();
-    public abstract void OnStateExit();
+    public abstract void OnStateEnter(BomberController bomber);
+    public abstract void OnStateUpdate(BomberController bomber);
+    public abstract void OnStateExit(BomberController bomber);
 }
 
