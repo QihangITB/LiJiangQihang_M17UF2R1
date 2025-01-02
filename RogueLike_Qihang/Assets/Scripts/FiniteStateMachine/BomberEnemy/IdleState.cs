@@ -1,8 +1,6 @@
 using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.InputSystem.XR;
+
 
 [CreateAssetMenu(fileName = "IdleState", menuName = "States/IdleState")]
 public class IdleState : StateSO

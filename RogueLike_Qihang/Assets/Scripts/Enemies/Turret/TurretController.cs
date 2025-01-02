@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 public class TurretController : MonoBehaviour
 {
@@ -40,11 +41,10 @@ public class TurretController : MonoBehaviour
         float angleToTarget = AngleToRotate(_targetPosition);
 
         RotateTowardsTarget(directionToTarget, angleToTarget, _rotationSpeed);
-        UpdateTargetPosition(); // Por si se ha detetado un objetivo "jugador"
 
         if (AimBehaviour.IsAimingTheTarget(angleToTarget))
         {
-            if (_aim.TargetDetected)
+            if (_aim.IsTargetDetected)
             {
                 // Disparar si el objetivo está detectado
                 _shoot.HandleCooldown(Time.deltaTime);
@@ -79,14 +79,6 @@ public class TurretController : MonoBehaviour
         }
     }
 
-    private void UpdateTargetPosition()
-    {
-        if (_aim.DetectedTarget != null)
-        {
-            _targetPosition = _aim.DetectedTarget.transform.position;
-        }
-    }
-
     private float AngleToRotate(Vector3 targetPosition)
     {
         Vector2 frontDirection = transform.up;
@@ -105,5 +97,13 @@ public class TurretController : MonoBehaviour
 
         // Convertir el punto a espacio mundial y devolverlo
         return transform.TransformPoint(localTarget);
+    }
+
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (_aim.IsTargetDetected)
+        {
+            _targetPosition = collision.transform.position;
+        }
     }
 }

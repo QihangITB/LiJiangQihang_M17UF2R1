@@ -20,5 +20,6 @@ public class ChaseState : StateSO
     public override void OnStateExit(BomberController controller)
     {
         controller.Animator.SetBool(ParamHasTarget, false);
+        controller.Agent.ResetPath();
     }
 }

@@ -8,16 +8,7 @@ public class AimBehaviour : MonoBehaviour
     private bool _isTargetDetected = false;
 
     public GameObject Target { set => _target = value; }
-    public bool TargetDetected { get => _isTargetDetected; }
-    public GameObject DetectedTarget { get; set; }
-
-    private void Update()
-    {
-        if(!_isTargetDetected)
-        {
-            DetectedTarget = null;
-        }
-    }
+    public bool IsTargetDetected { get => _isTargetDetected; }
 
     public static bool IsAimingTheTarget(float angle)
     {
@@ -35,15 +26,7 @@ public class AimBehaviour : MonoBehaviour
     {
         if (collision.CompareTag(_target.tag))
         {
-            if (IsTargetInLineOfSight(collision.transform))
-            {
-                DetectedTarget = collision.gameObject;
-                _isTargetDetected = true;
-            }
-            else
-            {
-                _isTargetDetected = false;
-            }
+            _isTargetDetected = IsTargetInLineOfSight(collision.transform);
         }
     }
 

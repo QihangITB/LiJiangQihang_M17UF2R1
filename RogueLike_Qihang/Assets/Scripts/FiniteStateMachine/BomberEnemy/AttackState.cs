@@ -7,15 +7,13 @@ using UnityEngine.AI;
 public class AttackState : StateSO
 {
     private const string ParamAttack = "Attack";
-    private const float ExplosionRange = 2f;
 
     public override void OnStateEnter(BomberController controller)
     {
+        controller.Animator.SetTrigger(ParamAttack);
+
         controller.Agent.isStopped = true;
         controller.Agent.ResetPath(); // Detener por completo el movimiento
-
-        controller.Animator.SetTrigger(ParamAttack);
-        controller.BombArea.size = new Vector2(ExplosionRange, ExplosionRange);
     }
 
     public override void OnStateUpdate(BomberController controller)
