@@ -17,6 +17,7 @@ public class TurretBullet : MonoBehaviour
     {
         _target = GameObject.FindGameObjectWithTag(PlayerTag);
 
+        // Comprobamos que las balas tienen un objetivo, sino se eliminan
         if (!HasATarget(_direction, _target.transform))
         {
             Destroy(gameObject);
@@ -32,7 +33,7 @@ public class TurretBullet : MonoBehaviour
     {
         Vector2 targetDirection = (target.position - transform.position).normalized;
         float angle = Vector2.SignedAngle(bulletDirection, targetDirection);
-        return TurretAim.IsAimingTheTarget(angle);
+        return AimBehaviour.IsAimingTheTarget(angle);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

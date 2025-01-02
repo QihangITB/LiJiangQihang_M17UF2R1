@@ -10,12 +10,12 @@ public class IdleState : StateSO
     private const string ParamIsMoving = "IsMoving";
     private const float WaitTime = 5f;
 
-    private PatrolBehavior _patrol;
+    private PatrolBehaviour _patrol;
     private bool _canPatrol; // Indica si el agente está patrullando
 
     public override void OnStateEnter(BomberController controller)
     {
-        _patrol = controller.GetComponent<PatrolBehavior>();
+        _patrol = controller.GetComponent<PatrolBehaviour>();
         _canPatrol = true;
 
         controller.Animator.SetBool(ParamIsMoving, true);

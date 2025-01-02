@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class BomberController : MonoBehaviour
 {
+    private const string PlayerTag = "Player";
+
     [SerializeField] private Bomber _bomberData;
     public Animator Animator;
     public GameObject Target;
@@ -20,6 +22,11 @@ public class BomberController : MonoBehaviour
 
     private void Start()
     {
+        if (Target == null)
+        {
+            Target = GameObject.FindGameObjectWithTag(PlayerTag);
+        }
+
         _visionCollider = GetComponent<CircleCollider2D>();
         _visionCollider.radius = _bomberData.VisionRange;
 

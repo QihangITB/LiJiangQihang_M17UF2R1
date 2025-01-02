@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class PatrolBehavior : MonoBehaviour
+public class PatrolBehaviour : MonoBehaviour
 {
     public float PatrolRange = 5f; // Rango de patrullaje, por defecto es 5
     private NavMeshAgent _agent;
