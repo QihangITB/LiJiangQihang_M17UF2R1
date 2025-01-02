@@ -12,6 +12,8 @@ public class AttackState : StateSO
     public override void OnStateEnter(BomberController controller)
     {
         controller.Agent.isStopped = true;
+        controller.Agent.ResetPath(); // Detener por completo el movimiento
+
         controller.Animator.SetTrigger(ParamAttack);
         controller.BombArea.size = new Vector2(ExplosionRange, ExplosionRange);
     }
