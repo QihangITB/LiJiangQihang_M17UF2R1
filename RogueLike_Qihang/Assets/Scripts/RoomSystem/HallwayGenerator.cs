@@ -1,0 +1,53 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class HallwayGenerator : MonoBehaviour
+{
+    private const string GameManager = "GameManager";
+    private const string TopSide = "Top", BottomSide = "Bottom", LeftSide = "Left", RightSide = "Right";
+
+    private RoomTemplates _templates;
+
+    private void Start()
+    {
+        _templates = GameObject.Find(GameManager).GetComponent<RoomTemplates>();
+
+        // Si quedan salas aleatorias por instanciar, creamos pasillos normales, sino creamos pasillos cerrados
+        CreateHallway(RoomManager.RandomRoomCount > 0 ? _templates.Hallways : _templates.CloseHallways);
+    }
+
+    private void CreateHallway(GameObject hallways)
+    {
+        if (RoomManager.IsPositionAvailable(transform.position))
+        {
+            // Si no hay objeto en la posición, procedemos a crear el pasillo
+            CreateHallwayInstance(hallways);
+        }
+    }
+
+    private void CreateHallwayInstance(GameObject hallway)
+    {
+        Instantiate(hallway, transform.position, GetHallwayRotation());
+    }
+
+    private Quaternion GetHallwayRotation()
+    {
+        // La rotacion (0, 0, 0) indica que el pasillo esta en la posición "Top"
+        // ENTRADA: Top -> SALIDA: Bottom
+        switch (this.name)
+        {
+            case TopSide:
+                return Quaternion.Euler(0, 0, 0);
+            case BottomSide:
+                return Quaternion.Euler(0, 0, 180);
+            case LeftSide:
+                return Quaternion.Euler(0, 0, 90);
+            case RightSide:
+                return Quaternion.Euler(0, 0, 270);
+            default:
+                return Quaternion.identity;
+        }
+        // Esta rotacion indica la SALIDA no confundir con ENTRADA, que es la inversa
+    }
+}
