@@ -5,4 +5,5 @@ using UnityEngine;
 public class Weapon : MonoBehaviour
 {
     public WeaponSO WeaponData;
+    public GameObject WeaponPrefab;
 }

@@ -33,7 +33,7 @@ public class RoomGenerator : MonoBehaviour
         }
         else
         {
-            Debug.Log("PADRE ELIMINADO");
+            Debug.Log("Pasillo destruido y cambiado");
             Instantiate(_templates.CloseHallways, transform.parent.position, transform.parent.rotation);
             Destroy(transform.parent.gameObject);
         }

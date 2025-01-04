@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    public static int RandomRoomCount = 5;
+    public static int RandomRoomCount = 6; // NO es el numero de salas que se generaran
 
     public static bool IsPositionAvailable(Vector3 position)
     {
