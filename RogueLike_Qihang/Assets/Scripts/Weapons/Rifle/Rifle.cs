@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Rifle", menuName = "Weapon/Rifle")]
+[CreateAssetMenu(fileName = "Rifle", menuName = "Item/Weapon/Rifle")]
 public class Rifle : WeaponSO
 {
     const string ParamShoot = "Shoot";
@@ -24,6 +24,6 @@ public class Rifle : WeaponSO
 
     private void RechargeBullet(GameObject spawner)
     {
-        munition.popBullet(spawner.transform);
+        munition.PopBullet(spawner.transform);
     }
 }

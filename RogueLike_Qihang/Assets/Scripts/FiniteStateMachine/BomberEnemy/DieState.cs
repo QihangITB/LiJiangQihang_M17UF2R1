@@ -7,7 +7,8 @@ public class DieState : StateSO
 {
     public override void OnStateEnter(BomberController controller)
     {
-        Destroy(controller.gameObject);
+        // Guardamos el enemigo en el pool en lugar de destruirlos
+        BomberSpawner.PushBomber(controller.gameObject);
     }
 
     public override void OnStateUpdate(BomberController controller)

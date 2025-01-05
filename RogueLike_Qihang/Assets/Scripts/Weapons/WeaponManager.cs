@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class WeaponManager : MonoBehaviour
 {
@@ -13,7 +12,7 @@ public class WeaponManager : MonoBehaviour
     private GameObject _weaponInstance;
     private GameObject _player;
     private InventoryManager _playerItems;
-    private InventoryItems _itemsLibrary;
+    private InventoryItems _allItems;
 
     void Start()
     {
@@ -24,11 +23,11 @@ public class WeaponManager : MonoBehaviour
     void Update()
     {
         FollowTheMouse();
-        _currentWeapon = UpdateWeapon(_playerItems, _itemsLibrary);
+        _currentWeapon = UpdateWeapon(_playerItems, _allItems);
 
         if (_currentWeapon != _lastEquippedWeapon)
         {
-            EquipCurrentWeapon();
+            EquipCurrentWeapon(_currentWeapon, ref _weaponInstance);
             _lastEquippedWeapon = _currentWeapon;
         }
     }
@@ -37,24 +36,24 @@ public class WeaponManager : MonoBehaviour
     {
         _player = GameObject.FindGameObjectWithTag(PlayerTag);
         _playerItems = _player.GetComponent<InventoryManager>();
-        _itemsLibrary = GameObject.Find(GameManagerObject).GetComponent<InventoryItems>();
+        _allItems = GameObject.Find(GameManagerObject).GetComponent<InventoryItems>();
     }
 
-    private void EquipCurrentWeapon()
+    private void EquipCurrentWeapon(Weapon weapon, ref GameObject instance)
     {
-        if(_currentWeapon != null)
+        if(weapon != null)
         {
-            if (_weaponInstance != null)
+            if (instance != null)
             {
-                Destroy(_weaponInstance);
+                Destroy(instance);
             }
-            _weaponInstance = Instantiate(_currentWeapon.WeaponPrefab, 
+            instance = Instantiate(weapon.WeaponPrefab, 
                                           transform.position, 
                                           SetRotationToMouse(), 
                                           this.transform);
 
             // Inicializamos la pila de municiones si es un rifle
-            InitializePoolIfNeed(_weaponInstance);
+            InitializePoolIfNeed(instance);
         }
     }
 

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "FlashWings", menuName = "Consumable/FlashWings")]
+[CreateAssetMenu(fileName = "FlashWings", menuName = "Item/Consumable/FlashWings")]
 public class FlashWings : ConsumableSO
 {
     public override void UseConsumable()

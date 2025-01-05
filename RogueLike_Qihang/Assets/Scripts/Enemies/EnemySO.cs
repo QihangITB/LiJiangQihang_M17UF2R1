@@ -5,6 +5,4 @@ public abstract class EnemySO : EntitySO
 {
     [SerializeField] private float visionRange;
     public float VisionRange { get => visionRange; }
-
-    public abstract void Attack();
 }

@@ -9,11 +9,12 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
     const string ParamIsMoving = "IsMoving";
     const string WeaponObject = "Weapon";
 
-    const float DefaultSpeed= 2f, StopSpeed = 0f;
+    const float StopSpeed = 0f;
 
     public bool BlockPlayer { get; set; } = false;
     public Vector2 PlayerDirection { get; private set; }
 
+    [SerializeField] private EntitySO _playerData;
     [SerializeField] private GameObject _hudMenu;
     [SerializeField] private GameObject _inventoryMenu;
 
@@ -53,7 +54,7 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
         _inputControl.Player.SetCallbacks(this);
 
         _movement = GetComponent<Movement>();
-        _movement.SetSpeed(DefaultSpeed);
+        _movement.SetSpeed(_playerData.Speed);
 
         _inventoryManager = GetComponent<InventoryManager>();
     }

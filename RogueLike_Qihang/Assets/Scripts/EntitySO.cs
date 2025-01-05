@@ -1,7 +1,7 @@
-
 using UnityEngine;
 
-public abstract class EntitySO : ScriptableObject
+[CreateAssetMenu(fileName = "Entity", menuName = "Entity/Entity")]
+public class EntitySO : ScriptableObject
 {
     [SerializeField] private float health;
     [SerializeField] private float speed;

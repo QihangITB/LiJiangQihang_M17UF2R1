@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Flamethrower", menuName = "Weapon/Flamethrower")]
+[CreateAssetMenu(fileName = "Flamethrower", menuName = "Item/Weapon/Flamethrower")]
 public class Flamethrower : WeaponSO
 {
     public override void UseWeapon(GameObject weapon)

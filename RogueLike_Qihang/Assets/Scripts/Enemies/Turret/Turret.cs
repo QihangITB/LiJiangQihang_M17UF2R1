@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Turret", menuName = "Enemy/Turret")]
+[CreateAssetMenu(fileName = "Turret", menuName = "Entity/Enemy/Turret")]
 public class Turret : EnemySO
 {
     [SerializeField] private float attackSpeed; // Velocidad de las balas
@@ -10,9 +10,4 @@ public class Turret : EnemySO
     public float AttackSpeed { get => attackSpeed; }
     public float RechargeCooldown { get => rechargeCooldown; }
     public GameObject BulletPrefab { get => bulletPrefab; }
-
-    public override void Attack()
-    {
-        Debug.Log("Turret Attack");
-    }
 }

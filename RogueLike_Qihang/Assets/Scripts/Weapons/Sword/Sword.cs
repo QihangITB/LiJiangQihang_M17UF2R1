@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Sword", menuName = "Weapon/Sword")]
+[CreateAssetMenu(fileName = "Sword", menuName = "Item/Weapon/Sword")]
 public class Sword : WeaponSO
 {
     const string ParamBrandish = "Brandish";

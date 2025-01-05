@@ -14,7 +14,7 @@ public class BulletMunition
         bulletsPool = new Stack<GameObject>();
     }
 
-    public static void pushBullet(GameObject bullet)
+    public static void PushBullet(GameObject bullet)
     {
         bulletsPool.Push(bullet);
         bullet.SetActive(false);
@@ -25,7 +25,7 @@ public class BulletMunition
         return Object.Instantiate(bulletPrefab);
     }
 
-    public GameObject popBullet(Transform spawn)
+    public GameObject PopBullet(Transform spawn)
     {
         GameObject bullet = bulletsPool.Count > 0 ? bulletsPool.Pop() : CreateBullet();
         bullet.transform.position = spawn.position;

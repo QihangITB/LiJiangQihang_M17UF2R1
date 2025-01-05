@@ -45,7 +45,7 @@ public class Bullet : MonoBehaviour
     // Esta funcion se llama al final de la animacion de impacto, a traves de un evento en el animation
     private void DestroyBullet()
     {
-        BulletMunition.pushBullet(this.gameObject);
+        BulletMunition.PushBullet(this.gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

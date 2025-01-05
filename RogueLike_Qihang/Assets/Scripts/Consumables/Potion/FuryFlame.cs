@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "FuryFlame", menuName = "Consumable/FuryFlame")]
+[CreateAssetMenu(fileName = "FuryFlame", menuName = "Item/Consumable/FuryFlame")]
 public class FuryFlame : ConsumableSO
 {
     public override void UseConsumable()

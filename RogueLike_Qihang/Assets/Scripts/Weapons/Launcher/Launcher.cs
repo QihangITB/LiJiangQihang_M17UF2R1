@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Launcher", menuName = "Weapon/Launcher")]
+[CreateAssetMenu(fileName = "Launcher", menuName = "Item/Weapon/Launcher")]
 public class Launcher : WeaponSO
 {
     [SerializeField] private GameObject _grenadePrefab;
