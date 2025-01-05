@@ -5,6 +5,8 @@ using UnityEngine;
 public abstract class ConsumableSO : ItemSO
 {
     [SerializeField] private float effectTime;
-
     public float EffectTime { get => effectTime; }
+
+    public abstract void UseConsumable();
+
 }

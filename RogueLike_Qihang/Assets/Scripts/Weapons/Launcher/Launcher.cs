@@ -7,9 +7,9 @@ public class Launcher : WeaponSO
 {
     [SerializeField] private GameObject _grenadePrefab;
 
-    public override void Use()
+    public override void UseWeapon(GameObject weapon)
     {
-        Transform spawnPoint = WeaponPrefab.transform.GetChild(0);
+        Transform spawnPoint = weapon.transform.GetChild(0);
         GameObject grenade = Instantiate(_grenadePrefab);
         grenade.transform.position = spawnPoint.position;
     }

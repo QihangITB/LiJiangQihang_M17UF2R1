@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,42 +6,95 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class WeaponManager : MonoBehaviour
 {
-    private const string PlayerTag = "Player";
+    private const string PlayerTag = "Player", GameManagerObject = "GameManager";
 
-    public WeaponSO CurrentWeapon;
-    private GameObject AuxWeaponPrefab;
+    private Weapon _currentWeapon;
+    private Weapon _lastEquippedWeapon;
+    private GameObject _weaponInstance;
     private GameObject _player;
+    private InventoryManager _playerItems;
+    private InventoryItems _itemsLibrary;
 
     void Start()
     {
         InitializeComponents();
+        _lastEquippedWeapon = _currentWeapon;
     }
 
     void Update()
     {
-       FollowTheMouse();
+        FollowTheMouse();
+        _currentWeapon = UpdateWeapon(_playerItems, _itemsLibrary);
+
+        if (_currentWeapon != _lastEquippedWeapon)
+        {
+            EquipCurrentWeapon();
+            _lastEquippedWeapon = _currentWeapon;
+        }
     }
 
     private void InitializeComponents()
     {
         _player = GameObject.FindGameObjectWithTag(PlayerTag);
-        EquipCurrentWeapon();
+        _playerItems = _player.GetComponent<InventoryManager>();
+        _itemsLibrary = GameObject.Find(GameManagerObject).GetComponent<InventoryItems>();
     }
 
     private void EquipCurrentWeapon()
     {
-        GameObject weapon = Instantiate(CurrentWeapon.WeaponPrefab, _player.transform);
-        weapon.transform.SetParent(this.transform);
-        AuxWeaponPrefab = CurrentWeapon.WeaponPrefab; // Guardamos el arma actual en el auxiliar para recuperarlo
-        CurrentWeapon.WeaponPrefab = weapon; // Transformamos el arma en un objeto dinamico
+        if(_currentWeapon != null)
+        {
+            if (_weaponInstance != null)
+            {
+                Destroy(_weaponInstance);
+            }
+            _weaponInstance = Instantiate(_currentWeapon.WeaponPrefab, 
+                                          transform.position, 
+                                          SetRotationToMouse(), 
+                                          this.transform);
 
-        //RIFLE:
-        BulletMunition.InitializeMunitionStack();
+            // Inicializamos la pila de municiones si es un rifle
+            InitializePoolIfNeed(_weaponInstance);
+        }
+    }
+
+    private void InitializePoolIfNeed(GameObject instance)
+    {
+        // Si la arma es un rifle, inicializamos la pila de municiones
+        if (instance.name.Contains("Rifle"))
+            BulletMunition.InitializeMunitionStack();
+    }
+
+    private Quaternion SetRotationToMouse()
+    {
+        // Asegura que la rotación inicial sea correcta
+        Vector2 mouseDirection = GetMouseDirection(_player.transform);
+        float angle = Mathf.Atan2(mouseDirection.y, mouseDirection.x) * Mathf.Rad2Deg;
+        return Quaternion.Euler(0, 0, angle);
+    }
+
+    private Weapon UpdateWeapon(InventoryManager equipment, InventoryItems library)
+    {
+        try
+        {
+            // Obtenemos el id del arma equipada
+            string id = equipment.Weapons[0].Id;
+
+            // Buscamos el arma en formato Item y su prefab
+            GameObject weaponObject = library.GetWeaponById(id);
+
+            return weaponObject.GetComponent<Weapon>();
+        }
+        catch
+        {
+            // _playerItems.Weapons[index] puedes ser null
+            return null;
+        }
     }
 
     private void FollowTheMouse()
     {
-        Vector2 mouseDirection = WeaponManager.GetMouseDirection(_player.transform);
+        Vector2 mouseDirection = GetMouseDirection(_player.transform);
         Debug.DrawRay(_player.transform.position, mouseDirection, Color.red);
 
         RotateAroundPlayer(mouseDirection);
@@ -62,20 +116,7 @@ public class WeaponManager : MonoBehaviour
 
     public void Attack()
     {
-        CurrentWeapon.Use();
-    }
-
-
-
-
-
-
-
-
-
-    // PARA FASE DE DESARROLLO
-    private void OnApplicationQuit()
-    {
-        CurrentWeapon.WeaponPrefab = AuxWeaponPrefab;
+        if (_currentWeapon != null)
+            _currentWeapon.GetComponent<Weapon>().UseWeapon(_weaponInstance);
     }
 }

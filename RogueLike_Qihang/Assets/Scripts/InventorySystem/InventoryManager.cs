@@ -95,6 +95,12 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public void ChangeWeapon()
+    {
+        if (_equippedWeapons[1] != null)
+            (_equippedWeapons[0], _equippedWeapons[1]) = (_equippedWeapons[1], _equippedWeapons[0]);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         int initialInventorySize = _inventoryItems.Count;

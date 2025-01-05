@@ -18,6 +18,5 @@ MonoBehaviour:
   icon: {fileID: 1065572693, guid: ded92b3665707454789cefd354f4359b, type: 3}
   damage: 2
   speed: 3
-  WeaponPrefab: {fileID: 5728273389050602939, guid: 2dc36ae5309744845b9ded38e5316d79, type: 3}
   munition:
     bulletPrefab: {fileID: 6071376251323557296, guid: 464cd023c9be2884ba3697cac7daa428, type: 3}

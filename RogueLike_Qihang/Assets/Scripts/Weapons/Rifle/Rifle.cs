@@ -9,9 +9,9 @@ public class Rifle : WeaponSO
 
     public BulletMunition munition;
 
-    public override void Use()
+    public override void UseWeapon(GameObject weapon)
     {
-        GameObject bulletSpawner = WeaponPrefab.transform.GetChild(0).gameObject;
+        GameObject bulletSpawner = weapon.transform.GetChild(0).gameObject;
         DoSpawnAnimation(bulletSpawner);
         RechargeBullet(bulletSpawner);
     }

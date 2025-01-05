@@ -7,15 +7,15 @@ using UnityEngine;
 public class Sword : WeaponSO
 {
     const string ParamBrandish = "Brandish";
-    public override void Use()
+    public override void UseWeapon(GameObject weapon)
     {
-        GetSwordEdge().ActiveEdge(); // Activamos el collider del filo
-        Animator animator = WeaponPrefab.GetComponent<Animator>();
+        GetSwordEdge(weapon).ActiveEdge(); // Activamos el collider del filo
+        Animator animator = weapon.GetComponent<Animator>();
         animator.SetTrigger(ParamBrandish);
     }
 
-    private SwordEdge GetSwordEdge()
+    private SwordEdge GetSwordEdge(GameObject sword)
     {
-        return WeaponPrefab.GetComponent<SwordEdge>();
+        return sword.GetComponent<SwordEdge>();
     }
 }
