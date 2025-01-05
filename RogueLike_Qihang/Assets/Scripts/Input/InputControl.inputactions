@@ -219,30 +219,8 @@
                 },
                 {
                     "name": "",
-                    "id": "891dd40c-0483-4741-bab8-8345e67ee8f7",
-                    "path": "<Keyboard>/4",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Consumable",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "6c026cd6-3d4b-4833-b60f-8c8f5acf26c9",
                     "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Equipment",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "efce5750-f791-409c-92f0-19c2b5047fac",
-                    "path": "<Keyboard>/e",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

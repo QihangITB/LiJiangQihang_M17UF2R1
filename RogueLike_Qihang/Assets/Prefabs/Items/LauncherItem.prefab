@@ -99,6 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WeaponData: {fileID: 11400000, guid: 9aa282919e11aee4b9119e02176bf833, type: 2}
+  WeaponPrefab: {fileID: 2104213341741206545, guid: 67c4910bd34371d45973ec65997d27cb, type: 3}
 --- !u!60 &1581190719235307479
 PolygonCollider2D:
   m_ObjectHideFlags: 0

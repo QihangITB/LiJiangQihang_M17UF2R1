@@ -6,9 +6,9 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Flamethrower", menuName = "Weapon/Flamethrower")]
 public class Flamethrower : WeaponSO
 {
-    public override void Use()
+    public override void UseWeapon(GameObject weapon)
     {
-        ParticleSystem particleSystem = GetParticleSystem();
+        ParticleSystem particleSystem = GetParticleSystem(weapon);
 
         if (particleSystem.isPlaying)
         {
@@ -20,9 +20,9 @@ public class Flamethrower : WeaponSO
         }
     }
 
-    private ParticleSystem GetParticleSystem()
+    private ParticleSystem GetParticleSystem(GameObject flamethrower)
     {
-        GameObject particleSystem = WeaponPrefab.transform.GetChild(0).gameObject;
+        GameObject particleSystem = flamethrower.transform.GetChild(0).gameObject;
         return particleSystem.GetComponent<ParticleSystem>();
     }
 }

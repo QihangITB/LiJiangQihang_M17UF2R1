@@ -12,8 +12,6 @@ public abstract class ItemSO : ScriptableObject
     public string Description { get => description; }
     public Sprite Icon { get => icon; }
 
-    public abstract void Use();
-
     public T ConvertToSpecificItem<T>() where T : ItemSO
     {
         return this as T;

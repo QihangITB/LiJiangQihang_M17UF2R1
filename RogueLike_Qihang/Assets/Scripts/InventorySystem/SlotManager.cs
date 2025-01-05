@@ -63,7 +63,7 @@ public class SlotManager : MonoBehaviour
         return slots;
     }
 
-    private void UpdateSlotUI()
+    public void UpdateSlotUI()
     {
         if (_itemSlots != null)
             SetItemsToSlots(_itemSlots, _inventoryManager.Items);

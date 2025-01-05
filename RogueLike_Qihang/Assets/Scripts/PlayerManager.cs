@@ -7,15 +7,15 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
 {
     const string AxisX = "X", AxisY = "Y";
     const string ParamIsMoving = "IsMoving";
-    const string WeaponName = "Weapon";
+    const string WeaponObject = "Weapon";
 
-    const float DefaultSpeed= 1f, StopSpeed = 0f;
+    const float DefaultSpeed= 2f, StopSpeed = 0f;
 
     public bool BlockPlayer { get; set; } = false;
     public Vector2 PlayerDirection { get; private set; }
 
-    [SerializeField] private GameObject hudMenu;
-    [SerializeField] private GameObject inventoryMenu;
+    [SerializeField] private GameObject _hudMenu;
+    [SerializeField] private GameObject _inventoryMenu;
 
     private InputControl _inputControl;
     private Vector2 _inputMovement;
@@ -74,13 +74,18 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
             bool isMoving = _inputMovement.magnitude > StopSpeed;
             _animator.SetBool(ParamIsMoving, isMoving);
         }
+        else
+        {
+            PlayerDirection = Vector2.zero;
+            _animator.SetBool(ParamIsMoving, false);
+        }
     }
 
     public void OnAttack(InputAction.CallbackContext context)
     {
         if (context.performed && !BlockPlayer)
         {
-            GameObject weapon = GameObject.Find(WeaponName);
+            GameObject weapon = GameObject.Find(WeaponObject);
             weapon.GetComponent<WeaponManager>().Attack();
         }
     }
@@ -89,11 +94,11 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
     {
         if (context.performed)
         {
-            hudMenu.SetActive(!hudMenu.activeSelf);
-            inventoryMenu.SetActive(!inventoryMenu.activeSelf);
+            _hudMenu.SetActive(!_hudMenu.activeSelf);
+            _inventoryMenu.SetActive(!_inventoryMenu.activeSelf);
 
             // Bloqueamos al jugador si el inventario esta activo
-            BlockPlayer = inventoryMenu.activeSelf; 
+            BlockPlayer = _inventoryMenu.activeSelf; 
         }
     }
 
@@ -108,6 +113,13 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
     public void OnEquipment(InputAction.CallbackContext context)
     {
         if (context.performed)
-            Debug.Log("Change equipment! " + context.control.name);
+        {
+            // Cambiamos de arma desde el manager de inventario
+            _inventoryManager.ChangeWeapon();
+
+            // Actualizamos la UI del HUD
+            SlotManager slotManager = _hudMenu.GetComponent<SlotManager>();
+            slotManager.UpdateSlotUI();
+        }
     }
 }
