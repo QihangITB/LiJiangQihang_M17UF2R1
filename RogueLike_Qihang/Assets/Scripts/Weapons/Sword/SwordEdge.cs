@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SwordEdge : MonoBehaviour
 {
+    private const string EnemyTag = "Enemy";
+
+    [SerializeField] private Sword _data;
     private BoxCollider2D _edgeCollider;
 
     private void Awake()
@@ -27,8 +30,10 @@ public class SwordEdge : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        // TODO:
-        // Hacer daño al enemigo
-        Debug.Log("Hit: " + collision.gameObject.name);
+        if (collision.gameObject.CompareTag(EnemyTag))
+        {
+            Debug.Log("Hit: " + collision.gameObject.name);
+            collision.gameObject.GetComponent<HealthManager>().TakeDamage(_data.Damage);
+        }
     }
 }

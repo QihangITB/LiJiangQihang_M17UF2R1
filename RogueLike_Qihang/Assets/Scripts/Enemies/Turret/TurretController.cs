@@ -15,6 +15,9 @@ public class TurretController : MonoBehaviour
     private Vector3 _targetPosition;
     private AimBehaviour _aim;
     private ShootBehaviour _shoot;
+    private HealthManager _healthManager;
+    private CoinManager _coinManager;
+
     public Vector3 TargetPosition { get => _targetPosition; }
 
     private void Start()
@@ -24,19 +27,13 @@ public class TurretController : MonoBehaviour
             Target = GameObject.FindGameObjectWithTag(PlayerTag);
         }
 
-        GetComponent<CircleCollider2D>().radius = _turretData.VisionRange;
-        _rotationSpeed = _turretData.Speed;
-
-        _aim = GetComponent<AimBehaviour>();
-        _aim.Target = Target;
-
-        _shoot = GetComponent<ShootBehaviour>();
-
-        _targetPosition = GenerateRandomTarget(MinRandomPoint, MaxRandomPoint);
+        InitializeComponents();
     }
 
     private void Update()
     {
+        if (!CheckIfIsAlive(_healthManager)) return;
+
         Vector3 directionToTarget = (_targetPosition - transform.position).normalized;
         float angleToTarget = AngleToRotate(_targetPosition);
 
@@ -64,6 +61,22 @@ public class TurretController : MonoBehaviour
         Debug.DrawLine(transform.position, _targetPosition, Color.green);
     }
 
+    private void InitializeComponents()
+    {
+        GetComponent<CircleCollider2D>().radius = _turretData.VisionRange;
+        _rotationSpeed = _turretData.Speed;
+
+        _aim = GetComponent<AimBehaviour>();
+        _aim.Target = Target;
+
+        _shoot = GetComponent<ShootBehaviour>();
+
+        _healthManager = transform.parent.GetComponent<HealthManager>();
+
+        _coinManager = transform.parent.GetComponent<CoinManager>();
+
+        _targetPosition = GenerateRandomTarget(MinRandomPoint, MaxRandomPoint);
+    }
     private void RotateTowardsTarget(Vector3 direction, float angle, float rotationSpeed)
     {
         float step = rotationSpeed * Time.deltaTime;
@@ -97,6 +110,17 @@ public class TurretController : MonoBehaviour
 
         // Convertir el punto a espacio mundial y devolverlo
         return transform.TransformPoint(localTarget);
+    }
+
+    private bool CheckIfIsAlive(HealthManager health)
+    {
+        if (health.IsDead)
+        {
+            _coinManager.IncreasePlayerCoins(Target); // Increment player coins
+            Destroy(transform.parent.gameObject); // Destroy the parent (base)
+            return false;
+        }
+        return true;
     }
 
     private void OnTriggerStay2D(Collider2D collision)

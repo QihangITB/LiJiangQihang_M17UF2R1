@@ -23,6 +23,7 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
     private Animator _animator;
     private Movement _movement;
     private InventoryManager _inventoryManager;
+    private HealthManager _healthManager;
 
     void Awake()
     {
@@ -31,6 +32,12 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
 
     void Update()
     {
+        if (_healthManager.IsDead)
+        {
+            Debug.Log("Player is dead!");
+            return;
+        }
+
         AnimationByDirection();
 
         // Actualizamos la direccion constantemente
@@ -56,7 +63,9 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
         _movement = GetComponent<Movement>();
         _movement.SetSpeed(_playerData.Speed);
 
-        _inventoryManager = GetComponent<InventoryManager>();
+        _inventoryManager = InventoryManager.Instance;
+
+        _healthManager = GetComponent<HealthManager>();
     }
 
     private void AnimationByDirection()
@@ -103,24 +112,22 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
         }
     }
 
-    public void OnConsumable(InputAction.CallbackContext context)
-    {
-        if (context.performed)
-        {
-            Debug.Log("Use Consumable! " + context.control.name);
-        }
-    }
-
     public void OnEquipment(InputAction.CallbackContext context)
     {
         if (context.performed)
         {
             // Cambiamos de arma desde el manager de inventario
+            // Se nos activara el evento para cambiar la UI
             _inventoryManager.ChangeWeapon();
+        }
+    }
 
-            // Actualizamos la UI del HUD
-            SlotManager slotManager = _hudMenu.GetComponent<SlotManager>();
-            slotManager.UpdateSlotUI();
+    // IMPLEMENTAR POWER UPS SI HAY TIEMPO
+    public void OnConsumable(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Debug.Log("Use Consumable! " + context.control.name);
         }
     }
 }

@@ -11,6 +11,9 @@ public class InventoryManager : MonoBehaviour
     private const int InventoryMaxSize = 6;
 
     public static InventoryManager Instance;
+    public event Action OnInventoryChanged;
+    public event Action OnWeaponEquipped;
+    public event Action OnWeaponUnequipped;
 
     private List<ItemSO> _inventoryItems = new List<ItemSO>();
     private List<WeaponSO> _equippedWeapons = new List<WeaponSO> { null, null }; // Tamaño de 2 predefinido
@@ -37,17 +40,26 @@ public class InventoryManager : MonoBehaviour
         if (_inventoryItems.Count < InventoryMaxSize)
         {
             _inventoryItems.Add(item);
-            Debug.Log(item.name + " añadido con id: " + item.Id);
-        }
-        else
-        {
-            Debug.Log("Inventario esta lleno");
         }
     }
 
     public void RemoveItem(ItemSO item)
     {
+        // Lo elimina de la lista de items
         _inventoryItems.Remove(item);
+
+        // Si lo tiene equipado, tambien lo elimina
+        if (_equippedWeapons.Contains(item))
+        {
+            _equippedWeapons.Remove((WeaponSO)item);
+            OnWeaponUnequipped?.Invoke();
+        }
+        else if (_equippedConsumables.Contains(item))
+        {
+            _equippedConsumables.Remove((ConsumableSO)item);
+        }
+
+        OnInventoryChanged?.Invoke();
     }
 
     public void Equip<T>(GameObject slot, T item) where T : ItemSO
@@ -58,7 +70,6 @@ public class InventoryManager : MonoBehaviour
         // Comprobamos si el slot está vacío o si el item es diferente al actual
         if (slotItem == null || slotItem.Id != item.Id)
         {
-            Debug.Log("Equipando");
             SetEquipment(slotNumber, item);
         }
     }
@@ -84,6 +95,7 @@ public class InventoryManager : MonoBehaviour
         if (typeof(T) == typeof(WeaponSO))
         {
             _equippedWeapons[slotNumber] = (WeaponSO)(object)item;
+            OnWeaponEquipped?.Invoke();
         }
         else if (typeof(T) == typeof(ConsumableSO))
         {
@@ -98,7 +110,17 @@ public class InventoryManager : MonoBehaviour
     public void ChangeWeapon()
     {
         if (_equippedWeapons[1] != null)
-            (_equippedWeapons[0], _equippedWeapons[1]) = (_equippedWeapons[1], _equippedWeapons[0]);
+        {
+            WeaponSO aux = _equippedWeapons[0]; 
+            OnWeaponUnequipped?.Invoke(); // Destruimos la instancia de la primera arma
+
+            _equippedWeapons[0] = _equippedWeapons[1];
+            OnWeaponEquipped?.Invoke(); // Creamos nueva instancia de la segunda arma
+
+            _equippedWeapons[1] = aux;
+
+            OnInventoryChanged?.Invoke(); // Actualizamos la UI
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

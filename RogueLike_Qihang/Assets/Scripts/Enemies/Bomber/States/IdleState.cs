@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "IdleState", menuName = "States/IdleState")]
+[CreateAssetMenu(fileName = "IdleState", menuName = "States/Bomber/IdleState")]
 public class IdleState : StateSO
 {
     private const string ParamIsMoving = "IsMoving";

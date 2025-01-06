@@ -5,6 +5,8 @@ using UnityEngine;
 public class TurretBullet : MonoBehaviour
 {
     private const string PlayerTag = "Player";
+
+    [SerializeField] private Turret _data;
     private GameObject _target;
     private Movement _movement;
     private float _speed;
@@ -38,9 +40,9 @@ public class TurretBullet : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag(PlayerTag))
         {
-            Debug.Log("Player hit");
+            collision.gameObject.GetComponent<HealthManager>().TakeDamage(_data.Damage);
             Destroy(gameObject);
         }
     }

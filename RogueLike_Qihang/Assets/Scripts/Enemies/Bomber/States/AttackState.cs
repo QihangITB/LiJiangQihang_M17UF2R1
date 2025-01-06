@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-[CreateAssetMenu(fileName = "AttackState", menuName = "States/AttackState")]
+[CreateAssetMenu(fileName = "AttackState", menuName = "States/Bomber/AttackState")]
 public class AttackState : StateSO
 {
     private const string ParamAttack = "Attack";

@@ -538,9 +538,17 @@ PrefabInstance:
       propertyPath: _inventoryMenu
       value: 
       objectReference: {fileID: 521327373}
+    - target: {fileID: 3983747343995744316, guid: 5aec554cf414ce54e81e123dbd429f20, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5847931045220846943, guid: 5aec554cf414ce54e81e123dbd429f20, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830270261615432567, guid: 5aec554cf414ce54e81e123dbd429f20, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

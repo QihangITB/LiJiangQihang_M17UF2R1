@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   speed: 1.2
+  coins: 1
   visionRange: 3
+  damage: 2
   explosionRange: 2

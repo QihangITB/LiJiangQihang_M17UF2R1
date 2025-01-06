@@ -13,4 +13,6 @@ public class RoomManager : MonoBehaviour
         return existingCollider == null;
     }
 
+    //AQUI SE GENERARA BOSS, TIENDA, SALA DE RECOMPENSAS, ETC
+
 }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "DieState", menuName = "States/DieState")]
+[CreateAssetMenu(fileName = "DieState", menuName = "States/Bomber/DieState")]
 public class DieState : StateSO
 {
     public override void OnStateEnter(BomberController controller)

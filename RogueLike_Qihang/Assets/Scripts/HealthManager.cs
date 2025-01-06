@@ -8,6 +8,7 @@ public class HealthManager : MonoBehaviour
 
     private float _health;
 
+    public float Health { get => _health; } // Solo lectura para mostrar al jugador
     public bool IsDead { get; private set; }
 
     private void Start()

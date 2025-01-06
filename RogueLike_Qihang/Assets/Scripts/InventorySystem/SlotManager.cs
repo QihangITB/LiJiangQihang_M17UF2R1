@@ -28,7 +28,7 @@ public class SlotManager : MonoBehaviour
     {
         _inventoryManager = InventoryManager.Instance;
         if (_inventoryManager == null) return;
-
+        _inventoryManager.OnInventoryChanged += UpdateSlotUI;
         InitializeAllSlots();
         UpdateSlotUI();
     }
@@ -36,6 +36,7 @@ public class SlotManager : MonoBehaviour
     private void OnDisable()
     {
         if (_inventoryManager == null) return;
+        _inventoryManager.OnInventoryChanged -= UpdateSlotUI;
         ResetData();
     }
 
@@ -79,15 +80,16 @@ public class SlotManager : MonoBehaviour
     {
         for (int i = 0; i < slots.Count; i++)
         {
-            if (i < inventory.Count)
+            Image slotImage = GetSlotImage(slots[i]);
+
+            if (i < inventory.Count && inventory[i] != null)
             {
-                if (inventory[i] != null)
-                    SetSlotImage(slots[i], inventory[i].Icon);
+                SetSlotImage(slots[i], inventory[i].Icon);
+                slotImage.enabled = true;
             }
             else
             {
-                // Desactiva la imagen del slot si no hay item
-                GetSlotImage(slots[i]).enabled = false;
+                slotImage.enabled = false; // Desactiva la imagen si no hay item o fuera del rango del inventario
             }
         }
     }

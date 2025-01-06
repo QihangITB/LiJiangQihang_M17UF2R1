@@ -4,14 +4,28 @@ using UnityEngine;
 
 public class Grenade : MonoBehaviour
 {
-    private const string ParamExplote = "Explote";
+    private const string ParamExplote = "Explote", EnemyTag = "Enemy";
 
+    [SerializeField] private Launcher _data;
     private Animator _animator;
+    private float exploteTimer;
 
     void Awake()
     {
         _animator = GetComponent<Animator>();
         RotateTowardsMouse();
+        exploteTimer = 0;
+    }
+
+    private void Update()
+    {
+        exploteTimer += Time.deltaTime;
+
+        if (exploteTimer >= _data.ExploteTime)
+        {
+            _animator.SetTrigger(ParamExplote);
+        }
+
     }
 
     private void RotateTowardsMouse()
@@ -29,9 +43,11 @@ public class Grenade : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //TODO
-        // Hacer daño al enemigo
-        Debug.Log("Hit: " + collision.gameObject.name);
         _animator.SetTrigger(ParamExplote);
+
+        if (collision.gameObject.CompareTag(EnemyTag))
+        {
+            collision.gameObject.GetComponent<HealthManager>().TakeDamage(_data.Damage);
+        }
     }
 }

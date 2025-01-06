@@ -5,9 +5,9 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Bullet : MonoBehaviour
 {
-    private const string ParamImpact = "Impact";
+    private const string ParamImpact = "Impact", EnemyTag = "Enemy";
 
-    [SerializeField] private Rifle _rifle;
+    [SerializeField] private Rifle _data;
     private Animator _animator;
     private Movement _movement;
 
@@ -20,7 +20,7 @@ public class Bullet : MonoBehaviour
     {
         Vector2 mouseDirection = WeaponManager.GetMouseDirection(this.transform);
         // Al reutilizar la bala, lo tenemos que configurar cada vez que se activa 
-        ConfigureMovement(_rifle, mouseDirection);
+        ConfigureMovement(_data, mouseDirection);
         RotateTowardsMouse(mouseDirection);
     }
 
@@ -50,9 +50,12 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //TODO
-        // Hacer daño al enemigo
-        Debug.Log("Hit: " + collision.gameObject.name);
         _animator.SetTrigger(ParamImpact);
+
+        if (collision.gameObject.CompareTag(EnemyTag))
+        {
+            Debug.Log("Hit: " + collision.gameObject.name);
+            collision.gameObject.GetComponent<HealthManager>().TakeDamage(_data.Damage);
+        }
     }
 }

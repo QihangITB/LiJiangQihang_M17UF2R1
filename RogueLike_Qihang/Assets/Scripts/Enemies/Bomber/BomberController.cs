@@ -18,6 +18,8 @@ public class BomberController : MonoBehaviour
     private CapsuleCollider2D _bombCollider;
     private NavMeshAgent _navMeshAgent;
     private AimBehaviour _aim;
+    private HealthManager _healthManager;
+    private CoinManager _coinManager;
 
     public NavMeshAgent Agent { get => _navMeshAgent; }
 
@@ -36,6 +38,8 @@ public class BomberController : MonoBehaviour
 
     private void Update()
     {
+        if (!CheckIfIsAlive(_healthManager)) return;
+
         _currentState.OnStateUpdate(this);
     }
 
@@ -53,6 +57,10 @@ public class BomberController : MonoBehaviour
 
         _aim = GetComponent<AimBehaviour>();
         _aim.Target = Target;
+
+        _healthManager = GetComponent<HealthManager>();
+
+        _coinManager = GetComponent<CoinManager>();
     }
 
     private void GoToState<T>() where T : StateSO
@@ -63,6 +71,18 @@ public class BomberController : MonoBehaviour
             _currentState = _currentState.StatesToGo.Find(obj => obj is T);
             _currentState.OnStateEnter(this);
         }
+    }
+
+    private bool CheckIfIsAlive(HealthManager health)
+    {
+        if (health.IsDead)
+        {
+            Debug.Log("Bomber is dead!");
+            _coinManager.IncreasePlayerCoins(Target); // Aumentamos las monedas del jugador
+            GoToState<AttackState>(); // Entra en modo ataque porque si muere, explota
+            return false;
+        }
+        return true;
     }
 
     // Este metodo es llamado con un evento tras finalizar la animacion de ataque
@@ -85,7 +105,6 @@ public class BomberController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(Target.tag))
         {
-            Debug.Log("Target lost");
             GoToState<IdleState>();
         }
     }
@@ -100,6 +119,8 @@ public class BomberController : MonoBehaviour
 
             // Ajustamos el tamaño de la colision para el jugador pueda recibir el daño estando "cerca"
             _bombCollider.size = new Vector2(_bomberData.ExplosionRange, _bomberData.ExplosionRange);
+
+            collision.gameObject.GetComponent<HealthManager>().TakeDamage(_bomberData.Damage);
 
             GoToState<AttackState>();
         }

@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 3
   speed: 50
+  coins: 2
   visionRange: 3
+  damage: 1
   attackSpeed: 2
   rechargeCooldown: 1
   bulletPrefab: {fileID: 5926523386831475831, guid: b80e5a8ec9b2a3644b9529d8f747607e, type: 3}

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Globalization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -6,6 +7,9 @@ using UnityEngine.EventSystems;
 public class StatsUIManager : MonoBehaviour
 {
     private const string DefaultDescription = "Select an item to see the description.";
+    private const string PlayerTag = "Player";
+
+    [SerializeField] private EntitySO _playerData;
 
     // Datos del personaje 
     [SerializeField] private TMP_Text _playerHealth;
@@ -24,6 +28,7 @@ public class StatsUIManager : MonoBehaviour
 
     private TMP_Text _description, _cost, _damage, _speed, _effectTime;
     private InventoryManager _inventory;
+    private HealthManager _healthManager;
 
     private void Awake()
     {
@@ -34,12 +39,15 @@ public class StatsUIManager : MonoBehaviour
     {
         _inventory = InventoryManager.Instance;
 
+        UpdatePlayerFields();
+
         if (_description.text == DefaultDescription)
             ToggleItemFields(false);
     }
 
     private void InitializeTextComponent()
     {
+        _healthManager = GameObject.FindGameObjectWithTag(PlayerTag).GetComponent<HealthManager>();
         _description = itemDescription.GetComponent<TMP_Text>();
         _cost = itemCost.transform.GetChild(0).GetComponent<TMP_Text>();
         _damage = weaponDamage.transform.GetChild(0).GetComponent<TMP_Text>();
@@ -47,6 +55,24 @@ public class StatsUIManager : MonoBehaviour
         _effectTime = consumableEffectTime.transform.GetChild(0).GetComponent<TMP_Text>();
     }
 
+    public void UpdatePlayerFields()
+    {
+        string currentHealth = _healthManager.Health.ToString();
+        string maxHealth = _playerData.Health.ToString();
+        _playerHealth.text = SetPlayerStatsFormat(currentHealth, maxHealth);
+
+        string currentSpeed = _playerData.Speed.ToString(); // Falta implementar efecto de pociones
+        string maxSpeed = _playerData.Speed.ToString();
+
+        _playerSpeed.text = SetPlayerStatsFormat(currentSpeed, maxSpeed);
+    }
+
+    private string SetPlayerStatsFormat(string variableData, string maxData)
+    {
+        return $"{variableData} / {maxData}";
+    }
+
+    // Este método se llama desde un botton (los slots del inventario)
     public void UpdateItemFields()
     {
         int slotNumber = SlotManager.GetSlotIndexByParent();

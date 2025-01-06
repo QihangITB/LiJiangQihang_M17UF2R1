@@ -8,7 +8,6 @@ public class WeaponManager : MonoBehaviour
     private const string PlayerTag = "Player", GameManagerObject = "GameManager";
 
     private Weapon _currentWeapon;
-    private Weapon _lastEquippedWeapon;
     private GameObject _weaponInstance;
     private GameObject _player;
     private InventoryManager _playerItems;
@@ -17,26 +16,41 @@ public class WeaponManager : MonoBehaviour
     void Start()
     {
         InitializeComponents();
-        _lastEquippedWeapon = _currentWeapon;
+        _playerItems.OnWeaponEquipped += EquipWeapon;
+        _playerItems.OnWeaponUnequipped += UnequipWeapon;
+    }
+
+    void OnDestroy()
+    {
+        _playerItems.OnWeaponEquipped -= EquipWeapon;
+        _playerItems.OnWeaponUnequipped -= UnequipWeapon;
     }
 
     void Update()
     {
         FollowTheMouse();
-        _currentWeapon = UpdateWeapon(_playerItems, _allItems);
-
-        if (_currentWeapon != _lastEquippedWeapon)
-        {
-            EquipCurrentWeapon(_currentWeapon, ref _weaponInstance);
-            _lastEquippedWeapon = _currentWeapon;
-        }
     }
 
     private void InitializeComponents()
     {
         _player = GameObject.FindGameObjectWithTag(PlayerTag);
-        _playerItems = _player.GetComponent<InventoryManager>();
+        _playerItems = InventoryManager.Instance;
         _allItems = GameObject.Find(GameManagerObject).GetComponent<InventoryItems>();
+    }
+
+    private void UnequipWeapon()
+    {
+        if (_weaponInstance != null)
+        {
+            Destroy(_weaponInstance);
+            _currentWeapon = UpdateWeapon(_playerItems, _allItems);
+        }
+    }
+
+    private void EquipWeapon()
+    {
+        _currentWeapon = UpdateWeapon(_playerItems, _allItems);
+        EquipCurrentWeapon(_currentWeapon, ref _weaponInstance);
     }
 
     private void EquipCurrentWeapon(Weapon weapon, ref GameObject instance)
