@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
-    private const string PlayerTag = "Player", GameManagerObject = "GameManager";
+    private const string PlayerTag = "Player";
 
     private Weapon _currentWeapon;
     private GameObject _weaponInstance;
@@ -35,7 +35,7 @@ public class WeaponManager : MonoBehaviour
     {
         _player = GameObject.FindGameObjectWithTag(PlayerTag);
         _playerItems = InventoryManager.Instance;
-        _allItems = GameObject.Find(GameManagerObject).GetComponent<InventoryItems>();
+        _allItems = GameManager.Instance.InventoryItems;
     }
 
     private void UnequipWeapon()

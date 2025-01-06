@@ -5,21 +5,27 @@ using System.Linq;
 
 public class RoomGenerator : MonoBehaviour
 {
-    private const string GameManager = "GameManager";
     private const string TopSide = "T", BottomSide = "B", LeftSide = "L", RightSide = "R";
 
+    private RoomManager _manager;
     private RoomTemplates _templates;
 
     private void Start()
     {
-        _templates = GameObject.Find(GameManager).GetComponent<RoomTemplates>();
+        InitializeComponents();
 
         string entranceSide = GetRoomEntranceSide();
 
         // Si quedan salas aleatorias por instanciar, se selecciona una aleatoria, sino se selecciona una cerrada
-        GameObject room = RoomManager.RandomRoomCount > 0 ? GetRandomRoomBySide(entranceSide) : GetCloseRoomBySide(entranceSide);
+        GameObject room = _manager.RoomGenerationCount > 0 ? GetRandomRoomBySide(entranceSide) : GetCloseRoomBySide(entranceSide);
 
         CreateRoomInstance(room);
+    }
+
+    private void InitializeComponents()
+    {
+        _manager = GameManager.Instance.RoomManager;
+        _templates = GameManager.Instance.RoomTemplates;
     }
 
     private void CreateRoomInstance(GameObject room)
@@ -29,7 +35,7 @@ public class RoomGenerator : MonoBehaviour
             Instantiate(room, transform.position, Quaternion.identity);
 
             // Decrementar el contador de salas aleatorias ya que se ha instanciado una
-            RoomManager.RandomRoomCount--;
+            GameManager.Instance.RoomManager.RoomGenerationCount--;
         }
         else
         {

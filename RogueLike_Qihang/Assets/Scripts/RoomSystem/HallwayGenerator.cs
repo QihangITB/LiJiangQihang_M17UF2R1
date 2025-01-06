@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class HallwayGenerator : MonoBehaviour
 {
-    private const string GameManager = "GameManager";
     private const string TopSide = "Top", BottomSide = "Bottom", LeftSide = "Left", RightSide = "Right";
 
+    private RoomManager _manager;
     private RoomTemplates _templates;
 
     private void Start()
     {
-        _templates = GameObject.Find(GameManager).GetComponent<RoomTemplates>();
+        InitializeComponents();
 
         // Si quedan salas aleatorias por instanciar, creamos pasillos normales, sino creamos pasillos cerrados
-        CreateHallway(RoomManager.RandomRoomCount > 0 ? _templates.Hallways : _templates.CloseHallways);
+        CreateHallway(_manager.RoomGenerationCount > 0 ? _templates.Hallways : _templates.CloseHallways);
+    }
+
+    private void InitializeComponents()
+    {
+        _manager = GameManager.Instance.RoomManager;
+        _templates = GameManager.Instance.RoomTemplates;
     }
 
     private void CreateHallway(GameObject hallways)
