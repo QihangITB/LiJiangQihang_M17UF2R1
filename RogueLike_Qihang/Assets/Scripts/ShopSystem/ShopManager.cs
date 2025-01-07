@@ -1,32 +1,37 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class ShopManager : MonoBehaviour
 {
+    private const string PlayerTag = "Player";
     private const int MaxSize = 3;
 
-    [SerializeField] private List<Transform> _instancePlaces;
+    [SerializeField] private List<GameObject> _instancePlaces;
 
     private InventoryItems Items;
-    private List<GameObject> SaleItems;
+    private List<GameObject> _saleItems;
+
+    public List<GameObject> SaleItems { get => _saleItems; }
+
+    public event Action<GameObject> OnShopAreaEnter; // Evento que se dispara cuando el jugador entra en el área de la tienda
 
     private void Start()
     {
         Items = GameManager.Instance.InventoryItems;
-        SaleItems = new List<GameObject>();
+        _saleItems = new List<GameObject>();
 
         InitializeShop();
-        CreateItemInstances(_instancePlaces, SaleItems);
+        CreateItemInstances(_instancePlaces, _saleItems);
     }
 
     private void InitializeShop()
     {
-        while (SaleItems.Count < MaxSize)
+        while (_saleItems.Count < MaxSize)
         {
             GameObject item = GetRandomItems(Items.AllItems);
 
-            if (!IsTheItemOnSell(SaleItems, item))
+            if (!IsTheItemOnSell(_saleItems, item))
             {
                 SetItemToSell(item);
             }
@@ -35,7 +40,7 @@ public class ShopManager : MonoBehaviour
 
     private GameObject GetRandomItems(List<GameObject> items)
     {
-        int randomIndex = Random.Range(0, items.Count);
+        int randomIndex = UnityEngine.Random.Range(0, items.Count);
         return items[randomIndex];
     }
 
@@ -46,14 +51,22 @@ public class ShopManager : MonoBehaviour
 
     private void SetItemToSell(GameObject item)
     {
-        SaleItems.Add(item);
+        _saleItems.Add(item);
     }
 
-    private void CreateItemInstances(List<Transform> places, List<GameObject> items)
+    private void CreateItemInstances(List<GameObject> places, List<GameObject> items)
     {
         for (int i = 0; i < places.Count; i++)
         {
-            Instantiate(items[i], places[i].position, Quaternion.identity, places[i]);
+            Instantiate(items[i], places[i].transform.position, Quaternion.identity, places[i].transform);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag(PlayerTag))
+        {
+            OnShopAreaEnter?.Invoke(collision.gameObject);
         }
     }
 }
