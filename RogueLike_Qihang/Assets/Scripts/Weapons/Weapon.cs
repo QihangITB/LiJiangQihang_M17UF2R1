@@ -7,9 +7,9 @@ public class Weapon : MonoBehaviour
     public WeaponSO WeaponData;
     public GameObject WeaponPrefab;
 
-    public void UseWeapon(GameObject prefab)
+    public void UseWeapon(GameObject dynamicPrefab)
     {
         // Pasamos el prefab dinamico en lugar del estatico
-        WeaponData.UseWeapon(prefab);
+        WeaponData.UseWeapon(dynamicPrefab);
     }
 }

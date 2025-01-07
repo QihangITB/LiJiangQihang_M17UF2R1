@@ -61,6 +61,8 @@ public class WeaponManager : MonoBehaviour
             {
                 Destroy(instance);
             }
+
+            // Con el prefab estatico creamos una instancia que es dinamica
             instance = Instantiate(weapon.WeaponPrefab, 
                                           transform.position, 
                                           SetRotationToMouse(), 
