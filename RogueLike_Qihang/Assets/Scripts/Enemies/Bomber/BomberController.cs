@@ -45,7 +45,7 @@ public class BomberController : MonoBehaviour
 
     private void InitializeComponents()
     {
-        _visionCollider = GetComponent<CircleCollider2D>();
+        _visionCollider = GetComponentInChildren<CircleCollider2D>();
         _visionCollider.radius = _bomberData.VisionRange;
         
         _bombCollider = GetComponent<CapsuleCollider2D>();

@@ -35,7 +35,7 @@ public class WeaponManager : MonoBehaviour
     {
         _player = GameObject.FindGameObjectWithTag(PlayerTag);
         _playerItems = InventoryManager.Instance;
-        _allItems = GameManager.Instance.InventoryItems;
+        _allItems = GameManager.Instance.InventoryItems ?? null;
     }
 
     private void UnequipWeapon()
