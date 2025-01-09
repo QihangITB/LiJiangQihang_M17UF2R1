@@ -1,9 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public class AimBehaviour : MonoBehaviour
 {
+    public delegate void TriggerEvent(Collider2D collider);
+    public event TriggerEvent OnTriggerStay; // Evento para cuando el jugador este dentro del trigger
+    public event TriggerEvent OnTriggerExit; // Evento para cuando salga del trigger
+
     private GameObject _target;
     private bool _isTargetDetected = false;
 
@@ -27,6 +32,7 @@ public class AimBehaviour : MonoBehaviour
         if (collision.CompareTag(_target.tag))
         {
             _isTargetDetected = IsTargetInLineOfSight(collision.transform);
+            OnTriggerStay?.Invoke(collision);
         }
     }
 
@@ -35,6 +41,7 @@ public class AimBehaviour : MonoBehaviour
         if (collision.CompareTag(_target.tag))
         {
             _isTargetDetected = false;
+            OnTriggerExit?.Invoke(collision);
         }
     }
 }

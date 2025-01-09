@@ -1,10 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
     [SerializeField] private EntitySO _entityData;
+    [SerializeField] private Image _healthBarValue; // Referencia al componente Image del GameObject que contiene la barra de vida
 
     private float _health;
 
@@ -18,6 +18,13 @@ public class HealthManager : MonoBehaviour
     public void TakeDamage(float damage)
     {
         _health -= damage;
-        IsDead = _health <= 0;
+        UpdateHealthBar(_health, _entityData.Health); // Actualizamos la barra de vida
+
+        IsDead = _health <= 0; // Comprobamos si ha muerto con el ataque
+    }
+
+    private void UpdateHealthBar(float current, float max)
+    {
+        _healthBarValue.fillAmount = current / max;
     }
 }

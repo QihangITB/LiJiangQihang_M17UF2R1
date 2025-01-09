@@ -43,6 +43,15 @@ public class BomberController : MonoBehaviour
         _currentState.OnStateUpdate(this);
     }
 
+    private void OnDestroy()
+    {
+        if (_aim != null) 
+        {
+            _aim.OnTriggerStay -= TriggerStay2D;
+            _aim.OnTriggerExit -= TriggerExit2D;
+        }
+    }
+
     private void InitializeComponents()
     {
         _visionCollider = GetComponentInChildren<CircleCollider2D>();
@@ -55,8 +64,10 @@ public class BomberController : MonoBehaviour
         _navMeshAgent.updateRotation = false;
         _navMeshAgent.updateUpAxis = false;
 
-        _aim = GetComponent<AimBehaviour>();
+        _aim = GetComponentInChildren<AimBehaviour>();
         _aim.Target = Target;
+        _aim.OnTriggerStay += TriggerStay2D;
+        _aim.OnTriggerExit += TriggerExit2D;
 
         _healthManager = GetComponent<HealthManager>();
 
@@ -92,16 +103,22 @@ public class BomberController : MonoBehaviour
     }
 
     // Detecta si el objetivo esta dentro del rango de vision
-    private void OnTriggerStay2D(Collider2D collision)
+    private void TriggerStay2D(Collider2D collision)
     {
-        if (_aim.IsTargetDetected && !(_currentState is ChaseState))
+        if (_aim.IsTargetDetected)
         {
-            GoToState<ChaseState>();
+            if (!(_currentState is ChaseState)) // Evitamos que se cambie de estado si ya esta en Chase
+                GoToState<ChaseState>();
+        }
+        else
+        {
+            if (_currentState is ChaseState) // Solo cambiamos de estado si esta en Chase
+                GoToState<IdleState>();
         }
     }
 
     // Detecta si el objetivo sale del rango de vision
-    private void OnTriggerExit2D(Collider2D collision)
+    private void TriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag(Target.tag))
         {

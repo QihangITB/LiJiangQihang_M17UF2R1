@@ -61,6 +61,14 @@ public class TurretController : MonoBehaviour
         Debug.DrawLine(transform.position, _targetPosition, Color.green);
     }
 
+    private void OnDestroy()
+    {
+        if (_aim != null)
+        {
+            _aim.OnTriggerStay -= TriggerStay2D;
+        }
+    }
+
     private void InitializeComponents()
     {
         GetComponent<CircleCollider2D>().radius = _turretData.VisionRange;
@@ -68,6 +76,7 @@ public class TurretController : MonoBehaviour
 
         _aim = GetComponent<AimBehaviour>();
         _aim.Target = Target;
+        _aim.OnTriggerStay += TriggerStay2D;
 
         _shoot = GetComponent<ShootBehaviour>();
 
@@ -123,7 +132,7 @@ public class TurretController : MonoBehaviour
         return true;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
+    private void TriggerStay2D(Collider2D collision)
     {
         if (_aim.IsTargetDetected)
         {
