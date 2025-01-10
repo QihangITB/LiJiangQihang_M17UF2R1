@@ -41,6 +41,7 @@ public class BomberSpawner : MonoBehaviour
             _spawnTimer = 0f;
             Transform spawnPoint = GetRandomSpawnPoint();
             GameObject bomber;
+
             if (_creationCount > 0)
             {
                 bomber = CreateBomber(spawnPoint);
@@ -50,6 +51,8 @@ public class BomberSpawner : MonoBehaviour
             {
                 bomber = PopBomber(spawnPoint);
             }
+
+            bomber.transform.SetParent(spawnPoint);
             _generationCount++;
         }
     }
