@@ -7,18 +7,14 @@ public class DoorManager : MonoBehaviour
 {
     public GameObject turretEnemies;
     public GameObject bomberEnemies;
+    public AccessControl roomAccess;
 
     private void Update()
     {
         if (AreAllEnemiesDead(turretEnemies, bomberEnemies))
         {
-            OpenDoors();
+            roomAccess.DeactivateRoom();
         }
-    }
-
-    private void OpenDoors()
-    {
-        this.gameObject.SetActive(false);
     }
 
     private bool AreAllEnemiesDead(GameObject turrets, GameObject bombers)

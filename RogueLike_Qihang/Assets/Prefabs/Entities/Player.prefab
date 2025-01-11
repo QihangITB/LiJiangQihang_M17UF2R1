@@ -941,8 +941,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -292.5, y: 463}
-  m_SizeDelta: {x: 24, y: 24}
+  m_AnchoredPosition: {x: -284.07703, y: 463}
+  m_SizeDelta: {x: 24.5282, y: 24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6985690446555715684
 CanvasRenderer:
@@ -5863,6 +5863,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _entityData: {fileID: 11400000, guid: 63e794c0c5bf8a14188f86b593c683ad, type: 2}
+  _healthBarValue: {fileID: 6191528025986537273}
 --- !u!114 &3965935592702898918
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6046,7 +6047,7 @@ GameObject:
   - component: {fileID: 3199991422802609560}
   - component: {fileID: 6191528025986537273}
   m_Layer: 0
-  m_Name: Health
+  m_Name: HealthValue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6100,10 +6101,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 6dd31a363caf49c408e5b41521060a4f, type: 3}
-  m_Type: 0
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0

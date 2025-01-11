@@ -21,7 +21,7 @@ public class BomberSpawner : MonoBehaviour
         _generationCount = 0;
         _creationCount = 0;
 
-        // Si no hay enemigos sificientes en el pool, se crean y se guardan
+        // Si no hay enemigos suficientes en el pool, se crean y se guardan
         for (int i = 0; i < bomberNumber; i++)
         {
             if (i > bombersPool.Count)
@@ -55,6 +55,12 @@ public class BomberSpawner : MonoBehaviour
             bomber.transform.SetParent(spawnPoint);
             _generationCount++;
         }
+
+        // Si se han creado todos los enemigos bomba y todos estan muertos, se desactivan los spawners
+        if (_generationCount == bomberNumber && !IsSomeoneAlive())
+        {
+            DisableSpawners();
+        }
     }
 
     private Transform GetRandomSpawnPoint()
@@ -81,4 +87,31 @@ public class BomberSpawner : MonoBehaviour
         bomber.SetActive(true);
         return bomber;
     }
+
+    private void DisableSpawners()
+    {
+        // Se desactivan todos sus hijos, que son los spawners
+        foreach (Transform spawner in transform)
+        {
+            spawner.gameObject.SetActive(false);
+        }
+    }
+
+    private bool IsSomeoneAlive()
+    {
+        // Recorre todos los spawners
+        foreach (Transform spawner in transform)
+        {
+            // En cada spawner recorre todos los enemigos que han sido instanciados ahi
+            foreach (Transform enemy in spawner)
+            {
+                if (enemy.gameObject.activeSelf)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
 }

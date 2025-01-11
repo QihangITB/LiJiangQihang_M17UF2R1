@@ -14,7 +14,7 @@ public class HallwayGenerator : MonoBehaviour
         InitializeComponents();
 
         // Si quedan salas aleatorias por instanciar, creamos pasillos normales, sino creamos pasillos cerrados
-        CreateHallway(_manager.RoomGenerationCount > 0 ? _templates.Hallways : _templates.CloseHallways);
+        CreateHallwayInstance(_manager.CurrentCount > 0 ? _templates.Hallways : _templates.CloseHallways);
     }
 
     private void InitializeComponents()
@@ -23,18 +23,13 @@ public class HallwayGenerator : MonoBehaviour
         _templates = GameManager.Instance.RoomTemplates;
     }
 
-    private void CreateHallway(GameObject hallways)
+    private void CreateHallwayInstance(GameObject hallway)
     {
         if (RoomManager.IsPositionAvailable(transform.position))
         {
-            // Si no hay objeto en la posición, procedemos a crear el pasillo
-            CreateHallwayInstance(hallways);
+            // Si no hay pasillos en la posición, procedemos a crearlos
+            Instantiate(hallway, transform.position, GetHallwayRotation());
         }
-    }
-
-    private void CreateHallwayInstance(GameObject hallway)
-    {
-        Instantiate(hallway, transform.position, GetHallwayRotation());
     }
 
     private Quaternion GetHallwayRotation()

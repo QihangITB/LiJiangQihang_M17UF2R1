@@ -33,11 +33,7 @@ public class CoinManager : MonoBehaviour
         // Aumentamos las monedas del jugador
         player.GetComponent<CoinManager>().AddCoins(_coinsValue);
 
-        Debug.Log("Monedas enviadas al jugado: " + _coinsValue);
-
         // Quitamos las monedas del enemigo porque se lo ha "dado" al jugador
         RemoveCoins(_coinsValue);
-        
-        Debug.Log("MONEDAS DEL JUAGDOR: " + player.GetComponent<CoinManager>().Coins);
     }
 }

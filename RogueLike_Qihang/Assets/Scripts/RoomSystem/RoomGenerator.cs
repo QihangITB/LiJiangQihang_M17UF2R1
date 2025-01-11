@@ -17,7 +17,7 @@ public class RoomGenerator : MonoBehaviour
         string entranceSide = GetRoomEntranceSide();
 
         // Si quedan salas aleatorias por instanciar, se selecciona una aleatoria, sino se selecciona una cerrada
-        GameObject room = _manager.RoomGenerationCount > 0 ? GetRandomRoomBySide(entranceSide) : GetCloseRoomBySide(entranceSide);
+        GameObject room = _manager.CurrentCount > 0 ? GetRandomRoomBySide(entranceSide) : GetCloseRoomBySide(entranceSide);
 
         CreateRoomInstance(room);
     }
@@ -34,12 +34,17 @@ public class RoomGenerator : MonoBehaviour
         {
             Instantiate(room, transform.position, Quaternion.identity);
 
+            // Añadir la sala a la lista de salas
+            GameManager.Instance.RoomManager.AddRoom(room);
+
             // Decrementar el contador de salas aleatorias ya que se ha instanciado una
-            GameManager.Instance.RoomManager.RoomGenerationCount--;
+            GameManager.Instance.RoomManager.CurrentCount--;
         }
         else
         {
             Debug.Log("Pasillo destruido y cambiado");
+
+            // Si la posicion para crear la sala esta ocupada, destruimos el pasillo y lo cerramos
             Instantiate(_templates.CloseHallways, transform.parent.position, transform.parent.rotation);
             Destroy(transform.parent.gameObject);
         }
