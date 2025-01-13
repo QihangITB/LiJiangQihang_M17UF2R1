@@ -71,6 +71,15 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""9be36f13-70fb-4eaa-b4c0-9f4c070973d2"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -271,6 +280,17 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
                     ""action"": ""Equipment"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""54c6b0ce-5fa9-4bd7-9519-b125ec14ddf4"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -284,6 +304,7 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_Consumable = m_Player.FindAction("Consumable", throwIfNotFound: true);
         m_Player_Equipment = m_Player.FindAction("Equipment", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -350,6 +371,7 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Inventory;
     private readonly InputAction m_Player_Consumable;
     private readonly InputAction m_Player_Equipment;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @InputControl m_Wrapper;
@@ -359,6 +381,7 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputAction @Consumable => m_Wrapper.m_Player_Consumable;
         public InputAction @Equipment => m_Wrapper.m_Player_Equipment;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -383,6 +406,9 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
             @Equipment.started += instance.OnEquipment;
             @Equipment.performed += instance.OnEquipment;
             @Equipment.canceled += instance.OnEquipment;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -402,6 +428,9 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
             @Equipment.started -= instance.OnEquipment;
             @Equipment.performed -= instance.OnEquipment;
             @Equipment.canceled -= instance.OnEquipment;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -426,5 +455,6 @@ public partial class @InputControl: IInputActionCollection2, IDisposable
         void OnInventory(InputAction.CallbackContext context);
         void OnConsumable(InputAction.CallbackContext context);
         void OnEquipment(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

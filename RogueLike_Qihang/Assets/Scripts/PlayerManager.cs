@@ -132,4 +132,12 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
             Debug.Log("Use Consumable! " + context.control.name);
         }
     }
+
+    public void OnPause(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            Debug.Log("MENU PAUSA");
+        }
+    }
 }
