@@ -123,9 +123,14 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public bool IsInventoryFull()
+    {
+        return _inventoryItems.Count == InventoryMaxSize;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        int initialInventorySize = _inventoryItems.Count;
+        //int initialInventorySize = _inventoryItems.Count;
 
         if (collision.CompareTag(WeaponTag))
         {
@@ -139,9 +144,9 @@ public class InventoryManager : MonoBehaviour
         }
 
         // Si ha variado el tamaño del inventario, destruimos el objeto porque se ha añadido
-        if (initialInventorySize != _inventoryItems.Count)
-        {
-            Destroy(collision.gameObject);
-        }
+        //if (initialInventorySize != _inventoryItems.Count)
+        //{
+        //    Destroy(collision.gameObject);
+        //}
     }
 }

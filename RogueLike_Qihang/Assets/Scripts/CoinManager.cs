@@ -17,6 +17,11 @@ public class CoinManager : MonoBehaviour
         _coinsValue = _entityData.Coins;
     }
 
+    private void Update()
+    {
+        Debug.Log("Coins: " + _coinsValue);
+    }
+
     public void AddCoins(float value)
     {
         _coinsValue += value;
@@ -26,6 +31,7 @@ public class CoinManager : MonoBehaviour
     public void RemoveCoins(float value)
     {
         _coinsValue -= value;
+        OnCoinsChanged?.Invoke(_coinsValue);
     }
 
     public void IncreasePlayerCoins(GameObject player)
