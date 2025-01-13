@@ -13,7 +13,9 @@ public class PatrolBehaviour : MonoBehaviour
 
     public bool HasArrivedToDestination()
     {
-        return !_agent.pathPending && _agent.remainingDistance <= _agent.stoppingDistance;
+        return _agent != null &&
+               !_agent.pathPending &&
+               _agent.remainingDistance <= _agent.stoppingDistance;
     }
 
     public void SetRandomDestination()

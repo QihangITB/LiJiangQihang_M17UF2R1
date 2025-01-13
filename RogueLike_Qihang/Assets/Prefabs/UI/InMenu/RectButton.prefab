@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 5.193}
+  m_SizeDelta: {x: 0, y: -10.3859}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2615285929164989309
 CanvasRenderer:
@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 3910483634352779867}
   - component: {fileID: 6188614508187111785}
   m_Layer: 5
-  m_Name: MenuButton
+  m_Name: RectButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

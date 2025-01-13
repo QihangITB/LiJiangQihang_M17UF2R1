@@ -5,14 +5,12 @@ using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
 {
-    const string AxisX = "X", AxisY = "Y";
-    const string ParamIsMoving = "IsMoving";
+    const string ParamX = "X", ParamY = "Y", ParamIsMoving = "IsMoving", ParamIsDead = "IsDead";
     const string WeaponObject = "Weapon";
 
     const float StopSpeed = 0f;
 
     public bool BlockPlayer { get; set; } = false;
-    public Vector2 PlayerDirection { get; private set; }
 
     [SerializeField] private EntitySO _playerData;
     [SerializeField] private GameObject _hudMenu;
@@ -20,6 +18,7 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
 
     private InputControl _inputControl;
     private Vector2 _inputMovement;
+    private Vector2 _playerDirection;
     private Animator _animator;
     private Movement _movement;
     private InventoryManager _inventoryManager;
@@ -34,14 +33,12 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
     {
         if (_healthManager.IsDead)
         {
-            Debug.Log("Player is dead!");
+            _animator.SetBool(ParamIsDead, true);
             return;
         }
 
-        AnimationByDirection();
-
         // Actualizamos la direccion constantemente
-        _movement.SetDirection(PlayerDirection);
+        _movement.SetDirection(_playerDirection);
     }
 
     void OnEnable()
@@ -68,25 +65,27 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
         _healthManager = GetComponent<HealthManager>();
     }
 
-    private void AnimationByDirection()
+    private void AnimationByDirection(Vector2 direction)
     {
-        _animator.SetFloat(AxisX, PlayerDirection.x);
-        _animator.SetFloat(AxisY, PlayerDirection.y);
+        _animator.SetFloat(ParamX, direction.x);
+        _animator.SetFloat(ParamY, direction.y);
     }
 
     public void OnMovement(InputAction.CallbackContext context)
     {
-        if (!BlockPlayer) 
+        if (context.performed && !BlockPlayer)
         {
             _inputMovement = context.ReadValue<Vector2>();
-            PlayerDirection = _inputMovement.normalized;
+            _playerDirection = _inputMovement.normalized;
 
             bool isMoving = _inputMovement.magnitude > StopSpeed;
             _animator.SetBool(ParamIsMoving, isMoving);
+
+            AnimationByDirection(_playerDirection);
         }
-        else
+        else if (context.canceled || BlockPlayer)
         {
-            PlayerDirection = Vector2.zero;
+            _playerDirection = Vector2.zero;
             _animator.SetBool(ParamIsMoving, false);
         }
     }
@@ -96,7 +95,10 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
         if (context.performed && !BlockPlayer)
         {
             GameObject weapon = GameObject.Find(WeaponObject);
-            weapon.GetComponent<WeaponManager>().Attack();
+
+            // La funcion de atacar lo hace solo si tiene una instancia de arma
+            if(weapon.transform.childCount != 0)
+                weapon.GetComponent<WeaponManager>().Attack();
         }
     }
 
