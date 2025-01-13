@@ -24,13 +24,13 @@ public class ShowPlayerCoin : MonoBehaviour
         UpdateCoinText(_coinManager.Coins); // Inicializa el texto.
     }
 
-    void UpdateCoinText(float coins)
-    {
-        _text.text = coins.ToString();
-    }
-
     void OnDestroy()
     {
         _coinManager.OnCoinsChanged -= UpdateCoinText;
+    }
+
+    void UpdateCoinText(float coins)
+    {
+        _text.text = coins.ToString();
     }
 }

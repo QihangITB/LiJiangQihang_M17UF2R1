@@ -20,13 +20,13 @@ public class ParallaxEffect : MonoBehaviour
 
     void Update()
     {
-        MoveBackground();
+        MoveBackground(); // Mueve el fondo independientemente del movimiento del jugador
         CheckAndResetPosition();
     }
 
     private void MoveBackground()
     {
-        // Desplaza el fondo en función de la dirección, velocidad y tiempo
+        // Desplaza el fondo en función de la dirección, velocidad y tiempo automaticamente
         transform.position += new Vector3(moveDirection.x, moveDirection.y, 0) * parallaxSpeed * Time.deltaTime;
     }
 
