@@ -5,20 +5,29 @@ using UnityEngine.SceneManagement;
 
 public class SceneController : MonoBehaviour
 {
+    public static SceneController Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject); 
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+
     /// <summary>
     /// Carga una escena específica por su nombre.
     /// </summary>
     /// <param name="sceneName">Nombre de la escena a cargar.</param>
-    public void LoadScene(string sceneName)
+    public void LoadSceneByName(string sceneName)
     {
         if (!string.IsNullOrEmpty(sceneName))
         {
-            Debug.Log($"Cargando escena: {sceneName}");
             SceneManager.LoadScene(sceneName);
-        }
-        else
-        {
-            Debug.LogError("El nombre de la escena es nulo o está vacío.");
         }
     }
 
@@ -27,7 +36,6 @@ public class SceneController : MonoBehaviour
     /// </summary>
     public void QuitGame()
     {
-        Debug.Log("Saliendo del juego...");
         Application.Quit();
     }
 }
