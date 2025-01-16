@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ShopManager : MonoBehaviour
 {
-    private const string PlayerTag = "Player";
     private const int MaxSize = 3;
 
     [SerializeField] private List<GameObject> _instancePlaces;
@@ -13,8 +12,6 @@ public class ShopManager : MonoBehaviour
     private List<GameObject> _saleItems;
 
     public List<GameObject> SaleItems { get => _saleItems; }
-
-    public event Action<GameObject> OnShopAreaEnter; // Evento que se dispara cuando el jugador entra en el área de la tienda
 
     private void Start()
     {
@@ -59,14 +56,6 @@ public class ShopManager : MonoBehaviour
         for (int i = 0; i < places.Count; i++)
         {
             Instantiate(items[i], places[i].transform.position, Quaternion.identity, places[i].transform);
-        }
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag(PlayerTag))
-        {
-            OnShopAreaEnter?.Invoke(collision.gameObject);
         }
     }
 }

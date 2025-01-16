@@ -9,42 +9,21 @@ public class BuyItem : MonoBehaviour
 
     [SerializeField] private TMP_Text _cost;
 
-    private ShopManager _shopManager;
-    private BoxCollider2D _collider;
     private GameObject _item;
 
     void Start()
     {
-        _shopManager = transform.parent.GetComponent<ShopManager>();
-        _shopManager.OnShopAreaEnter += CanPlayerBuyIt;
-        _collider = GetComponent<BoxCollider2D>();
-        StartCoroutine(DelayedInitialization());
+        ShopManager shop = transform.parent.GetComponent<ShopManager>();
+        StartCoroutine(DelayedSetPriceToUI(shop));
     }
 
-    private void OnDestroy()
-    {
-        if (_shopManager != null)
-        {
-            _shopManager.OnShopAreaEnter -= CanPlayerBuyIt;
-        }
-    }
-
-    private IEnumerator DelayedInitialization()
+    private IEnumerator DelayedSetPriceToUI(ShopManager shop)
     {
         yield return null; // Espera un frame
-        int index = transform.GetSiblingIndex(); 
-        _item = _shopManager.SaleItems[index];
+
+        int index = transform.GetSiblingIndex();
+        _item = shop.SaleItems[index];
         _cost.text = GetItemCost(_item).ToString() + DollarSymbol;
-    }
-
-    private void CanPlayerBuyIt(GameObject player)
-    {
-        float playerCoins = player.GetComponent<CoinManager>().Coins;
-        float itemPrice = GetItemCost(_item);
-
-        // Activamos el collider si el jugador NO puede comprar
-        // Desactivamos el collider si el jugador SI puede comprar
-        _collider.enabled = !(playerCoins >= itemPrice);
     }
 
     private float GetItemCost(GameObject item)
