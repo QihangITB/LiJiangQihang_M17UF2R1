@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37fe86695aa324145b0c7d30b1ff446e, type: 3}
+  m_Script: {fileID: 11500000, guid: 9bfb798963b17f0489cf412804591106, type: 3}
   m_Name: FlashWings2
   m_EditorClassIdentifier: 
-  id: SPD002
-  cost: 1
-  description: Increases movement speed by 1 during 10 seconds
+  id: FW02
+  cost: 5
+  description: Run faster during 5 seconds.
   icon: {fileID: 21300000, guid: 823dfb2077042cd4491fd238246fd16e, type: 3}
-  effectTime: 10
+  effectTime: 5

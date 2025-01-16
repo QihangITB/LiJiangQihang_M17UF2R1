@@ -12,6 +12,7 @@ public class TurretBullet : MonoBehaviour
     private float _speed;
     private Vector2 _direction;
 
+    // Para poder assignar valores a los atributos privados
     public float Speed { get => _speed; set => _speed = value; }
     public Vector2 Direction { get => _direction; set => _direction = value; }
 
@@ -27,8 +28,11 @@ public class TurretBullet : MonoBehaviour
         }
 
         _movement = GetComponent<Movement>();
-        _movement.SetSpeed(_speed);
-        _movement.SetDirection(_direction);
+    }
+
+    private void Update()
+    {
+        _movement.Move(_speed, _direction);
     }
 
     private bool HasATarget(Vector2 bulletDirection, Transform target)

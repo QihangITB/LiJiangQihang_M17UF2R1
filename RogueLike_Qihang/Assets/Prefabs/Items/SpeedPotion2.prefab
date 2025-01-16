@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2872337781121125440}
   - component: {fileID: 288686447615080498}
   - component: {fileID: 3040195390874886675}
-  - component: {fileID: 4044097235491793755}
+  - component: {fileID: 5383832257445928443}
   m_Layer: 0
   m_Name: SpeedPotion2
   m_TagString: Consumable
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7540796763870560995}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.35, y: -1.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ConsumableData: {fileID: 11400000, guid: 3983f85a115312e419e2aa55c6501e66, type: 2}
---- !u!61 &4044097235491793755
-BoxCollider2D:
+--- !u!60 &5383832257445928443
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -128,10 +128,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0056099147, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -141,6 +141,14 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.5195062, y: 0.8}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.125, y: 0.4}
+      - {x: -0.275, y: 0.025}
+      - {x: -0.275, y: -0.3}
+      - {x: -0.15, y: -0.4}
+      - {x: 0.22500001, y: -0.4}
+      - {x: 0.275, y: -0.25}
+      - {x: 0.275, y: 0.125}
+      - {x: 0.1, y: 0.4}
+  m_UseDelaunayMesh: 0

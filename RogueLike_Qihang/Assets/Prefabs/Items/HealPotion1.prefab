@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8198665601144812636}
   - component: {fileID: 8781107361241940029}
   - component: {fileID: 2628385942363678289}
-  - component: {fileID: 2197844999352102920}
+  - component: {fileID: 2048361378678068069}
   m_Layer: 0
   m_Name: HealPotion1
   m_TagString: Consumable
@@ -27,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7274197580543020477}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.35, y: -1.96, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ConsumableData: {fileID: 11400000, guid: 0b69d14c684462b4abbe6c65a7505411, type: 2}
---- !u!61 &2197844999352102920
-BoxCollider2D:
+--- !u!60 &2048361378678068069
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -128,10 +128,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.014024749, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -141,6 +141,14 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.28950128, y: 0.8}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.175, y: -0.25}
+      - {x: -0.15, y: -0.32500002}
+      - {x: -0.075, y: -0.4}
+      - {x: 0.025, y: -0.4}
+      - {x: 0.15, y: -0.375}
+      - {x: 0.15, y: 0.4}
+      - {x: -0.075, y: 0.4}
+      - {x: -0.175, y: 0.275}
+  m_UseDelaunayMesh: 0

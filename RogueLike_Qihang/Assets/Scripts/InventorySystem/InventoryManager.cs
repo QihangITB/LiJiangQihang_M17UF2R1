@@ -128,10 +128,8 @@ public class InventoryManager : MonoBehaviour
         return _inventoryItems.Count == InventoryMaxSize;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        //int initialInventorySize = _inventoryItems.Count;
-
         if (collision.CompareTag(WeaponTag))
         {
             Weapon weapon = collision.GetComponent<Weapon>();
@@ -142,11 +140,5 @@ public class InventoryManager : MonoBehaviour
             Consumable consumable = collision.GetComponent<Consumable>();
             AddItem(consumable.ConsumableData);
         }
-
-        // Si ha variado el tamaño del inventario, destruimos el objeto porque se ha añadido
-        //if (initialInventorySize != _inventoryItems.Count)
-        //{
-        //    Destroy(collision.gameObject);
-        //}
     }
 }

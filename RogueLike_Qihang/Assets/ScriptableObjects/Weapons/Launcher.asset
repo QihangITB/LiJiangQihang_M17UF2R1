@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48444194a17b411448a8ae03a30a6d95, type: 3}
+  m_Script: {fileID: 11500000, guid: 93660dc08fd885548b921ba322b329f4, type: 3}
   m_Name: Launcher
   m_EditorClassIdentifier: 
   id: GL001
-  cost: 10
-  description: Launcher Desc
+  cost: 8
+  description: Be carefull! It can be difficult to use.
   icon: {fileID: -1561933465, guid: ded92b3665707454789cefd354f4359b, type: 3}
-  damage: 10
+  damage: 3
   speed: 1
-  WeaponPrefab: {fileID: 2104213341741206545, guid: 67c4910bd34371d45973ec65997d27cb, type: 3}
+  _exploteTime: 2
   _grenadePrefab: {fileID: 4768482713114409044, guid: 6f82c0ea20aa1384385e86f41cd74f0c, type: 3}

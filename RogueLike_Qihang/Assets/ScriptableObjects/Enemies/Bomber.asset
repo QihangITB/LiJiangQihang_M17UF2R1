@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a97554c86b17d8a4383e7f4adc742423, type: 3}
+  m_Script: {fileID: 11500000, guid: 98f187527fdcfdd40949eef6eb512da5, type: 3}
   m_Name: Bomber
   m_EditorClassIdentifier: 
   health: 2
-  speed: 1.2
+  speed: 2.5
   coins: 1
-  visionRange: 6
+  visionRange: 3
   damage: 2
-  explosionRange: 2
+  explosionRange: 1.5

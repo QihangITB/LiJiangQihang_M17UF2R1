@@ -10,30 +10,28 @@ public class Bullet : MonoBehaviour
     [SerializeField] private Rifle _data;
     private Animator _animator;
     private Movement _movement;
+    private Vector2 _direction;
 
-    void Awake()
+    private void Awake()
     {
         InitializeComponents();
     }
 
-    void OnEnable()
+    private void OnEnable()
     {
-        Vector2 mouseDirection = WeaponManager.GetMouseDirection(this.transform);
-        // Al reutilizar la bala, lo tenemos que configurar cada vez que se activa 
-        ConfigureMovement(_data, mouseDirection);
-        RotateTowardsMouse(mouseDirection);
+        _direction = WeaponManager.GetMouseDirection(this.transform);
+        RotateTowardsMouse(_direction);
+    }
+
+    private void Update()
+    {
+        _movement.Move(_data.Speed, _direction);
     }
 
     private void InitializeComponents()
     {
         _animator = GetComponent<Animator>();
         _movement = GetComponent<Movement>();
-    }
-
-    private void ConfigureMovement(Rifle weapon, Vector2 direction)
-    {
-        _movement.SetSpeed(weapon.Speed);
-        _movement.SetDirection(direction);
     }
 
     private void RotateTowardsMouse(Vector2 direction)

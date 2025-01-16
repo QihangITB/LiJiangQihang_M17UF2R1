@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82eadd321bfbd3f4787b5f14f238f13a, type: 3}
+  m_Script: {fileID: 11500000, guid: d3c37d5814a34ad4eab8a35c60153445, type: 3}
   m_Name: VitalEssence1
   m_EditorClassIdentifier: 
-  id: HTL001
-  cost: 1
-  description: Heal you 1 life point
+  id: VE01
+  cost: 5
+  description: Heal 1 life point.
   icon: {fileID: 21300000, guid: 31b749918ca4845498824bb437333158, type: 3}
   effectTime: 0

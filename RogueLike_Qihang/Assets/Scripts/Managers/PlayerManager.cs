@@ -37,8 +37,8 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
             return;
         }
 
-        // Actualizamos la direccion constantemente
-        _movement.SetDirection(_playerDirection);
+        // Aplicamos el movimiento al jugador
+        _movement.Move(_playerData.Speed, _playerDirection);
     }
 
     void OnEnable()
@@ -58,7 +58,6 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
         _inputControl.Player.SetCallbacks(this);
 
         _movement = GetComponent<Movement>();
-        _movement.SetSpeed(_playerData.Speed);
 
         _inventoryManager = InventoryManager.Instance;
 

@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bdb888fb625c403428d0bbf666236ac3, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c98d788dc7e69d47ae7785e16b1100e, type: 3}
   m_Name: FuryFlame1
   m_EditorClassIdentifier: 
-  id: DMG001
-  cost: 1
-  description: Increases weapon damage by 1 during 5 seconds
+  id: FF01
+  cost: 4
+  description: Your weapon make more damage during 2 seconds.
   icon: {fileID: 21300000, guid: 5e90beb2f444579429fa4c0077bff0e3, type: 3}
-  effectTime: 5
+  effectTime: 2

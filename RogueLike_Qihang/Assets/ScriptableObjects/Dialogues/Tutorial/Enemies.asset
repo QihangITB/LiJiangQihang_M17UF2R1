@@ -15,26 +15,12 @@ MonoBehaviour:
   _lines:
   - "Now a days we have only discovered two types of enemies. Both are dangerous.\r"
   - "At the top you will find the turret enemy.\r"
-  - 'This enemy has the following stats:
-
-    Health - 3
-
-    Coins - 2
-
-    Damage
-    - 1'
+  - 'This enemy has the following stats: Health - 3 / Coins - 2 / Damage - 1'
   - "The turrets doesn't move, they are static.\r"
   - "They will aim randomly until they spot an adventurer. If they spot you, you
     can hide behind an obstacle.\r"
   - "And at the bottom you will find the bomber enemy.\r"
-  - 'This enemy has the following stats:
-
-    Health - 2
-
-    Coins - 1
-
-    Damage
-    - 2'
+  - 'This enemy has the following stats: Health - 2 / Coins - 1 / Damage - 2'
   - "The bombers can move around the map, because they patrol there. \r"
   - If they detect an adventurer, they will chase him until reach him and explode.
     But don't worry, you can use obstacles or run faster to get out of their sight.

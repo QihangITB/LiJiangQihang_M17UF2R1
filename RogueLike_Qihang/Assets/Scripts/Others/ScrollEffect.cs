@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
 
-public class ParallaxEffect : MonoBehaviour
+public class ScrollEffect : MonoBehaviour
 {
     private const float LimitPosition = 5f;
 

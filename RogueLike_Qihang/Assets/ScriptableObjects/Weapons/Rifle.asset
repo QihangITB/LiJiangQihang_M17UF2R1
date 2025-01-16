@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61bfe674caa567a48a34c9943dcb72a4, type: 3}
+  m_Script: {fileID: 11500000, guid: 9a89afb327f780943aabd95265e650f1, type: 3}
   m_Name: Rifle
-  m_EditorClassIdentifier: Assembly-CSharp::Rifle
+  m_EditorClassIdentifier: 
   id: RI001
-  cost: 3
-  description: Long distance weapon, shoot bullet
+  cost: 5
+  description: Typical firearm, but is useful too.
   icon: {fileID: 1065572693, guid: ded92b3665707454789cefd354f4359b, type: 3}
-  damage: 2
-  speed: 6
+  damage: 1
+  speed: 3
   munition:
     bulletPrefab: {fileID: 6071376251323557296, guid: 464cd023c9be2884ba3697cac7daa428, type: 3}

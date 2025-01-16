@@ -11,9 +11,4 @@ public abstract class ItemSO : ScriptableObject
     public float Cost { get => cost; }
     public string Description { get => description; }
     public Sprite Icon { get => icon; }
-
-    public T ConvertToSpecificItem<T>() where T : ItemSO
-    {
-        return this as T;
-    }
 }

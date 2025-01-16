@@ -3532,7 +3532,6 @@ RectTransform:
   - {fileID: 8536625163926178934}
   - {fileID: 3491770869116145116}
   - {fileID: 6387144544418548371}
-  - {fileID: 8862276790159492288}
   m_Father: {fileID: 2735042662623512195}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -17155,6 +17154,7 @@ RectTransform:
   - {fileID: 2591445843561013835}
   - {fileID: 7768066218155288570}
   - {fileID: 7295661668760069215}
+  - {fileID: 8862276790159492288}
   m_Father: {fileID: 118427738832836449}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -17791,7 +17791,7 @@ GameObject:
   - component: {fileID: 9007572731977958292}
   - component: {fileID: 5175755705663494088}
   m_Layer: 0
-  m_Name: Parallax
+  m_Name: WaterScroll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18045,16 +18045,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4504178869921552932}
-  m_LocalRotation: {x: -0, y: -0, z: 0.07425055, w: 0.9972396}
+  m_LocalRotation: {x: -0, y: -0, z: 0.07425056, w: 0.99723965}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.6071706, y: 3.6071706, z: 3.6071708}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 7295661668760069215}
+  m_Father: {fileID: 2735042662623512195}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 8.516}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 188, y: -122.90001}
+  m_AnchoredPosition: {x: 678.1482, y: -443.3213}
   m_SizeDelta: {x: 143.4789, y: 30.4518}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7277605631665518274
