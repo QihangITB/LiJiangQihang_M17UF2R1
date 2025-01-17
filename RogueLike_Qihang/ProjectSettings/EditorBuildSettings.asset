@@ -14,5 +14,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FINAL/Tutorial.unity
     guid: d67bad1335a1829479e4c725de0ebf72
+  - enabled: 1
+    path: Assets/Scenes/FINAL/Pause.unity
+    guid: 7d596c29f2a11f34c9dd71c3c818951a
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 3f0bd5cf5682cf74891986d302f76e5f, type: 2}

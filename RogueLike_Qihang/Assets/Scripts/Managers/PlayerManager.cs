@@ -136,7 +136,7 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
     {
         if (context.performed)
         {
-            Debug.Log("MENU PAUSA");
+            SceneController.Instance.LoadPause();
         }
     }
 }
