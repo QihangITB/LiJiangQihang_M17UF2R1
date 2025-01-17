@@ -35,15 +35,13 @@ public class RoomGenerator : MonoBehaviour
             Instantiate(room, transform.position, Quaternion.identity);
 
             // Añadir la sala a la lista de salas
-            GameManager.Instance.RoomManager.AddRoom(room);
+            GameManager.Instance.RoomManager.AddRoom(room, this.transform);
 
             // Decrementar el contador de salas aleatorias ya que se ha instanciado una
             GameManager.Instance.RoomManager.CurrentCount--;
         }
         else
         {
-            Debug.Log("Pasillo destruido y cambiado");
-
             // Si la posicion para crear la sala esta ocupada, destruimos el pasillo y lo cerramos
             Instantiate(_templates.CloseHallways, transform.parent.position, transform.parent.rotation);
             Destroy(transform.parent.gameObject);

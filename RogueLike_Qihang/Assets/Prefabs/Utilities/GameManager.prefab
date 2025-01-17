@@ -91,6 +91,9 @@ MonoBehaviour:
   - {fileID: 1014255858811615957, guid: a48aac6720a39da48bfcf7bd4051b1ad, type: 3}
   _hallways: {fileID: 3386598249865228985, guid: 5e6402c68885ce247ba31ef3d459e2ac, type: 3}
   _closeHallways: {fileID: 208101321707595442, guid: 31296e47f1b13b94db27caeb574f1fe3, type: 3}
+  _portal: {fileID: 5265877742547100864, guid: 64a5f5f7d57c31c4e92c8e6cd45edab4, type: 3}
+  _key: {fileID: 3541999762581712680, guid: 58656367b784b334f9764b678018c211, type: 3}
+  _shop: {fileID: 514960241203974046, guid: 638258a60c4414f4baa2328222f47df4, type: 3}
 --- !u!114 &1595313445652199247
 MonoBehaviour:
   m_ObjectHideFlags: 0
