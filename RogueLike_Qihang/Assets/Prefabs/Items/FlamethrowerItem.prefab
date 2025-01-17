@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3755787036034138610}
   - component: {fileID: 7606061911786306171}
   - component: {fileID: 3158905497543093222}
+  - component: {fileID: -6832613830505396100}
   - component: {fileID: 2831476017728515942}
   m_Layer: 0
   m_Name: FlamethrowerItem
@@ -100,6 +101,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponData: {fileID: 11400000, guid: 35709710b042d44448dfd3df0f32e36c, type: 2}
   WeaponPrefab: {fileID: 2398003391424675981, guid: 8e98d83bf91e62242af51940385aa00c, type: 3}
+--- !u!114 &-6832613830505396100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7408752026165860496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bfa9c5fcaa067e45a759f4b23a52321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!60 &2831476017728515942
 PolygonCollider2D:
   m_ObjectHideFlags: 0

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8501146506431936341}
   - component: {fileID: 6608091547538061076}
   - component: {fileID: 8252593343530196977}
+  - component: {fileID: -3967830774163370855}
   - component: {fileID: 1425971985390157186}
   m_Layer: 0
   m_Name: DamagePotion2
@@ -99,6 +100,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ConsumableData: {fileID: 11400000, guid: b45c5f1faba165c45b4fb947a28d752e, type: 2}
+--- !u!114 &-3967830774163370855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257967308034367899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bfa9c5fcaa067e45a759f4b23a52321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!60 &1425971985390157186
 PolygonCollider2D:
   m_ObjectHideFlags: 0

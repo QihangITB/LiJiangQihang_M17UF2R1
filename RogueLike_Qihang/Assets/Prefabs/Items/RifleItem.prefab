@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3178121012857070685}
   - component: {fileID: 4198105812237110563}
   - component: {fileID: 8283084656709005380}
+  - component: {fileID: -7569428005638487320}
   - component: {fileID: 1555039549937844219}
   m_Layer: 0
   m_Name: RifleItem
@@ -100,6 +101,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponData: {fileID: 11400000, guid: 369e31703da42b44bb3ace3a18464461, type: 2}
   WeaponPrefab: {fileID: 5728273389050602939, guid: 2dc36ae5309744845b9ded38e5316d79, type: 3}
+--- !u!114 &-7569428005638487320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667663375201093259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bfa9c5fcaa067e45a759f4b23a52321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!60 &1555039549937844219
 PolygonCollider2D:
   m_ObjectHideFlags: 0

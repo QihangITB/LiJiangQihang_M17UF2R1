@@ -9,11 +9,6 @@ public class PortalKey : MonoBehaviour
 
     public static event Action OnKeyCollected;
 
-    private void Update()
-    {
-        transform.Rotate(Vector3.forward, 1f);
-    }
-
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag(PlayerTag))

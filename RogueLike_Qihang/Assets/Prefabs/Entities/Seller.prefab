@@ -755,7 +755,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1918278319
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -294024454, guid: 9a03d2156354fbe43a1bd6e8abe38119, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -784,10 +784,7 @@ MonoBehaviour:
   _buttonText: {fileID: 2269920815372221810}
   _dialogueText: {fileID: 6135185271913899229}
   _dialogue: {fileID: 0}
-  _allSceneCanvas:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  _allSceneCanvas: []
 --- !u!95 &4825985446845999495
 Animator:
   serializedVersion: 5
@@ -950,7 +947,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1918278319
-  m_SortingLayer: 5
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 4eb0fa053a97e8f4bba236f3739c8b3e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

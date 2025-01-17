@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8198665601144812636}
   - component: {fileID: 8781107361241940029}
   - component: {fileID: 2628385942363678289}
+  - component: {fileID: 6695929776240813457}
   - component: {fileID: 2048361378678068069}
   m_Layer: 0
   m_Name: HealPotion1
@@ -99,6 +100,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ConsumableData: {fileID: 11400000, guid: 0b69d14c684462b4abbe6c65a7505411, type: 2}
+--- !u!114 &6695929776240813457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7274197580543020477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bfa9c5fcaa067e45a759f4b23a52321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!60 &2048361378678068069
 PolygonCollider2D:
   m_ObjectHideFlags: 0

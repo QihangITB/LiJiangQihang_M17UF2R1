@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3250087539521042973}
   - component: {fileID: 4766557706612524031}
   - component: {fileID: 3696880469835508823}
+  - component: {fileID: -1635320693571186979}
   - component: {fileID: 1581190719235307479}
   m_Layer: 0
   m_Name: LauncherItem
@@ -100,6 +101,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponData: {fileID: 11400000, guid: 9aa282919e11aee4b9119e02176bf833, type: 2}
   WeaponPrefab: {fileID: 2104213341741206545, guid: 67c4910bd34371d45973ec65997d27cb, type: 3}
+--- !u!114 &-1635320693571186979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7835560784337476490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bfa9c5fcaa067e45a759f4b23a52321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!60 &1581190719235307479
 PolygonCollider2D:
   m_ObjectHideFlags: 0

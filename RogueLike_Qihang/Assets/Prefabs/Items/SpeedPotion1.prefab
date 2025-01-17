@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6199373687681935727}
   - component: {fileID: 6702409672821309027}
   - component: {fileID: 3851017089751645299}
+  - component: {fileID: 7236233752053882237}
   - component: {fileID: 6057236669425737517}
   m_Layer: 0
   m_Name: SpeedPotion1
@@ -99,6 +100,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ConsumableData: {fileID: 11400000, guid: 2420a80a6eda39b4da36fed896b899b0, type: 2}
+--- !u!114 &7236233752053882237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 820864803251717584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bfa9c5fcaa067e45a759f4b23a52321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!60 &6057236669425737517
 PolygonCollider2D:
   m_ObjectHideFlags: 0

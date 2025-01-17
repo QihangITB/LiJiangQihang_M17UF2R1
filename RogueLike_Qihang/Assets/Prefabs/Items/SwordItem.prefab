@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2862731724191834162}
   - component: {fileID: 6554932691106781517}
   - component: {fileID: 2624233487106579959}
+  - component: {fileID: 2896478827792165528}
   - component: {fileID: 6672146924845598357}
   m_Layer: 0
   m_Name: SwordItem
@@ -100,6 +101,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WeaponData: {fileID: 11400000, guid: 1278a8e50be721243ab5a8c452ca9456, type: 2}
   WeaponPrefab: {fileID: 8470261558880659159, guid: 84801078f37082f47a3e5e6cccc1e12d, type: 3}
+--- !u!114 &2896478827792165528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6367569080695383082}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bfa9c5fcaa067e45a759f4b23a52321, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!60 &6672146924845598357
 PolygonCollider2D:
   m_ObjectHideFlags: 0
