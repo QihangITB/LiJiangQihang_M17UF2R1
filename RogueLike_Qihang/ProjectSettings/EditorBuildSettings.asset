@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/FINAL/Game.unity
     guid: a033409ec7b51ff46ab9ad1011e89f97
   - enabled: 1
+    path: Assets/Scenes/FINAL/Bucle.unity
+    guid: 6b4df516024420440ab45eeb85cd1cb2
+  - enabled: 1
     path: Assets/Scenes/FINAL/Tutorial.unity
     guid: d67bad1335a1829479e4c725de0ebf72
   - enabled: 1

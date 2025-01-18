@@ -2,16 +2,16 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RoomManager : MonoBehaviour
 {
-    private const float SpecialRoomDelay = 1f;
+    private const float SpecialRoomDelay = 1.5f;
     private const int Offset = 1, MinValue = 1;
 
     public int RoomGenerationCount = 6; // NO es el numero de salas que se generaran
     [NonSerialized] public int CurrentCount;
     [NonSerialized] public List<GameObject> Rooms = new List<GameObject>();
-    [NonSerialized] public List<Transform> RoomsPosition = new List<Transform>();
 
     private RoomTemplates _templates;
     private int _keyRoomIndex;
@@ -24,12 +24,16 @@ public class RoomManager : MonoBehaviour
     private void Start()
     {
         _templates = GameManager.Instance.RoomTemplates;
-        StartCoroutine(GenerateSpecialRooms());
     }
 
-    public void RestartCounter()
+    private void OnEnable()
     {
-        CurrentCount = RoomGenerationCount;
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    private void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     public static bool IsPositionAvailable(Vector3 position)
@@ -39,10 +43,19 @@ public class RoomManager : MonoBehaviour
         return existingCollider == null;
     }
 
-    public void AddRoom(GameObject room, Transform currentPosition)
+    private void RestartCounter()
+    {
+        CurrentCount = RoomGenerationCount;
+    }
+
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        StartCoroutine(GenerateSpecialRooms());
+    }
+
+    public void AddRoom(GameObject room)
     {
         Rooms.Add(room);
-        RoomsPosition.Add(currentPosition); // La posición de la sala generada NO la del prefab
     }
 
     public void CleanRooms()
@@ -54,8 +67,10 @@ public class RoomManager : MonoBehaviour
     {
         yield return new WaitForSeconds(SpecialRoomDelay); // Esperar a que se generen todas las salas
 
+        if (Rooms.Count == 0) yield break; // No hay salas generadas
+
         int minRoom = MinValue;
-        int maxRoom = Rooms.Count;
+        int maxRoom = Rooms.Count - Offset;
         GeneratePortalRoom(maxRoom);
         GenerateKeyRoom(minRoom, maxRoom); // La llave se ha de generar antes que la tienda
         GenerateShopRoom(minRoom, maxRoom); // La tienda no puede estar en la misma sala que la llave
@@ -65,17 +80,15 @@ public class RoomManager : MonoBehaviour
     private void GeneratePortalRoom(int max)
     {
         PlaceObjectInRoom(_templates.Portal, 
-                            Rooms[max - Offset], 
-                            RoomsPosition[Rooms.Count - Offset],  
-                            true);
+                            Rooms[max], 
+                            false);
      }
 
     private void GenerateKeyRoom(int min, int max)
     {
         _keyRoomIndex = UnityEngine.Random.Range(min, max);
         PlaceObjectInRoom(_templates.Key, 
-                            Rooms[_keyRoomIndex], 
-                            RoomsPosition[_keyRoomIndex]);
+                            Rooms[_keyRoomIndex]);
     }
 
     private void GenerateShopRoom(int min, int max)
@@ -83,28 +96,26 @@ public class RoomManager : MonoBehaviour
         int shopRoomIndex;
         do {
             shopRoomIndex = UnityEngine.Random.Range(min, max);
-        } while (shopRoomIndex == _keyRoomIndex);
+        } while (shopRoomIndex == _keyRoomIndex || shopRoomIndex == max);
 
         PlaceObjectInRoom(_templates.Shop, 
                             Rooms[shopRoomIndex], 
-                            RoomsPosition[shopRoomIndex], 
-                            true);
+                            false);
     }
 
-    private void PlaceObjectInRoom(GameObject template, GameObject room, Transform roomPosition, bool disableEnemies = false)
+    private void PlaceObjectInRoom(GameObject objectPrefab, GameObject room, bool hasEnemies = true)
     {
-        Instantiate(template, roomPosition.position, Quaternion.identity);
-
-        if (disableEnemies)
-            DisableRoomEnemies(room);
+        Instantiate(objectPrefab, room.transform.position, Quaternion.identity);
+        
+        if(!hasEnemies) DisableEnemies(room);
     }
 
-    private void DisableRoomEnemies(GameObject room)
+    private void DisableEnemies(GameObject room)
     {
-        EdgeCollider2D accessDetection = room.GetComponentInChildren<EdgeCollider2D>();
-        if (accessDetection != null)
+        AccessControl control = room.GetComponentInChildren<AccessControl>();
+        if (control != null)
         {
-            accessDetection.enabled = false; // Desactivar el collider para que nunca se active la sala
+            control.ConfigureAcces(false);
         }
     }
 }

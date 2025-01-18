@@ -461,9 +461,37 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4504178869921552932, guid: 5aec554cf414ce54e81e123dbd429f20, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5847931045220846943, guid: 5aec554cf414ce54e81e123dbd429f20, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7579174696873978266, guid: 5aec554cf414ce54e81e123dbd429f20, type: 3}
+      propertyPath: m_text
+      value: Press {0} but NOT DONE :(
+      objectReference: {fileID: 0}
+    - target: {fileID: 7579174696873978266, guid: 5aec554cf414ce54e81e123dbd429f20, type: 3}
+      propertyPath: m_fontSize
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862276790159492288, guid: 5aec554cf414ce54e81e123dbd429f20, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 149.7417
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862276790159492288, guid: 5aec554cf414ce54e81e123dbd429f20, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 36.7001
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862276790159492288, guid: 5aec554cf414ce54e81e123dbd429f20, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 677
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862276790159492288, guid: 5aec554cf414ce54e81e123dbd429f20, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -267
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

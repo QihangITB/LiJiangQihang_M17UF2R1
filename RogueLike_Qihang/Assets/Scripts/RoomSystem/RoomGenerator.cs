@@ -32,10 +32,10 @@ public class RoomGenerator : MonoBehaviour
     {
         if(RoomManager.IsPositionAvailable(transform.position) && room != null)
         {
-            Instantiate(room, transform.position, Quaternion.identity);
+            GameObject instanceRoom = Instantiate(room, transform.position, Quaternion.identity);
 
             // Añadir la sala a la lista de salas
-            GameManager.Instance.RoomManager.AddRoom(room, this.transform);
+            GameManager.Instance.RoomManager.AddRoom(instanceRoom);
 
             // Decrementar el contador de salas aleatorias ya que se ha instanciado una
             GameManager.Instance.RoomManager.CurrentCount--;

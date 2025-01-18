@@ -128,7 +128,11 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
     {
         if (context.performed)
         {
-            Debug.Log("Use Consumable! " + context.control.name);
+            // Funcion temporal para mostrar mensaje
+            ShowNotDone msg = GetComponent<ShowNotDone>();
+            string inputValue = context.control.displayName;
+            StopCoroutine(msg.ActiveMessage(inputValue.ToString()));
+            StartCoroutine(msg.ActiveMessage(inputValue.ToString()));
         }
     }
 

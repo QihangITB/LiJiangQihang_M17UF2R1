@@ -5,7 +5,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Bullet : MonoBehaviour
 {
-    private const string ParamImpact = "Impact", EnemyTag = "Enemy";
+    private const string ParamImpact = "Impact", EnemyTag = "Enemy", PlayerTag = "Player";
 
     [SerializeField] private Rifle _data;
     private Animator _animator;
@@ -19,7 +19,8 @@ public class Bullet : MonoBehaviour
 
     private void OnEnable()
     {
-        _direction = WeaponManager.GetMouseDirection(this.transform);
+        Transform player = GameObject.FindGameObjectWithTag(PlayerTag).transform;
+        _direction = WeaponManager.GetMouseDirection(player.transform);
         RotateTowardsMouse(_direction);
     }
 

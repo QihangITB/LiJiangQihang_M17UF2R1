@@ -5,7 +5,7 @@ using UnityEngine;
 public class AccessControl : MonoBehaviour
 {
     private const string PlayerTag = "Player";
-    private float delayTime = 2f;
+    private float delayTime = 1f;
 
     public GameObject Doors;
     public GameObject Enemies;
@@ -16,6 +16,15 @@ public class AccessControl : MonoBehaviour
     {
         _edgeCollider = GetComponent<EdgeCollider2D>();
         DeactivateRoom();
+    }
+
+    public void ConfigureAcces(bool value)
+    {
+        // Comprueba si se ha cogido bien el componente
+        if (_edgeCollider == null)
+            _edgeCollider = GetComponent<EdgeCollider2D>();
+
+        _edgeCollider.enabled = value;
     }
 
     public void ActivateRoom()

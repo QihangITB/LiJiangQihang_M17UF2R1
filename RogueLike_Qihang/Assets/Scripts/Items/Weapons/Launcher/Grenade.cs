@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Grenade : MonoBehaviour
 {
-    private const string ParamExplote = "Explote", EnemyTag = "Enemy";
+    private const string ParamExplote = "Explote", EnemyTag = "Enemy", PlayerTag = "Player";
 
     [SerializeField] private Launcher _data;
     private Animator _animator;
@@ -25,12 +25,12 @@ public class Grenade : MonoBehaviour
         {
             _animator.SetTrigger(ParamExplote);
         }
-
     }
 
     private void RotateTowardsMouse()
     {
-        Vector2 direction = WeaponManager.GetMouseDirection(this.transform);
+        Transform player = GameObject.FindGameObjectWithTag(PlayerTag).transform;
+        Vector2 direction = WeaponManager.GetMouseDirection(player.transform);
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
@@ -44,6 +44,7 @@ public class Grenade : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         _animator.SetTrigger(ParamExplote);
+        GetComponent<Trajectory>().IsMoving = false; // Detenemos la trayectoria
 
         if (collision.gameObject.CompareTag(EnemyTag))
         {

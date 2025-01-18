@@ -6,7 +6,7 @@ public class Movement : MonoBehaviour
 {
     private Rigidbody2D _rb;
 
-    private void Start()
+    private void Awake()
     {
         _rb = GetComponent<Rigidbody2D>();
     }

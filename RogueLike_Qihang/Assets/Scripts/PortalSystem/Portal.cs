@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    private const string PlayerTag = "Player", GameScene = "Game";
-    private const float waitTime = 0.5f;
+    private const string PlayerTag = "Player";
+    private const string TutorialScene = "Tutorial", GameScene = "Game", BucleScene = "Bucle";
+    private const float waitTime = 1f;
     // Tono rojizo
     private Color CloseColor = new Color(214f / 255f, 74f / 255f, 74f / 255f, 1f);
     // Tono blanco
@@ -43,7 +44,22 @@ public class Portal : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         Destroy(gameObject);
 
-        SceneController.Instance.LoadSceneByName(GameScene);
+        string currentScene = SceneController.Instance.GetCurrentSceneName();
+        string nextScene = SelectNextScene(currentScene);
+
+        SceneController.Instance.LoadSceneByName(nextScene);
+    }
+
+    private string SelectNextScene(string currentScene)
+    {
+        // Se usa switch case para escalabilidad
+        return currentScene switch
+        {
+            GameScene => BucleScene,
+            BucleScene => BucleScene,
+            TutorialScene => GameScene,
+            _ => GameScene // Por defecto, se cargará la escena de juego.
+        };
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

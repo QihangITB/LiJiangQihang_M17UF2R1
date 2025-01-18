@@ -32,7 +32,6 @@ public class SwordEdge : MonoBehaviour
     {
         if (collision.gameObject.CompareTag(EnemyTag))
         {
-            Debug.Log("Hit: " + collision.gameObject.name);
             collision.gameObject.GetComponent<HealthManager>().TakeDamage(_data.Damage);
         }
     }

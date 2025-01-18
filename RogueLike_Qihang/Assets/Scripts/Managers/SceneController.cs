@@ -50,10 +50,15 @@ public class SceneController : MonoBehaviour
     /// </summary>
     /// <param name="sceneName">El nombre de la escena que se desea comprobar.</param>
     /// <returns> true si la escena está cargada; false en caso contrario.</returns>
-    private bool IsSceneAlreadyLoaded(string sceneName)
+    public bool IsSceneAlreadyLoaded(string sceneName)
     {
         Scene scene = SceneManager.GetSceneByName(sceneName);
         return scene.isLoaded;
+    }
+
+    public string GetCurrentSceneName()
+    {
+        return SceneManager.GetActiveScene().name;
     }
 
     /// <summary>

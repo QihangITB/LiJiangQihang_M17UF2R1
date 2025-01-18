@@ -12,7 +12,6 @@ public class Flame : MonoBehaviour
     {
         if(collision.CompareTag(EnemyTag))
         {
-            Debug.Log("Hit: " + collision.name);
             collision.GetComponent<HealthManager>().TakeDamage(_data.Damage);
         }
     }

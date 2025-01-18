@@ -28,8 +28,8 @@ public class Trajectory : MonoBehaviour
     private bool _isMoving = true;    // Controla si el objeto está en movimiento
     private int currentPointIndex = 0; // Índice del punto actual
 
+    public bool IsMoving { get => _isMoving;  set => _isMoving = value; }
     public float speed = 2f;         // Velocidad de movimiento a lo largo de la línea
-
     public Vector2[] points; // Puntos de la trayectoria a partir de P(0,0)
 
     void Start()
