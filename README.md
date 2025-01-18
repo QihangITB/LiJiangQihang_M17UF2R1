@@ -16,7 +16,7 @@
 
 ---
 
-## Características principales
+## Características principales ⭐
 
 - **Movimiento en 8D**: El jugador se puede mover en las 8 direcciones.
 - **Salas Procedurales**: Cada partida es única gracias a la generación aleatoria de niveles.
@@ -27,7 +27,7 @@
 
 ---
 
-## História
+## História ⭐
 
 Hace mucho tiempo, los portales comenzaron a aparecer en todo el mundo, conectando diferentes dimensiones que parecen idénticas pero esconden secretos únicos. Cada portal está custodiado por una Llave Primordial, y obtenerla requiere superar una legión de enemigos mecánicos conocidos como **Explosivos de la Primavera** y **Disparadores de Energia**. Estas criaturas explotan al acercarse y disparan proyectiles cargados de energía, protegiendo celosamente los fragmentos de la llave.
 
@@ -37,14 +37,14 @@ Mientras Faylen explora los vastos campos verdes y playas bañadas por la brisa,
 
 ---
 
-## Género
+## Género ⭐
 
 - Principal: Roguelike.
 - Subgéneros: Acción, RPG (juego de rol), Estrategia, Aventura.
 
 ---
 
-## Estilo Visual y Ambiente
+## Estilo Visual y Ambiente ⭐
 
 - Gráficos: Pixel Art, 2D.
 - Estética: Entorno natural primaveral (césped, mar, flores), pero con elementos mecánicos/tecnológicos (enemigos explosivos).
@@ -52,7 +52,7 @@ Mientras Faylen explora los vastos campos verdes y playas bañadas por la brisa,
 
 ---
 
-## Mecánicas
+## Mecánicas ⭐
 
 ### JUGADOR:
 - Movimiento: 8 Direcciones
@@ -105,7 +105,7 @@ Cuando el jugador tenga las monedas suficientes podra comprar el objeto y este a
 4. En la generación de mapa, especificamos las iteraciones de mapas que queremos que se genere (NO ESPECIFICAMOS EL NUMERO DE HABITACIONES), normalmente el numero de habitaciones es cercano a este valor de itración ya que al generarse aleatoriamente las habitaciones, es probable que en una iteración se generen dos.
 5. Cuando se acabe el numero de iteracion especificada, se generara las **Habitaciones Sin Salidas**, que son aquellas que solo tienen una direccion (la de entrada).
 
-![Salas](img/esquema-salas.png)
+<img src="img/esquema-salas.png" alt="Salas" width="500" height="300">
 
 ### TIENDA:
 La tienda no tiene UI, es una tienda de interacción. Aparecera aleatoriamente en alguna sala distinta a la que esta la llave y la del portal.
@@ -120,8 +120,8 @@ La tienda no tiene UI, es una tienda de interacción. Aparecera aleatoriamente e
 - LLave: Se genera a partir de la segunda habitación generada, siempre se generara en el medio de la sala, para desbloquear el portal, hay que coger primero la llave.
 
 ---
-
-## Controles
+ 
+## Controles ⭐
 
 - **Movimiento**: Teclas WASD o flechas direccionales
 - **Atacar**: Click izquierdo del raton
@@ -134,13 +134,13 @@ La tienda no tiene UI, es una tienda de interacción. Aparecera aleatoriamente e
 
 ---
 
-## Escenas
+## Escenas ⭐
 
 ![Diagrama escenas](img/diagrama-escenas.png)
 
 ---
 
-## Diagramas de clase
+## Diagramas de clase ⭐
 
 ![Diagrama clase](img/diagrama-clase-itemso.png)
 ![Diagrama clase](img/diagrama-clase-stateso.png)
