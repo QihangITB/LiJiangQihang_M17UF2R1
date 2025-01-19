@@ -13,8 +13,16 @@ public class HealthManager : MonoBehaviour
 
     private void Start()
     {
-        _health = _entityData.Health;
+        SetHealth();
     }
+
+    public void SetHealth()
+    {
+        _health = _entityData.Health;
+        IsDead = false;
+        UpdateHealthBar(_health, _entityData.Health);
+    }
+
     public void TakeDamage(float damage)
     {
         _health -= damage;

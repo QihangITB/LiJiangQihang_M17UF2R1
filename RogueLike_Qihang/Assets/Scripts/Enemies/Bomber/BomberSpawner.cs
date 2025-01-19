@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class BomberSpawner : MonoBehaviour
 {
+    private const float DefaultSize = 1.5f;
     private const int minChild = 0, maxChild = 5;
 
     public GameObject prefab;
     public int bomberNumber = 10; // Por defecto el numero de enemgios bomba es 10
     public float spawnTime = 3f; // Por defecto aparecen cada 3 segundos
+
+    // Pool estático compartido entre todas las instancias de BomberSpawner
     public static Stack<GameObject> bombersPool = new Stack<GameObject>();
 
     private float _spawnTimer = 0f;
@@ -17,19 +20,39 @@ public class BomberSpawner : MonoBehaviour
 
     private void Start()
     {
-        bombersPool = new Stack<GameObject>();
         _generationCount = 0;
         _creationCount = 0;
 
         // Si no hay enemigos suficientes en el pool, se crean y se guardan
         for (int i = 0; i < bomberNumber; i++)
         {
-            if (i > bombersPool.Count)
+            if (i >= bombersPool.Count)
             {
                 _creationCount++;
             }
         }
+
+        Debug.Log("Bombers created: " + _creationCount);
+        Debug.Log("Bombers in pool: " + bombersPool.Count);
     }
+
+    //private void OnEnable()
+    //{
+    //    _generationCount = 0;
+    //    _creationCount = 0;
+
+    //    // Si no hay enemigos suficientes en el pool, se crean y se guardan
+    //    for (int i = 0; i < bomberNumber; i++)
+    //    {
+    //        if (i > bombersPool.Count)
+    //        {
+    //            _creationCount++;
+    //        }
+    //    }
+
+    //    Debug.Log("Bombers created: " + _creationCount);
+    //    Debug.Log("Bombers in pool: " + bombersPool.Count);
+    //}
 
     private void Update()
     {
@@ -77,12 +100,13 @@ public class BomberSpawner : MonoBehaviour
 
     private GameObject CreateBomber(Transform spawnPoint)
     {
-        return Object.Instantiate(prefab, spawnPoint.position, Quaternion.identity);
+        return Instantiate(prefab, spawnPoint.position, Quaternion.identity);
     }
 
     private GameObject PopBomber(Transform spawnPoint)
     {
         GameObject bomber = bombersPool.Pop();
+        bomber.transform.localScale = new Vector3(DefaultSize, DefaultSize, DefaultSize);
         bomber.transform.position = spawnPoint.position;
         bomber.SetActive(true);
         return bomber;

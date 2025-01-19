@@ -7,6 +7,7 @@ using UnityEngine.InputSystem.XR;
 public class BomberController : MonoBehaviour
 {
     private const string PlayerTag = "Player";
+    private const float DefaultCollisionX = 0.5f, DefaultCollisionY = 0.7f;
 
     [SerializeField] private Bomber _bomberData;
     public Animator Animator;
@@ -23,17 +24,26 @@ public class BomberController : MonoBehaviour
 
     public NavMeshAgent Agent { get => _navMeshAgent; }
 
-    private void Start()
+    private void OnEnable()
     {
         if (Target == null)
         {
             Target = GameObject.FindGameObjectWithTag(PlayerTag);
         }
 
-        InitializeComponents();
+        InitializeComponentsAndData();
 
         _currentState = States[0];
         _currentState.OnStateEnter(this);
+    }
+
+    private void OnDisable()
+    {
+        if (_aim != null)
+        {
+            _aim.OnTriggerStay -= TriggerStay2D;
+            _aim.OnTriggerExit -= TriggerExit2D;
+        }
     }
 
     private void Update()
@@ -43,21 +53,14 @@ public class BomberController : MonoBehaviour
         _currentState.OnStateUpdate(this);
     }
 
-    private void OnDestroy()
-    {
-        if (_aim != null) 
-        {
-            _aim.OnTriggerStay -= TriggerStay2D;
-            _aim.OnTriggerExit -= TriggerExit2D;
-        }
-    }
-
-    private void InitializeComponents()
+    private void InitializeComponentsAndData()
     {
         _visionCollider = GetComponentInChildren<CircleCollider2D>();
         _visionCollider.radius = _bomberData.VisionRange;
         
         _bombCollider = GetComponent<CapsuleCollider2D>();
+        _bombCollider.size = new Vector2(DefaultCollisionX, DefaultCollisionY);
+        _bombCollider.isTrigger = false;
 
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _navMeshAgent.speed = _bomberData.Speed;
@@ -70,8 +73,10 @@ public class BomberController : MonoBehaviour
         _aim.OnTriggerExit += TriggerExit2D;
 
         _healthManager = GetComponent<HealthManager>();
+        _healthManager.SetHealth();
 
         _coinManager = GetComponent<CoinManager>();
+        _coinManager.SetCoins();
     }
 
     private void GoToState<T>() where T : StateSO
@@ -88,7 +93,6 @@ public class BomberController : MonoBehaviour
     {
         if (health.IsDead)
         {
-            Debug.Log("Bomber is dead!");
             _coinManager.IncreasePlayerCoins(Target); // Aumentamos las monedas del jugador
             GoToState<AttackState>(); // Entra en modo ataque porque si muere, explota
             return false;
@@ -100,6 +104,11 @@ public class BomberController : MonoBehaviour
     private void Die()
     {
         GoToState<DieState>();
+    }
+
+    public void SaveIdleState()
+    {
+        GoToState<IdleState>();
     }
 
     // Detecta si el objetivo esta dentro del rango de vision

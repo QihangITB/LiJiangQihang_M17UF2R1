@@ -16,11 +16,6 @@ public class RoomManager : MonoBehaviour
     private RoomTemplates _templates;
     private int _keyRoomIndex;
 
-    private void Awake()
-    {
-        RestartCounter();
-    }
-
     private void Start()
     {
         _templates = GameManager.Instance.RoomTemplates;
@@ -46,10 +41,12 @@ public class RoomManager : MonoBehaviour
     private void RestartCounter()
     {
         CurrentCount = RoomGenerationCount;
+        CleanRooms();
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        RestartCounter();
         StartCoroutine(GenerateSpecialRooms());
     }
 
@@ -96,7 +93,7 @@ public class RoomManager : MonoBehaviour
         int shopRoomIndex;
         do {
             shopRoomIndex = UnityEngine.Random.Range(min, max);
-        } while (shopRoomIndex == _keyRoomIndex || shopRoomIndex == max);
+        } while (shopRoomIndex == _keyRoomIndex);
 
         PlaceObjectInRoom(_templates.Shop, 
                             Rooms[shopRoomIndex], 

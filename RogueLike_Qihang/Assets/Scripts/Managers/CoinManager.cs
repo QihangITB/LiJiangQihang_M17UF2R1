@@ -14,6 +14,11 @@ public class CoinManager : MonoBehaviour
 
     private void Start()
     {
+        SetCoins();
+    }
+
+    public void SetCoins()
+    {
         _coinsValue = _entityData.Coins;
     }
 

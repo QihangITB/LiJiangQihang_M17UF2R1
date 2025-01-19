@@ -5,7 +5,7 @@ using UnityEngine;
 public class AccessControl : MonoBehaviour
 {
     private const string PlayerTag = "Player";
-    private float delayTime = 1f;
+    private float delayTime = 0.5f;
 
     public GameObject Doors;
     public GameObject Enemies;

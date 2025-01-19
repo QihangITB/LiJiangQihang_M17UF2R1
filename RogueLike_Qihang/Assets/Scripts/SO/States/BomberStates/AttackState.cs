@@ -14,6 +14,8 @@ public class AttackState : StateSO
 
         controller.Agent.isStopped = true;
         controller.Agent.ResetPath(); // Detener por completo el movimiento
+
+        controller.Agent.speed = 0;
     }
 
     public override void OnStateUpdate(BomberController controller)

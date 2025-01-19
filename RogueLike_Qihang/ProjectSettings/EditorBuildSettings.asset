@@ -20,5 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FINAL/Pause.unity
     guid: 7d596c29f2a11f34c9dd71c3c818951a
+  - enabled: 1
+    path: Assets/Scenes/FINAL/End.unity
+    guid: c2a2e3d982093ca4380155816e081493
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 3f0bd5cf5682cf74891986d302f76e5f, type: 2}

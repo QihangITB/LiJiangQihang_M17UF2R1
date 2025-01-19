@@ -5,10 +5,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
 {
-    const string ParamX = "X", ParamY = "Y", ParamIsMoving = "IsMoving", ParamIsDead = "IsDead";
-    const string WeaponObject = "Weapon";
+    private const string ParamX = "X", ParamY = "Y", ParamIsMoving = "IsMoving", ParamIsDead = "IsDead";
+    private const string WeaponObject = "Weapon";
+    private const string EndScene = "End";
 
-    const float StopSpeed = 0f;
+    private const float StopSpeed = 0f;
 
     public bool BlockPlayer { get; set; } = false;
 
@@ -68,6 +69,11 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
     {
         _animator.SetFloat(ParamX, direction.x);
         _animator.SetFloat(ParamY, direction.y);
+    }
+
+    public void GameOver()
+    {
+        SceneController.Instance.LoadSceneByName(EndScene);
     }
 
     public void OnMovement(InputAction.CallbackContext context)

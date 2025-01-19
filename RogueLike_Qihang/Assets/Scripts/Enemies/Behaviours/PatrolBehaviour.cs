@@ -13,9 +13,11 @@ public class PatrolBehaviour : MonoBehaviour
 
     public bool HasArrivedToDestination()
     {
-        return _agent != null &&
-               !_agent.pathPending &&
-               _agent.remainingDistance <= _agent.stoppingDistance;
+        // Verificar si el agente está activo y sobre un NavMesh
+        if (_agent == null || !_agent.enabled || !_agent.isOnNavMesh) 
+            return false;
+        
+        return !_agent.pathPending && _agent.remainingDistance <= _agent.stoppingDistance;
     }
 
     public void SetRandomDestination()

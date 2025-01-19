@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 656787211a6f07443b515696ebf5c3d5, type: 3}
   m_Name: DieState
   m_EditorClassIdentifier: 
-  StatesToGo: []
+  StatesToGo:
+  - {fileID: 11400000, guid: 56bc9de38704ed7448cdeca6bd88a1c8, type: 2}

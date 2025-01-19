@@ -13,8 +13,6 @@ public class NavMeshBaker : MonoBehaviour
     {
         navMeshSurface = GetComponent<NavMeshSurface>();
         StartCoroutine(DelayedBaking(delayTime));
-
-        DontDestroyOnLoad(gameObject); // Persistimos este objeto entre escenas.
     }
 
     private IEnumerator DelayedBaking(float time)

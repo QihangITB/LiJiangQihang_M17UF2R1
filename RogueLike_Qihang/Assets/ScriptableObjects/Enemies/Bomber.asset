@@ -15,6 +15,6 @@ MonoBehaviour:
   health: 2
   speed: 2.5
   coins: 1
-  visionRange: 3
+  visionRange: 5
   damage: 2
-  explosionRange: 1.5
+  explosionRange: 2
