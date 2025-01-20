@@ -6,6 +6,22 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  m_configObjects: {}
+    path: Assets/Scenes/FINAL/Home.unity
+    guid: a5a0d4550e1ecf545b0c938d03187557
+  - enabled: 1
+    path: Assets/Scenes/FINAL/Game.unity
+    guid: a033409ec7b51ff46ab9ad1011e89f97
+  - enabled: 1
+    path: Assets/Scenes/FINAL/Bucle.unity
+    guid: 6b4df516024420440ab45eeb85cd1cb2
+  - enabled: 1
+    path: Assets/Scenes/FINAL/Tutorial.unity
+    guid: d67bad1335a1829479e4c725de0ebf72
+  - enabled: 1
+    path: Assets/Scenes/FINAL/Pause.unity
+    guid: 7d596c29f2a11f34c9dd71c3c818951a
+  - enabled: 1
+    path: Assets/Scenes/FINAL/End.unity
+    guid: c2a2e3d982093ca4380155816e081493
+  m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: 3f0bd5cf5682cf74891986d302f76e5f, type: 2}

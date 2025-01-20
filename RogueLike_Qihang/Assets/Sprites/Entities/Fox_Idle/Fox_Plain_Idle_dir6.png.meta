@@ -1,0 +1,554 @@
+fileFormatVersion: 2
+guid: 531b9d8e69802a445bef26e1efeada27
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Fox_Plain_Idle_dir6_0
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 886
+        width: 55
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47fcbcb3b5815cf4c8870b870bde7541
+      internalID: -903603325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fox_Plain_Idle_dir6_1
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 886
+        width: 55
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76128f6197961564d92a91a2a874d1c3
+      internalID: 525112977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fox_Plain_Idle_dir6_2
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 887
+        width: 55
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1373915dc95b50488744c93837c9972
+      internalID: 2025133506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fox_Plain_Idle_dir6_3
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 887
+        width: 56
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdbdfd1bfce159b45855b896b7dde430
+      internalID: 708028897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fox_Plain_Idle_dir6_4
+      rect:
+        serializedVersion: 2
+        x: 1117
+        y: 886
+        width: 56
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1393be91e33d079428a61d121ecfd4ad
+      internalID: 1932708544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fox_Plain_Idle_dir6_5
+      rect:
+        serializedVersion: 2
+        x: 1373
+        y: 887
+        width: 56
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eeab3aa7902d49c418b8bf2d8c187f01
+      internalID: -1149316702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fox_Plain_Idle_dir6_6
+      rect:
+        serializedVersion: 2
+        x: 93
+        y: 631
+        width: 56
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f37fe6879a937f3438b896ee34e9f787
+      internalID: -1454796706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fox_Plain_Idle_dir6_7
+      rect:
+        serializedVersion: 2
+        x: 348
+        y: 630
+        width: 56
+        height: 120
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 600faa017dbb9fb4284153a41b545653
+      internalID: -2127008214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fox_Plain_Idle_dir6_8
+      rect:
+        serializedVersion: 2
+        x: 604
+        y: 630
+        width: 56
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e6b697d66f58c94e859ae055da72c2c
+      internalID: 760484641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fox_Plain_Idle_dir6_9
+      rect:
+        serializedVersion: 2
+        x: 860
+        y: 630
+        width: 56
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2036dabe66b5c34985bd507f195b510
+      internalID: -1874592306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fox_Plain_Idle_dir6_10
+      rect:
+        serializedVersion: 2
+        x: 1116
+        y: 630
+        width: 56
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21bd2e5dd8583c544b1cccf8e0ec09da
+      internalID: -1674002355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fox_Plain_Idle_dir6_11
+      rect:
+        serializedVersion: 2
+        x: 1374
+        y: 631
+        width: 56
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e47d75dbdf046874e88b6a5779950bac
+      internalID: -327552614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fox_Plain_Idle_dir6_12
+      rect:
+        serializedVersion: 2
+        x: 94
+        y: 374
+        width: 56
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93d7bccb5f64e5b40b688db889091545
+      internalID: 785565688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fox_Plain_Idle_dir6_13
+      rect:
+        serializedVersion: 2
+        x: 350
+        y: 374
+        width: 56
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70cd45be8810f07438773aff7c9a9490
+      internalID: -1569032861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fox_Plain_Idle_dir6_14
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 374
+        width: 55
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9519e461bfa84242b17e4d75714fc45
+      internalID: -2114238000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fox_Plain_Idle_dir6_15
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 374
+        width: 55
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d825285a75eb270479300da76f175619
+      internalID: -1643956533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fox_Plain_Idle_dir6_16
+      rect:
+        serializedVersion: 2
+        x: 1117
+        y: 374
+        width: 55
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e603b0811a323941a543737b27c007c
+      internalID: 1273511879
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fox_Plain_Idle_dir6_17
+      rect:
+        serializedVersion: 2
+        x: 1373
+        y: 374
+        width: 55
+        height: 123
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55d87af3e68cef246ac7c8059c5b0983
+      internalID: 71832280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fox_Plain_Idle_dir6_18
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 118
+        width: 56
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 850264a452ea38242b4cf3c1ec90e911
+      internalID: 2051645505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Fox_Plain_Idle_dir6_19
+      rect:
+        serializedVersion: 2
+        x: 349
+        y: 118
+        width: 55
+        height: 124
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01c522bdad78f2c4b8361b7dfaa3c6d5
+      internalID: -88988582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Fox_Plain_Idle_dir6_0: -903603325
+      Fox_Plain_Idle_dir6_1: 525112977
+      Fox_Plain_Idle_dir6_10: -1674002355
+      Fox_Plain_Idle_dir6_11: -327552614
+      Fox_Plain_Idle_dir6_12: 785565688
+      Fox_Plain_Idle_dir6_13: -1569032861
+      Fox_Plain_Idle_dir6_14: -2114238000
+      Fox_Plain_Idle_dir6_15: -1643956533
+      Fox_Plain_Idle_dir6_16: 1273511879
+      Fox_Plain_Idle_dir6_17: 71832280
+      Fox_Plain_Idle_dir6_18: 2051645505
+      Fox_Plain_Idle_dir6_19: -88988582
+      Fox_Plain_Idle_dir6_2: 2025133506
+      Fox_Plain_Idle_dir6_3: 708028897
+      Fox_Plain_Idle_dir6_4: 1932708544
+      Fox_Plain_Idle_dir6_5: -1149316702
+      Fox_Plain_Idle_dir6_6: -1454796706
+      Fox_Plain_Idle_dir6_7: -2127008214
+      Fox_Plain_Idle_dir6_8: 760484641
+      Fox_Plain_Idle_dir6_9: -1874592306
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

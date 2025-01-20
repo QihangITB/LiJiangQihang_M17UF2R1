@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a89afb327f780943aabd95265e650f1, type: 3}
+  m_Name: Rifle
+  m_EditorClassIdentifier: 
+  id: RI001
+  cost: 5
+  description: Typical firearm, but is useful too.
+  icon: {fileID: 1065572693, guid: ded92b3665707454789cefd354f4359b, type: 3}
+  damage: 1
+  speed: 3
+  munition:
+    bulletPrefab: {fileID: 6071376251323557296, guid: 464cd023c9be2884ba3697cac7daa428, type: 3}

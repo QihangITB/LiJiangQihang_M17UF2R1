@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec4708a80a002b4abac195196599e20, type: 3}
+  m_Name: Turret
+  m_EditorClassIdentifier: 
+  health: 3
+  speed: 50
+  coins: 2
+  deathSound: {fileID: 8300000, guid: 83d3cf529fb8f484da49dca46b6e786c, type: 3}
+  visionRange: 5
+  damage: 1
+  attackSpeed: 3
+  rechargeCooldown: 2
+  bulletPrefab: {fileID: 5926523386831475831, guid: b80e5a8ec9b2a3644b9529d8f747607e, type: 3}
