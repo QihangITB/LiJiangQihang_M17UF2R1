@@ -14,6 +14,7 @@ public class BomberController : MonoBehaviour
     public GameObject Target;
     public List<StateSO> States;
 
+    private AudioSource _audio;
     private StateSO _currentState;
     private CircleCollider2D _visionCollider;
     private CapsuleCollider2D _bombCollider;
@@ -55,6 +56,8 @@ public class BomberController : MonoBehaviour
 
     private void InitializeComponentsAndData()
     {
+        _audio = GetComponent<AudioSource>();
+
         _visionCollider = GetComponentInChildren<CircleCollider2D>();
         _visionCollider.radius = _bomberData.VisionRange;
         
@@ -98,6 +101,15 @@ public class BomberController : MonoBehaviour
             return false;
         }
         return true;
+    }
+
+    // Este metodo es llamado con un evento tras iniciar la animacion de ataque
+    private void PlayDeathSound()
+    {
+        if (_audio != null)
+        {
+            _audio.PlayOneShot(_bomberData.DeathSound); ;
+        }
     }
 
     // Este metodo es llamado con un evento tras finalizar la animacion de ataque

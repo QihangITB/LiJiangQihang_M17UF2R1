@@ -3374,8 +3374,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 3693330752173201425, guid: 000d6b397498d10499d828b5918af8ce, type: 3}
-  bomberNumber: 10
-  spawnTime: 3
+  bomberNumber: 12
+  spawnTime: 2
 --- !u!1 &7618676879664796839
 GameObject:
   m_ObjectHideFlags: 0

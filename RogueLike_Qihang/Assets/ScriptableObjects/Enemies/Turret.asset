@@ -15,6 +15,7 @@ MonoBehaviour:
   health: 3
   speed: 50
   coins: 2
+  deathSound: {fileID: 8300000, guid: 83d3cf529fb8f484da49dca46b6e786c, type: 3}
   visionRange: 5
   damage: 1
   attackSpeed: 3

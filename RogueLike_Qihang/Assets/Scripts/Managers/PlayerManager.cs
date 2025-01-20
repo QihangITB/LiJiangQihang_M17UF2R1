@@ -21,6 +21,7 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
     private Vector2 _inputMovement;
     private Vector2 _playerDirection;
     private Animator _animator;
+    private AudioSource _audio;
     private Movement _movement;
     private InventoryManager _inventoryManager;
     private HealthManager _healthManager;
@@ -51,9 +52,12 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
     {
         _inputControl.Disable();
     }
+
     private void InitializeComponents()
     {
         _animator = GetComponent<Animator>();
+
+        _audio = GetComponent<AudioSource>();
 
         _inputControl = new InputControl();
         _inputControl.Player.SetCallbacks(this);
@@ -71,9 +75,19 @@ public class PlayerManager : MonoBehaviour, InputControl.IPlayerActions
         _animator.SetFloat(ParamY, direction.y);
     }
 
+    // Funcion llamada por el evento de la animacion de muerte
     public void GameOver()
     {
         SceneController.Instance.LoadSceneByName(EndScene);
+    }
+
+    // Funcion llamada por el evento de la animacion de muerte
+    private void PlayDeathSound()
+    {
+        if (_audio != null)
+        {
+            _audio.PlayOneShot(_playerData.DeathSound); ;
+        }
     }
 
     public void OnMovement(InputAction.CallbackContext context)

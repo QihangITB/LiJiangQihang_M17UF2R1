@@ -1,5 +1,6 @@
 using UnityEngine.UI;
 using UnityEngine;
+using System.Collections;
 
 public class HealthManager : MonoBehaviour
 {
@@ -25,6 +26,8 @@ public class HealthManager : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        StartCoroutine(ReceiveDamageBehaviour()); // Efecto visual de recibir daño
+        
         _health -= damage;
         UpdateHealthBar(_health, _entityData.Health); // Actualizamos la barra de vida
 
@@ -34,5 +37,15 @@ public class HealthManager : MonoBehaviour
     private void UpdateHealthBar(float current, float max)
     {
         _healthBarValue.fillAmount = current / max;
+    }
+
+    private IEnumerator ReceiveDamageBehaviour()
+    {
+        SpriteRenderer sprite = GetComponent<SpriteRenderer>();
+        sprite.color = new Color(1f, 0.5f, 0.5f, 1f); // Tono rojo claro
+
+        yield return new WaitForSeconds(0.5f);
+
+        sprite.color = Color.white;
     }
 }
