@@ -57,6 +57,8 @@ Mientras Faylen explora los vastos campos verdes y playas bañadas por la brisa,
 ### JUGADOR
 - Movimiento: 8 Direcciones
 - Ataque: Sigue al raton.
+- Cuando recibe daño, su tono cambia a un color rojizo.
+- Cuando muere, explota provocando un sonido.
 
 ### ENEMIGOS
 
@@ -66,7 +68,7 @@ Los dos enemigos tienen un sistema de deteccion del jugador, si este esta dentro
 - **IDLE:** Patrulla por el mapa hasta llegar a su destino que se le assigna de forma aleatoria dentro de su zona navegable, también hay momentos que para y esta estatico porque esta "descansando".
 - **CHASE:** En cuando detecta al jugador, se le assigna como destino la posición del jugador de forma dinámica.
 - **ATTACK:** Cuando entre en contacto con el jugador, explota, ampliando su trigger para que las entidades de su alrededor reciba daño.
-- **DIE:** Muere cuando explota y cuando su vida este por debajo o igual a 0. No se destruye el objeto sino que se guarda en una Pool.
+- **DIE:** Muere cuando explota (provoca sonido de explosion), o su vida este por debajo o igual a 0. No se destruye el objeto sino que se guarda en una Pool.
 
 ##### Spawener de enemigos bomba
 Los "Bombas" se generan en puntos especificos del mapa, pero de forma aleatoria. El funcionamiento es la de un "Pool compartida", especificamos cuantos "Bombas" queremos que aparezcan en la sala, si dentro del pool hay suficientes enemigos, entonces no se crean de más, pero si se pide más enemigos de las que hay, entonces si se instanciara más "Bombas".
