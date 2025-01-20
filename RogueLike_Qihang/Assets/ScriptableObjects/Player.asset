@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 201eeb380ea361e428319cf98bd5e701, type: 3}
   m_Name: Player
   m_EditorClassIdentifier: 
-  health: 12121
+  health: 10
   speed: 3
   coins: 0
   deathSound: {fileID: 8300000, guid: 83d3cf529fb8f484da49dca46b6e786c, type: 3}
